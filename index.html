@@ -7,59 +7,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <style>
-       :root {
-            /* Hatsune Miku Color Palette - Light Theme */
-            /* Primary: Miku Teal/Cyan #39C5BB */
-            --md-sys-color-primary: #39C5BB;
-            --md-sys-color-on-primary: #003735;
-            --md-sys-color-primary-container: #A6F4EF;
-            --md-sys-color-on-primary-container: #00201E;
+        :root {
+            --md-sys-color-primary: #386a20;
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-primary-container: #b7f397;
+            --md-sys-color-on-primary-container: #042100;
             
-            /* Secondary: Soft Teal */
-            --md-sys-color-secondary: #4A6361;
-            --md-sys-color-on-secondary: #FFFFFF;
-            --md-sys-color-secondary-container: #CCE8E5;
-            --md-sys-color-on-secondary-container: #051F1D;
+            --md-sys-color-secondary: #55624c;
+            --md-sys-color-on-secondary: #ffffff;
+            --md-sys-color-secondary-container: #d9e7cb;
+            --md-sys-color-on-secondary-container: #131f0d;
             
-            /* Tertiary: Miku Hair Blue */
-            --md-sys-color-tertiary: #0066CC;
-            --md-sys-color-on-tertiary: #FFFFFF;
-            --md-sys-color-tertiary-container: #D1E4FF;
-            --md-sys-color-on-tertiary-container: #001D36;
+            --md-sys-color-tertiary: #19686d;
+            --md-sys-color-on-tertiary: #ffffff;
+            --md-sys-color-tertiary-container: #a4eff4;
+            --md-sys-color-on-tertiary-container: #002022;
             
-            /* Surface Colors - Cool Gray with Teal Tint */
-            --md-sys-color-surface: #FAFDFC;
-            --md-sys-color-on-surface: #161D1C;
-            --md-sys-color-surface-variant: #DAE5E3;
-            --md-sys-color-on-surface-variant: #3F4948;
+            --md-sys-color-surface: #fdfdf6;
+            --md-sys-color-on-surface: #1a1c18;
+            --md-sys-color-surface-variant: #dfe4d6;
+            --md-sys-color-on-surface-variant: #43483e;
             
-            /* Outline Colors */
-            --md-sys-color-outline: #6F7978;
-            --md-sys-color-outline-variant: #BEC9C7;
+            --md-sys-color-outline: #73796e;
+            --md-sys-color-outline-variant: #c3c8bb;
             
-            /* Error Colors */
-            --md-sys-color-error: #BA1A1A;
-            --md-sys-color-error-container: #FFDAD6;
-            --md-sys-color-on-error: #FFFFFF;
+            --md-sys-color-error: #ba1a1a;
+            --md-sys-color-error-container: #ffdad6;
             
-            /* Surface Tints */
-            --md-sys-color-surface-tint: #39C5BB;
-            --md-sys-color-surface-1: #F0F9F8;
-            --md-sys-color-surface-2: #E8F6F5;
-            --md-sys-color-surface-3: #E0F3F2;
-            --md-sys-color-surface-4: #D8F0EF;
-            --md-sys-color-surface-5: #D0EDEC;
+            --md-sys-color-surface-tint: #386a20;
+            --md-sys-color-surface-1: #f4f9eb;
+            --md-sys-color-surface-2: #eef6e4;
+            --md-sys-color-surface-3: #e9f2dd;
+            --md-sys-color-surface-4: #e6f0d9;
+            --md-sys-color-surface-5: #e2eed3;
             
             --tree-line-color: var(--md-sys-color-outline-variant);
             --tree-hover: var(--md-sys-color-surface-2);
-            
-            /* Miku Accent Colors */
-            --miku-hair: #39C5BB;
-            --miku-hair-dark: #2DA8A0;
-            --miku-hair-light: #5DDCD3;
-            --miku-tie: #FF4081;
-            --miku-tie-light: #FF79B0;
-            --miku-sleeve: #E0F7FA;
             
             --md-sys-spacing-1: 4px;
             --md-sys-spacing-2: 8px;
@@ -97,44 +80,39 @@
         }
 
         [data-theme="dark"] {
-            /* Hatsune Miku Color Palette - Dark Theme */
-            --md-sys-color-primary: #39C5BB;
-            --md-sys-color-on-primary: #003735;
-            --md-sys-color-primary-container: #00504C;
-            --md-sys-color-on-primary-container: #A6F4EF;
+            --md-sys-color-primary: #9cd67d;
+            --md-sys-color-on-primary: #0f3900;
+            --md-sys-color-primary-container: #205107;
+            --md-sys-color-on-primary-container: #b7f397;
             
-            --md-sys-color-secondary: #B1CCC9;
-            --md-sys-color-on-secondary: #1C3533;
-            --md-sys-color-secondary-container: #334B49;
-            --md-sys-color-on-secondary-container: #CCE8E5;
+            --md-sys-color-secondary: #bdcbaf;
+            --md-sys-color-on-secondary: #283420;
+            --md-sys-color-secondary-container: #3e4a35;
+            --md-sys-color-on-secondary-container: #d9e7cb;
             
-            --md-sys-color-tertiary: #9ECAFF;
-            --md-sys-color-on-tertiary: #003258;
-            --md-sys-color-tertiary-container: #00497D;
-            --md-sys-color-on-tertiary-container: #D1E4FF;
+            --md-sys-color-tertiary: #88d1d7;
+            --md-sys-color-on-tertiary: #00363a;
+            --md-sys-color-tertiary-container: #004f55;
+            --md-sys-color-on-tertiary-container: #a4eff4;
             
-            --md-sys-color-surface: #0F1514;
-            --md-sys-color-on-surface: #DDE4E3;
-            --md-sys-color-surface-variant: #3F4948;
-            --md-sys-color-on-surface-variant: #BEC9C7;
+            --md-sys-color-surface: #1a1c18;
+            --md-sys-color-on-surface: #e2e3dc;
+            --md-sys-color-surface-variant: #43483e;
+            --md-sys-color-on-surface-variant: #c3c8bb;
             
-            --md-sys-color-outline: #899391;
-            --md-sys-color-outline-variant: #3F4948;
+            --md-sys-color-outline: #8d9287;
+            --md-sys-color-outline-variant: #43483e;
             
-            --md-sys-color-error: #FFB4AB;
-            --md-sys-color-error-container: #93000A;
+            --md-sys-color-surface-tint: #9cd67d;
+            --md-sys-color-surface-1: #1f241b;
+            --md-sys-color-surface-2: #232920;
+            --md-sys-color-surface-3: #282e25;
+            --md-sys-color-surface-4: #293026;
+            --md-sys-color-surface-5: #2c3328;
             
-            --md-sys-color-surface-tint: #39C5BB;
-            --md-sys-color-surface-1: #14201F;
-            --md-sys-color-surface-2: #192624;
-            --md-sys-color-surface-3: #1E2C2A;
-            --md-sys-color-surface-4: #223230;
-            --md-sys-color-surface-5: #273836;
-            
-            --tree-line-color: #3F4948;
-            --tree-hover: #1C3533;
+            --tree-line-color: #43483e;
+            --tree-hover: #2d322b;
         }
-
 
         * {
             margin: 0;
