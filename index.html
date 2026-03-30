@@ -3,116 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nature JSON Tree Builder - Material Design 3</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="light dark">
+    <title>Sakura Miku JSON Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <style>
         :root {
-            --md-sys-color-primary: #386a20;
-            --md-sys-color-on-primary: #ffffff;
-            --md-sys-color-primary-container: #b7f397;
-            --md-sys-color-on-primary-container: #042100;
+            /* Sakura Miku Color Palette */
+            --miku-cyan: #39C5BB;
+            --miku-cyan-light: #5FE3D9;
+            --miku-cyan-dark: #2A9D94;
+            --miku-cyan-container: #E0F7F5;
             
-            --md-sys-color-secondary: #55624c;
-            --md-sys-color-on-secondary: #ffffff;
-            --md-sys-color-secondary-container: #d9e7cb;
-            --md-sys-color-on-secondary-container: #131f0d;
+            --sakura-pink: #FF69B4;
+            --sakura-pink-light: #FF8DC7;
+            --sakura-pink-dark: #E91E8C;
+            --sakura-pink-container: #FFE0F0;
             
-            --md-sys-color-tertiary: #19686d;
-            --md-sys-color-on-tertiary: #ffffff;
-            --md-sys-color-tertiary-container: #a4eff4;
-            --md-sys-color-on-tertiary-container: #002022;
+            --sakura-blossom: #FFB7C5;
+            --sakura-blossom-light: #FFD1DC;
+            --sakura-blossom-dark: #FF9AAE;
             
-            --md-sys-color-surface: #fdfdf6;
-            --md-sys-color-on-surface: #1a1c18;
-            --md-sys-color-surface-variant: #dfe4d6;
-            --md-sys-color-on-surface-variant: #43483e;
+            /* Material Design 3 System */
+            --md-primary: var(--miku-cyan);
+            --md-on-primary: #FFFFFF;
+            --md-primary-container: var(--miku-cyan-container);
+            --md-on-primary-container: #004D48;
             
-            --md-sys-color-outline: #73796e;
-            --md-sys-color-outline-variant: #c3c8bb;
+            --md-secondary: var(--sakura-pink);
+            --md-on-secondary: #FFFFFF;
+            --md-secondary-container: var(--sakura-pink-container);
+            --md-on-secondary-container: #5D0038;
             
-            --md-sys-color-error: #ba1a1a;
-            --md-sys-color-error-container: #ffdad6;
+            --md-tertiary: #7C4DFF;
+            --md-on-tertiary: #FFFFFF;
+            --md-tertiary-container: #E8DDFF;
+            --md-on-tertiary-container: #2A0055;
             
-            --md-sys-color-surface-tint: #386a20;
-            --md-sys-color-surface-1: #f4f9eb;
-            --md-sys-color-surface-2: #eef6e4;
-            --md-sys-color-surface-3: #e9f2dd;
-            --md-sys-color-surface-4: #e6f0d9;
-            --md-sys-color-surface-5: #e2eed3;
+            --md-surface: #FAFCFB;
+            --md-on-surface: #1A1C1C;
+            --md-surface-variant: #E0E3E3;
+            --md-on-surface-variant: #444748;
             
-            --tree-line-color: var(--md-sys-color-outline-variant);
-            --tree-hover: var(--md-sys-color-surface-2);
+            --md-outline: #747878;
+            --md-outline-variant: #C4C7C7;
             
-            --md-sys-spacing-1: 4px;
-            --md-sys-spacing-2: 8px;
-            --md-sys-spacing-3: 12px;
-            --md-sys-spacing-4: 16px;
-            --md-sys-spacing-5: 20px;
-            --md-sys-spacing-6: 24px;
-            --md-sys-spacing-8: 32px;
-            --md-sys-spacing-12: 48px;
+            --md-error: #FF5449;
+            --md-error-container: #FFDAD6;
             
-            --md-sys-shape-corner-none: 0px;
-            --md-sys-shape-corner-extra-small: 4px;
-            --md-sys-shape-corner-small: 8px;
-            --md-sys-shape-corner-medium: 12px;
-            --md-sys-shape-corner-large: 16px;
-            --md-sys-shape-corner-extra-large: 28px;
-            --md-sys-shape-corner-full: 50%;
+            /* Elevation & Shadows MD3 */
+            --md-elevation-1: 0 1px 3px 1px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3);
+            --md-elevation-2: 0 2px 6px 2px rgba(0,0,0,0.15), 0 1px 2px 0 rgba(0,0,0,0.3);
+            --md-elevation-3: 0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px 0 rgba(0,0,0,0.3);
+            --md-elevation-4: 0 6px 10px 4px rgba(0,0,0,0.15), 0 2px 3px 0 rgba(0,0,0,0.3);
+            --md-elevation-5: 0 8px 12px 6px rgba(0,0,0,0.15), 0 4px 4px 0 rgba(0,0,0,0.3);
             
-            --md-sys-typescale-display-large: 400 3.5rem/4rem 'Roboto Flex';
-            --md-sys-typescale-display-medium: 400 2.8rem/3.2rem 'Roboto Flex';
-            --md-sys-typescale-headline-large: 400 2rem/2.5rem 'Roboto Flex';
-            --md-sys-typescale-headline-medium: 400 1.75rem/2.25rem 'Roboto Flex';
-            --md-sys-typescale-title-large: 400 1.375rem/1.75rem 'Roboto Flex';
-            --md-sys-typescale-title-medium: 500 1rem/1.5rem 'Roboto Flex';
-            --md-sys-typescale-body-large: 400 1rem/1.5rem 'Roboto Flex';
-            --md-sys-typescale-body-medium: 400 0.875rem/1.25rem 'Roboto Flex';
-            --md-sys-typescale-label-large: 500 0.875rem/1.25rem 'Roboto Flex';
-            --md-sys-typescale-label-medium: 500 0.75rem/1rem 'Roboto Flex';
+            /* Shape - Rounded MD3 */
+            --md-shape-none: 0px;
+            --md-shape-xs: 4px;
+            --md-shape-sm: 8px;
+            --md-shape-md: 12px;
+            --md-shape-lg: 16px;
+            --md-shape-xl: 28px;
+            --md-shape-full: 50%;
             
-            --md-sys-motion-duration-short: 150ms;
-            --md-sys-motion-duration-medium: 300ms;
-            --md-sys-motion-duration-long: 500ms;
-            --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
-            --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+            /* Typography - Plus Jakarta Sans */
+            --font-display: 800 3.5rem/4rem 'Plus Jakarta Sans';
+            --font-headline-lg: 700 2rem/2.5rem 'Plus Jakarta Sans';
+            --font-headline-md: 700 1.75rem/2.25rem 'Plus Jakarta Sans';
+            --font-title-lg: 600 1.375rem/1.75rem 'Plus Jakarta Sans';
+            --font-title-md: 600 1rem/1.5rem 'Plus Jakarta Sans';
+            --font-body-lg: 400 1rem/1.6rem 'Plus Jakarta Sans';
+            --font-body-md: 400 0.9375rem/1.5rem 'Plus Jakarta Sans';
+            --font-body-sm: 400 0.875rem/1.4rem 'Plus Jakarta Sans';
+            --font-label-lg: 600 0.875rem/1.25rem 'Plus Jakarta Sans';
+            --font-label-md: 500 0.75rem/1rem 'Plus Jakarta Sans';
+            --font-mono: 500 0.875rem/1.5 'JetBrains Mono';
+            
+            /* Spacing */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-12: 48px;
+            
+            /* Motion */
+            --motion-quick: 150ms cubic-bezier(0.2, 0, 0, 1);
+            --motion-medium: 300ms cubic-bezier(0.2, 0, 0, 1);
+            --motion-slow: 500ms cubic-bezier(0.2, 0, 0, 1);
+            
+            /* Tech Grid Pattern */
+            --tech-grid: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 40px,
+                rgba(57, 197, 187, 0.03) 40px,
+                rgba(57, 197, 187, 0.03) 41px
+            ),
+            repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(255, 105, 180, 0.03) 40px,
+                rgba(255, 105, 180, 0.03) 41px
+            );
+            
+            /* Border Tech Style */
+            --tech-border: 2px solid var(--miku-cyan);
+            --tech-border-subtle: 1px solid rgba(57, 197, 187, 0.3);
+        }
+
+        /* Dark Theme - Sakura Miku Night */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --md-primary: var(--miku-cyan-light);
+                --md-on-primary: #003733;
+                --md-primary-container: #004D48;
+                --md-on-primary-container: var(--miku-cyan-light);
+                
+                --md-secondary: var(--sakura-pink-light);
+                --md-on-secondary: #3D0024;
+                --md-secondary-container: #5D0038;
+                --md-on-secondary-container: var(--sakura-pink-light);
+                
+                --md-tertiary: #CBB2FF;
+                --md-on-tertiary: #3F008C;
+                --md-tertiary-container: #5D24B6;
+                --md-on-tertiary-container: #E8DDFF;
+                
+                --md-surface: #121414;
+                --md-on-surface: #E1E3E3;
+                --md-surface-variant: #444748;
+                --md-on-surface-variant: #C4C7C7;
+                
+                --md-outline: #8E9192;
+                --md-outline-variant: #444748;
+                
+                --tech-border: 2px solid var(--miku-cyan-light);
+                --tech-border-subtle: 1px solid rgba(95, 227, 217, 0.3);
+            }
         }
 
         [data-theme="dark"] {
-            --md-sys-color-primary: #9cd67d;
-            --md-sys-color-on-primary: #0f3900;
-            --md-sys-color-primary-container: #205107;
-            --md-sys-color-on-primary-container: #b7f397;
+            --md-primary: var(--miku-cyan-light);
+            --md-on-primary: #003733;
+            --md-primary-container: #004D48;
+            --md-on-primary-container: var(--miku-cyan-light);
             
-            --md-sys-color-secondary: #bdcbaf;
-            --md-sys-color-on-secondary: #283420;
-            --md-sys-color-secondary-container: #3e4a35;
-            --md-sys-color-on-secondary-container: #d9e7cb;
+            --md-secondary: var(--sakura-pink-light);
+            --md-on-secondary: #3D0024;
+            --md-secondary-container: #5D0038;
+            --md-on-secondary-container: var(--sakura-pink-light);
             
-            --md-sys-color-tertiary: #88d1d7;
-            --md-sys-color-on-tertiary: #00363a;
-            --md-sys-color-tertiary-container: #004f55;
-            --md-sys-color-on-tertiary-container: #a4eff4;
+            --md-tertiary: #CBB2FF;
+            --md-on-tertiary: #3F008C;
+            --md-tertiary-container: #5D24B6;
+            --md-on-tertiary-container: #E8DDFF;
             
-            --md-sys-color-surface: #1a1c18;
-            --md-sys-color-on-surface: #e2e3dc;
-            --md-sys-color-surface-variant: #43483e;
-            --md-sys-color-on-surface-variant: #c3c8bb;
+            --md-surface: #121414;
+            --md-on-surface: #E1E3E3;
+            --md-surface-variant: #444748;
+            --md-on-surface-variant: #C4C7C7;
             
-            --md-sys-color-outline: #8d9287;
-            --md-sys-color-outline-variant: #43483e;
+            --md-outline: #8E9192;
+            --md-outline-variant: #444748;
             
-            --md-sys-color-surface-tint: #9cd67d;
-            --md-sys-color-surface-1: #1f241b;
-            --md-sys-color-surface-2: #232920;
-            --md-sys-color-surface-3: #282e25;
-            --md-sys-color-surface-4: #293026;
-            --md-sys-color-surface-5: #2c3328;
-            
-            --tree-line-color: #43483e;
-            --tree-hover: #2d322b;
+            --tech-border: 2px solid var(--miku-cyan-light);
+            --tech-border-subtle: 1px solid rgba(95, 227, 217, 0.3);
         }
+
         * {
             margin: 0;
             padding: 0;
@@ -122,26 +186,30 @@
 
         html {
             font-size: 16px;
+            scroll-behavior: smooth;
         }
 
         @media (max-width: 768px) {
             html {
-                font-size: 14px;
+                font-size: 15px;
             }
         }
 
         body {
-            font-family: 'Roboto Flex', sans-serif;
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--md-surface);
+            background-image: var(--tech-grid);
+            color: var(--md-on-surface);
             min-height: 100vh;
             overflow-x: hidden;
-            transition: background-color var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+            transition: background-color var(--motion-medium), color var(--motion-medium);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
         }
 
-        .nature-bg {
+        /* Sakura Petals Animation */
+        .sakura-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -152,175 +220,188 @@
             overflow: hidden;
         }
 
-        .leaf-ornament {
+        .petal {
             position: absolute;
-            opacity: 0.08;
-            animation: float 20s ease-in-out infinite;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--sakura-pink), var(--sakura-blossom));
+            border-radius: 0 50% 0 50%;
+            opacity: 0.6;
+            animation: fall linear infinite;
+            box-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
         }
 
-        .leaf-1 {
-            top: 10%;
-            left: 5%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 30% 30%, var(--md-sys-color-primary), transparent 70%);
-            border-radius: 0 70% 0 70%;
-            transform: rotate(-45deg);
-            animation-delay: 0s;
+        .petal:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; transform: rotate(45deg); }
+        .petal:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 2s; transform: rotate(-30deg); width: 15px; height: 15px; }
+        .petal:nth-child(3) { left: 50%; animation-duration: 10s; animation-delay: 4s; transform: rotate(60deg); }
+        .petal:nth-child(4) { left: 70%; animation-duration: 14s; animation-delay: 1s; transform: rotate(-45deg); width: 18px; height: 18px; }
+        .petal:nth-child(5) { left: 90%; animation-duration: 11s; animation-delay: 3s; transform: rotate(30deg); }
+        .petal:nth-child(6) { left: 20%; animation-duration: 13s; animation-delay: 5s; transform: rotate(-60deg); width: 12px; height: 12px; }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateX(20px) rotate(90deg);
+            }
+            50% {
+                transform: translateX(-10px) rotate(180deg);
+            }
+            75% {
+                transform: translateX(15px) rotate(270deg);
+            }
+            100% {
+                top: 110%;
+                transform: translateX(-20px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        .leaf-2 {
-            top: 60%;
-            right: 10%;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, var(--md-sys-color-tertiary), transparent 70%);
-            border-radius: 0 60% 0 60%;
-            transform: rotate(15deg);
-            animation-delay: -5s;
-        }
-
-        .leaf-3 {
-            bottom: 20%;
-            left: 15%;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 40% 40%, var(--md-sys-color-secondary), transparent 70%);
-            border-radius: 0 80% 0 50%;
-            transform: rotate(45deg);
-            animation-delay: -10s;
-        }
-
-        .circle-ornament {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.05;
-            background: var(--md-sys-color-primary);
-        }
-
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            right: -100px;
-        }
-
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -50px;
-            left: -50px;
-            background: var(--md-sys-color-tertiary);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
-            50% { transform: translateY(-20px) rotate(calc(var(--rot, 0deg) + 5deg)); }
+        /* Tech Grid Overlay */
+        .tech-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.4;
+            background-image: 
+                linear-gradient(90deg, rgba(57, 197, 187, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(57, 197, 187, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .app-container {
             position: relative;
-            z-index: 1;
-            max-width: 1400px;
+            z-index: 2;
+            max-width: 1440px;
             margin: 0 auto;
-            padding: var(--md-sys-spacing-6);
+            padding: var(--space-6);
         }
 
         @media (max-width: 768px) {
             .app-container {
-                padding: var(--md-sys-spacing-3);
+                padding: var(--space-4);
             }
         }
 
+        /* App Bar - Tech Style */
         .app-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
-            background-color: var(--md-sys-color-surface);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            margin: calc(-1 * var(--md-sys-spacing-6));
-            margin-bottom: var(--md-sys-spacing-6);
+            padding: var(--space-4) var(--space-6);
+            background-color: var(--md-surface);
+            border-bottom: var(--tech-border);
+            margin: calc(-1 * var(--space-6));
+            margin-bottom: var(--space-6);
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            background-color: rgba(var(--md-sys-color-surface), 0.8);
+            backdrop-filter: blur(12px);
+            background-color: rgba(var(--md-surface), 0.85);
+            box-shadow: var(--md-elevation-2);
         }
 
         @media (max-width: 768px) {
             .app-bar {
-                margin: calc(-1 * var(--md-sys-spacing-3));
-                margin-bottom: var(--md-sys-spacing-3);
-                padding: var(--md-sys-spacing-3);
+                margin: calc(-1 * var(--space-4));
+                margin-bottom: var(--space-4);
+                padding: var(--space-3) var(--space-4);
             }
         }
 
         .app-bar-left {
             display: flex;
             align-items: center;
-            gap: var(--md-sys-spacing-3);
-        }
-
-        @media (max-width: 480px) {
-            .app-bar-left {
-                gap: var(--md-sys-spacing-2);
-            }
+            gap: var(--space-4);
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-tertiary-container));
-            border-radius: var(--md-sys-shape-corner-medium);
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--miku-cyan), var(--sakura-pink));
+            border-radius: var(--md-shape-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--md-sys-color-on-primary-container);
-            font-variation-settings: 'FILL' 1, 'wght' 600;
-            flex-shrink: 0;
+            color: white;
+            font-variation-settings: 'FILL' 1, 'wght' 700;
+            box-shadow: var(--md-elevation-2);
+            border: 2px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+            100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
         }
 
         @media (max-width: 480px) {
             .logo {
-                width: 32px;
-                height: 32px;
+                width: 40px;
+                height: 40px;
             }
         }
 
         .app-title {
-            font: var(--md-sys-typescale-title-large);
-            color: var(--md-sys-color-on-surface);
-            font-weight: 600;
+            font: var(--font-title-lg);
+            color: var(--md-on-surface);
+            font-weight: 700;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            letter-spacing: -0.02em;
         }
 
         @media (max-width: 768px) {
             .app-title {
-                font: var(--md-sys-typescale-title-medium);
+                font: var(--font-title-md);
                 max-width: 200px;
             }
         }
 
         @media (max-width: 480px) {
             .app-title {
-                font: var(--md-sys-typescale-body-large);
-                font-weight: 600;
+                font: var(--font-body-lg);
+                font-weight: 700;
                 max-width: 150px;
             }
         }
 
         .app-bar-actions {
             display: flex;
-            gap: var(--md-sys-spacing-2);
+            gap: var(--space-2);
         }
 
+        /* Main Layout */
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 500px;
-            gap: var(--md-sys-spacing-6);
+            grid-template-columns: 1fr 520px;
+            gap: var(--space-6);
             align-items: start;
         }
 
@@ -332,76 +413,99 @@
 
         @media (max-width: 768px) {
             .main-layout {
-                gap: var(--md-sys-spacing-4);
+                gap: var(--space-4);
             }
         }
 
+        /* Cards - Tech Border Style */
         .card {
-            background-color: var(--md-sys-color-surface-1);
-            border-radius: var(--md-sys-shape-corner-large);
-            padding: var(--md-sys-spacing-6);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            background-color: var(--md-surface);
+            border-radius: var(--md-shape-lg);
+            padding: var(--space-6);
+            box-shadow: var(--md-elevation-1);
+            transition: all var(--motion-medium);
+            border: var(--tech-border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--miku-cyan), var(--sakura-pink), var(--miku-cyan));
+            background-size: 200% 100%;
+            animation: borderGlow 3s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         @media (max-width: 768px) {
             .card {
-                padding: var(--md-sys-spacing-4);
-                border-radius: var(--md-sys-shape-corner-medium);
+                padding: var(--space-4);
+                border-radius: var(--md-shape-md);
             }
         }
 
         @media (max-width: 480px) {
             .card {
-                padding: var(--md-sys-spacing-3);
+                padding: var(--space-3);
             }
         }
 
         .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: var(--md-elevation-3);
+            transform: translateY(-2px);
         }
 
         .card-title {
-            font: var(--md-sys-typescale-title-medium);
-            color: var(--md-sys-color-on-surface);
-            margin-bottom: var(--md-sys-spacing-4);
+            font: var(--font-title-md);
+            color: var(--md-on-surface);
+            margin-bottom: var(--space-4);
             display: flex;
             align-items: center;
-            gap: var(--md-sys-spacing-2);
+            gap: var(--space-3);
             flex-wrap: wrap;
-        }
-
-        @media (max-width: 480px) {
-            .card-title {
-                font: var(--md-sys-typescale-body-large);
-                font-weight: 600;
-                margin-bottom: var(--md-sys-spacing-3);
-            }
+            font-weight: 600;
         }
 
         .card-subtitle {
-            font: var(--md-sys-typescale-body-medium);
-            color: var(--md-sys-color-on-surface-variant);
-            margin-bottom: var(--md-sys-spacing-4);
+            font: var(--font-body-md);
+            color: var(--md-on-surface-variant);
+            margin-bottom: var(--space-4);
+            line-height: 1.6;
         }
 
-        @media (max-width: 480px) {
-            .card-subtitle {
-                font: var(--md-sys-typescale-body-medium);
-                margin-bottom: var(--md-sys-spacing-3);
-            }
-        }
-
+        /* Tree Container - Tech Box Style */
         .tree-container, .article-field-container {
-            background-color: var(--md-sys-color-surface);
-            border-radius: var(--md-sys-shape-corner-medium);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            background-color: var(--md-surface);
+            border-radius: var(--md-shape-md);
+            border: 2px solid var(--md-outline-variant);
             overflow: hidden;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            position: relative;
         }
 
+        .tree-container::after, .article-field-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, transparent 50%, var(--miku-cyan) 50%);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        /* Tree Nodes */
         .tree-node, .article-field-node {
             position: relative;
             min-width: fit-content;
@@ -410,52 +514,42 @@
         .tree-node-content, .article-field-content {
             display: flex;
             align-items: center;
-            gap: var(--md-sys-spacing-2);
-            padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            transition: background-color var(--md-sys-motion-duration-short);
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-4);
+            border-bottom: 1px solid var(--md-outline-variant);
+            transition: all var(--motion-quick);
             position: relative;
             min-width: fit-content;
-        }
-
-        @media (max-width: 768px) {
-            .tree-node-content, .article-field-content {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                gap: var(--md-sys-spacing-1);
-            }
+            background-color: var(--md-surface);
         }
 
         .tree-node-content:hover, .article-field-content:hover {
-            background-color: var(--tree-hover);
+            background-color: var(--md-primary-container);
         }
 
         .tree-node-content.dragging, .article-field-content.dragging {
-            opacity: 0.5;
-            background-color: var(--md-sys-color-primary-container);
+            opacity: 0.6;
+            background-color: var(--md-secondary-container);
+            box-shadow: var(--md-elevation-3);
         }
 
         .tree-node-content.drag-over, .article-field-content.drag-over {
-            border-top: 3px solid var(--md-sys-color-primary);
+            border-top: 3px solid var(--md-primary);
+            background-color: var(--md-primary-container);
         }
 
         .tree-indent, .field-indent {
             display: flex;
             align-items: center;
-            gap: var(--md-sys-spacing-1);
+            gap: var(--space-1);
             flex-shrink: 0;
         }
 
         .tree-line, .field-line {
-            width: 16px;
-            height: 20px;
+            width: 20px;
+            height: 24px;
             position: relative;
             flex-shrink: 0;
-        }
-
-        @media (max-width: 480px) {
-            .tree-line, .field-line {
-                width: 12px;
-            }
         }
 
         .tree-line::before, .field-line::before {
@@ -464,8 +558,8 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 1px;
-            background-color: var(--tree-line-color);
+            width: 2px;
+            background-color: var(--md-outline-variant);
         }
 
         .tree-line::after, .field-line::after {
@@ -474,8 +568,8 @@
             left: 50%;
             top: 50%;
             right: 0;
-            height: 1px;
-            background-color: var(--tree-line-color);
+            height: 2px;
+            background-color: var(--md-outline-variant);
         }
 
         .tree-line.last::before, .field-line.last::before {
@@ -483,28 +577,31 @@
         }
 
         .tree-toggle, .field-toggle {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            border-radius: var(--md-sys-shape-corner-small);
-            color: var(--md-sys-color-on-surface-variant);
-            transition: all var(--md-sys-motion-duration-short);
+            border-radius: var(--md-shape-sm);
+            color: var(--md-on-surface-variant);
+            transition: all var(--motion-quick);
             z-index: 2;
-            background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            background-color: var(--md-surface-variant);
+            border: 1px solid var(--md-outline);
             flex-shrink: 0;
         }
 
         .tree-toggle:hover, .field-toggle:hover {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-primary);
+            background-color: var(--md-primary);
+            color: var(--md-on-primary);
+            transform: scale(1.1);
         }
 
         .tree-toggle.expanded, .field-toggle.expanded {
             transform: rotate(90deg);
+            background-color: var(--md-primary);
+            color: var(--md-on-primary);
         }
 
         .tree-toggle.leaf, .field-toggle.leaf {
@@ -513,30 +610,21 @@
         }
 
         .drag-handle, .field-drag-handle {
-            color: var(--md-sys-color-outline);
+            color: var(--md-outline);
             cursor: grab;
             user-select: none;
-            padding: var(--md-sys-spacing-1);
-            border-radius: var(--md-sys-shape-corner-small);
-            transition: all var(--md-sys-motion-duration-short);
+            padding: var(--space-2);
+            border-radius: var(--md-shape-sm);
+            transition: all var(--motion-quick);
             flex-shrink: 0;
             touch-action: none;
-        }
-
-        @media (max-width: 768px) {
-            .drag-handle, .field-drag-handle {
-                padding: var(--md-sys-spacing-1);
-            }
-            
-            .drag-handle .material-symbols-rounded,
-            .field-drag-handle .material-symbols-rounded {
-                font-size: 16px !important;
-            }
+            background-color: var(--md-surface-variant);
         }
 
         .drag-handle:hover, .field-drag-handle:hover {
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface);
+            background-color: var(--md-secondary-container);
+            color: var(--md-secondary);
+            transform: scale(1.1);
         }
 
         .drag-handle:active, .field-drag-handle:active {
@@ -544,317 +632,251 @@
         }
 
         .tree-icon, .field-icon {
-            color: var(--md-sys-color-primary);
+            color: var(--md-primary);
             font-variation-settings: 'FILL' 1;
             flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .tree-icon, .field-icon {
-                font-size: 18px !important;
-            }
+            font-size: 20px !important;
         }
 
         .tree-icon.object, .field-icon.object {
-            color: var(--md-sys-color-tertiary);
+            color: var(--md-tertiary);
         }
 
         .tree-icon.array, .field-icon.array {
-            color: var(--md-sys-color-secondary);
+            color: var(--md-secondary);
         }
 
         .tree-inputs, .field-inputs {
             flex: 1;
             display: flex;
-            gap: var(--md-sys-spacing-2);
+            gap: var(--space-2);
             align-items: center;
             min-width: 0;
         }
 
-        @media (max-width: 768px) {
-            .tree-inputs, .field-inputs {
-                flex-wrap: wrap;
-                gap: var(--md-sys-spacing-1);
-            }
-        }
-
         .tree-key-input, .field-key-input {
             flex: 1;
-            min-width: 100px;
+            min-width: 120px;
             max-width: 200px;
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 1px solid var(--md-sys-color-outline);
-            border-radius: var(--md-sys-shape-corner-small);
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            font: var(--md-sys-typescale-body-medium);
+            padding: var(--space-2) var(--space-3);
+            border: 2px solid var(--md-outline);
+            border-radius: var(--md-shape-sm);
+            background-color: var(--md-surface);
+            color: var(--md-on-surface);
+            font: var(--font-body-md);
+            font-weight: 500;
             outline: none;
-            transition: all var(--md-sys-motion-duration-short);
-        }
-
-        @media (max-width: 768px) {
-            .tree-key-input, .field-key-input {
-                min-width: 80px;
-                max-width: 150px;
-                font: var(--md-sys-typescale-body-medium);
-                padding: var(--md-sys-spacing-2);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tree-key-input, .field-key-input {
-                min-width: 60px;
-                max-width: 120px;
-                font-size: 0.875rem;
-            }
+            transition: all var(--motion-quick);
         }
 
         .tree-key-input:focus, .field-key-input:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--md-primary);
+            box-shadow: 0 0 0 4px var(--md-primary-container);
         }
 
         .tree-value-input, .field-value-input {
             flex: 2;
-            min-width: 150px;
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 1px solid var(--md-sys-color-outline);
-            border-radius: var(--md-sys-shape-corner-small);
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            font: var(--md-sys-typescale-body-medium);
+            min-width: 180px;
+            padding: var(--space-2) var(--space-3);
+            border: 2px solid var(--md-outline);
+            border-radius: var(--md-shape-sm);
+            background-color: var(--md-surface);
+            color: var(--md-on-surface);
+            font: var(--font-body-md);
             outline: none;
-            transition: all var(--md-sys-motion-duration-short);
-        }
-
-        @media (max-width: 768px) {
-            .tree-value-input, .field-value-input {
-                min-width: 100px;
-                font: var(--md-sys-typescale-body-medium);
-                padding: var(--md-sys-spacing-2);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tree-value-input, .field-value-input {
-                min-width: 80px;
-                font-size: 0.875rem;
-            }
+            transition: all var(--motion-quick);
         }
 
         .tree-value-input:focus, .field-value-input:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--md-secondary);
+            box-shadow: 0 0 0 4px var(--md-secondary-container);
         }
 
         .tree-value-input:disabled,
         .tree-value-input.object-mode,
         .field-value-input:disabled,
         .field-value-input.object-mode {
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface-variant);
+            background-color: var(--md-surface-variant);
+            color: var(--md-on-surface-variant);
             font-style: italic;
             cursor: not-allowed;
+            border-style: dashed;
         }
 
         .tree-type-select, .field-type-select {
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 1px solid var(--md-sys-color-outline);
-            border-radius: var(--md-sys-shape-corner-small);
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            font: var(--md-sys-typescale-body-medium);
+            padding: var(--space-2) var(--space-3);
+            border: 2px solid var(--md-outline);
+            border-radius: var(--md-shape-sm);
+            background-color: var(--md-surface);
+            color: var(--md-on-surface);
+            font: var(--font-body-md);
+            font-weight: 500;
             cursor: pointer;
             outline: none;
-            min-width: 90px;
+            min-width: 100px;
             flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
-            .tree-type-select, .field-type-select {
-                min-width: 80px;
-                font: var(--md-sys-typescale-body-medium);
-                padding: var(--md-sys-spacing-2);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tree-type-select, .field-type-select {
-                min-width: 70px;
-                font-size: 0.875rem;
-            }
-        }
-
         .tree-type-select:focus, .field-type-select:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--md-primary);
+            box-shadow: 0 0 0 4px var(--md-primary-container);
         }
 
         .tree-actions, .field-actions {
             display: flex;
-            gap: var(--md-sys-spacing-1);
+            gap: var(--space-1);
             flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
-            .tree-actions, .field-actions {
-                gap: 2px;
-            }
-        }
-
+        /* Icon Buttons - Material 3 */
         .icon-btn {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border: none;
             background: transparent;
-            color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-full);
+            color: var(--md-on-surface-variant);
+            border-radius: var(--md-shape-full);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--md-sys-motion-duration-short);
+            transition: all var(--motion-quick);
             font-variation-settings: 'FILL' 0, 'wght' 400;
             flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .icon-btn {
-                width: 28px;
-                height: 28px;
-            }
-            
-            .icon-btn .material-symbols-rounded {
-                font-size: 18px !important;
-            }
-        }
-
-        .icon-btn:hover {
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface);
-        }
-
-        .icon-btn.delete:hover {
-            background-color: var(--md-sys-color-error-container);
-            color: var(--md-sys-color-error);
-        }
-
-        .icon-btn.add-child:hover {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-primary);
-        }
-
-        .icon-btn.copy:hover {
-            background-color: var(--md-sys-color-secondary-container);
-            color: var(--md-sys-color-on-secondary-container);
-        }
-
-        .tree-children, .field-children {
-            position: relative;
-            background-color: var(--md-sys-color-surface-1);
-        }
-
-        .tree-children.collapsed, .field-children.collapsed {
-            display: none;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--md-sys-spacing-2);
-            padding: var(--md-sys-spacing-3) var(--md-sys-spacing-5);
-            border: none;
-            border-radius: var(--md-sys-shape-corner-full);
-            font: var(--md-sys-typescale-label-large);
-            cursor: pointer;
-            transition: all var(--md-sys-motion-duration-short);
-            text-transform: none;
-            letter-spacing: 0.025em;
             position: relative;
             overflow: hidden;
-            white-space: nowrap;
         }
 
-        @media (max-width: 768px) {
-            .btn {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
-                font: var(--md-sys-typescale-label-medium);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .btn {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-label-medium);
-                gap: var(--md-sys-spacing-1);
-            }
-            
-            .btn .material-symbols-rounded {
-                font-size: 18px !important;
-            }
-        }
-
-        .btn::after {
+        .icon-btn::after {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255,255,255,0.3);
+            background: currentColor;
+            opacity: 0.1;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            transition: width 0.3s, height 0.3s;
         }
 
-        .btn:active::after {
-            width: 300px;
-            height: 300px;
+        .icon-btn:hover::after {
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon-btn:hover {
+            background-color: var(--md-surface-variant);
+            color: var(--md-on-surface);
+            transform: scale(1.05);
+        }
+
+        .icon-btn.delete:hover {
+            background-color: var(--md-error-container);
+            color: var(--md-error);
+        }
+
+        .icon-btn.add-child:hover {
+            background-color: var(--md-primary-container);
+            color: var(--md-primary);
+        }
+
+        .icon-btn.copy:hover {
+            background-color: var(--md-secondary-container);
+            color: var(--md-secondary);
+        }
+
+        .tree-children, .field-children {
+            position: relative;
+            background-color: rgba(57, 197, 187, 0.02);
+        }
+
+        .tree-children.collapsed, .field-children.collapsed {
+            display: none;
+        }
+
+        /* Buttons - Material 3 Filled, Tonal, Outlined */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            border: none;
+            border-radius: var(--md-shape-full);
+            font: var(--font-label-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--motion-quick);
+            text-transform: none;
+            letter-spacing: 0.01em;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: var(--md-elevation-1);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
         }
 
         .btn-filled {
-            background-color: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            background-color: var(--md-primary);
+            color: var(--md-on-primary);
         }
 
         .btn-filled:hover {
-            background-color: color-mix(in srgb, var(--md-sys-color-primary) 90%, black);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            background-color: color-mix(in srgb, var(--md-primary) 90%, black);
+            box-shadow: var(--md-elevation-2);
             transform: translateY(-1px);
         }
 
         .btn-tonal {
-            background-color: var(--md-sys-color-secondary-container);
-            color: var(--md-sys-color-on-secondary-container);
+            background-color: var(--md-secondary-container);
+            color: var(--md-on-secondary-container);
         }
 
         .btn-tonal:hover {
-            background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 90%, black);
+            background-color: color-mix(in srgb, var(--md-secondary-container) 90%, black);
+            box-shadow: var(--md-elevation-2);
         }
 
         .btn-outlined {
             background-color: transparent;
-            color: var(--md-sys-color-primary);
-            border: 1px solid var(--md-sys-color-outline);
+            color: var(--md-primary);
+            border: 2px solid var(--md-outline);
+            box-shadow: none;
         }
 
         .btn-outlined:hover {
-            background-color: var(--md-sys-color-primary-container);
-            border-color: var(--md-sys-color-primary);
+            background-color: var(--md-primary-container);
+            border-color: var(--md-primary);
         }
 
         .btn-text {
             background-color: transparent;
-            color: var(--md-sys-color-primary);
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+            color: var(--md-primary);
+            padding: var(--space-2) var(--space-4);
+            box-shadow: none;
         }
 
         .btn-text:hover {
-            background-color: var(--md-sys-color-primary-container);
+            background-color: var(--md-primary-container);
         }
 
+        .btn-elevated {
+            background-color: var(--md-surface);
+            color: var(--md-primary);
+            box-shadow: var(--md-elevation-2);
+        }
+
+        .btn-elevated:hover {
+            box-shadow: var(--md-elevation-3);
+            background-color: var(--md-primary-container);
+        }
+
+        /* Output Section */
         .output-section {
             position: sticky;
             top: 100px;
@@ -868,87 +890,110 @@
         }
 
         .output-card {
-            background-color: var(--md-sys-color-surface-2);
+            background-color: var(--md-surface);
+            border: var(--tech-border);
         }
 
+        /* JSON Preview - Tech Terminal Style */
         .json-preview {
-            background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
-            border-radius: var(--md-sys-shape-corner-medium);
-            padding: var(--md-sys-spacing-4);
-            font-family: 'Roboto Mono', monospace;
+            background-color: #0D1117;
+            border: 2px solid var(--md-outline-variant);
+            border-radius: var(--md-shape-md);
+            padding: var(--space-4);
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.875rem;
-            line-height: 1.6;
-            color: var(--md-sys-color-on-surface);
+            line-height: 1.7;
+            color: #E6EDF3;
             overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-word;
-            max-height: 600px;
+            max-height: 500px;
             overflow-y: auto;
             position: relative;
             -webkit-overflow-scrolling: touch;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .json-preview::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .json-preview::-webkit-scrollbar-track {
+            background: #161B22;
+            border-radius: 4px;
+        }
+
+        .json-preview::-webkit-scrollbar-thumb {
+            background: var(--miku-cyan);
+            border-radius: 4px;
         }
 
         @media (max-width: 768px) {
             .json-preview {
-                padding: var(--md-sys-spacing-3);
-                font-size: 0.75rem;
+                padding: var(--space-3);
+                font-size: 0.8125rem;
                 max-height: 400px;
             }
         }
 
         @media (max-width: 480px) {
             .json-preview {
-                padding: var(--md-sys-spacing-2);
-                font-size: 0.7rem;
+                padding: var(--space-2);
+                font-size: 0.75rem;
             }
         }
 
         .json-key {
-            color: var(--md-sys-color-primary);
+            color: #7EE787;
+            font-weight: 600;
         }
 
         .json-string {
-            color: var(--md-sys-color-tertiary);
+            color: #A5D6FF;
         }
 
         .json-number {
-            color: var(--md-sys-color-secondary);
+            color: #79C0FF;
         }
 
         .json-boolean {
-            color: var(--md-sys-color-error);
+            color: #FF7B72;
+        }
+
+        .json-null {
+            color: #FF7B72;
+            font-style: italic;
         }
 
         .copy-btn {
             position: absolute;
-            top: var(--md-sys-spacing-3);
-            right: var(--md-sys-spacing-3);
-            background-color: var(--md-sys-color-surface-1);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            top: var(--space-3);
+            right: var(--space-3);
+            background-color: rgba(57, 197, 187, 0.1);
+            border: 1px solid var(--miku-cyan);
+            color: var(--miku-cyan);
             z-index: 10;
+            backdrop-filter: blur(4px);
         }
 
-        @media (max-width: 768px) {
-            .copy-btn {
-                top: var(--md-sys-spacing-2);
-                right: var(--md-sys-spacing-2);
-                width: 28px;
-                height: 28px;
-            }
+        .copy-btn:hover {
+            background-color: var(--miku-cyan);
+            color: white;
         }
 
+        /* Action Bar */
         .action-bar {
             display: flex;
-            gap: var(--md-sys-spacing-2);
-            margin-top: var(--md-sys-spacing-4);
+            gap: var(--space-2);
+            margin-top: var(--space-4);
             flex-wrap: wrap;
         }
 
         @media (max-width: 768px) {
             .action-bar {
-                gap: var(--md-sys-spacing-2);
-                margin-top: var(--md-sys-spacing-3);
+                gap: var(--space-2);
+                margin-top: var(--space-3);
             }
         }
 
@@ -959,83 +1004,71 @@
             
             .action-bar .btn {
                 flex: 1;
-                min-width: calc(50% - var(--md-sys-spacing-1));
+                min-width: calc(50% - var(--space-1));
             }
         }
 
+        /* Chips - Material 3 */
         .chip-group {
             display: flex;
-            gap: var(--md-sys-spacing-2);
+            gap: var(--space-2);
             flex-wrap: wrap;
-            margin-bottom: var(--md-sys-spacing-4);
-        }
-
-        @media (max-width: 768px) {
-            .chip-group {
-                margin-bottom: var(--md-sys-spacing-3);
-                gap: var(--md-sys-spacing-1);
-            }
+            margin-bottom: var(--space-4);
         }
 
         .chip {
             display: inline-flex;
             align-items: center;
-            gap: var(--md-sys-spacing-2);
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-small);
-            font: var(--md-sys-typescale-label-medium);
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background-color: var(--md-surface-variant);
+            color: var(--md-on-surface-variant);
+            border-radius: var(--md-shape-sm);
+            font: var(--font-label-md);
+            font-weight: 600;
             cursor: pointer;
-            transition: all var(--md-sys-motion-duration-short);
-            border: 1px solid transparent;
+            transition: all var(--motion-quick);
+            border: 2px solid transparent;
             white-space: nowrap;
-        }
-
-        @media (max-width: 480px) {
-            .chip {
-                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-label-small);
-            }
+            box-shadow: var(--md-elevation-1);
         }
 
         .chip:hover {
-            background-color: var(--md-sys-color-secondary-container);
-            color: var(--md-sys-color-on-secondary-container);
+            background-color: var(--md-secondary-container);
+            color: var(--md-on-secondary-container);
+            transform: translateY(-1px);
+            box-shadow: var(--md-elevation-2);
         }
 
         .chip.active {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-            border-color: var(--md-sys-color-primary);
+            background-color: var(--md-primary-container);
+            color: var(--md-on-primary-container);
+            border-color: var(--md-primary);
+            box-shadow: var(--md-elevation-2);
         }
 
+        /* Snackbar - Material 3 */
         .snackbar {
             position: fixed;
-            bottom: var(--md-sys-spacing-6);
+            bottom: var(--space-6);
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background-color: var(--md-sys-color-inverse-surface, #2d322b);
-            color: var(--md-sys-color-inverse-on-surface, #f0f2eb);
-            padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
-            border-radius: var(--md-sys-shape-corner-small);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            background-color: var(--md-inverse-surface, #2D3132);
+            color: var(--md-inverse-on-surface, #F0F2F2);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--md-shape-sm);
+            box-shadow: var(--md-elevation-4);
             display: flex;
             align-items: center;
-            gap: var(--md-sys-spacing-4);
+            gap: var(--space-4);
             z-index: 1000;
             opacity: 0;
-            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
+            transition: all var(--motion-medium);
             max-width: 90vw;
             width: auto;
-        }
-
-        @media (max-width: 480px) {
-            .snackbar {
-                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-                font: var(--md-sys-typescale-body-medium);
-                gap: var(--md-sys-spacing-2);
-            }
+            font: var(--font-body-md);
+            font-weight: 500;
+            border-left: 4px solid var(--miku-cyan);
         }
 
         .snackbar.show {
@@ -1043,22 +1076,23 @@
             opacity: 1;
         }
 
+        /* Dialog - Material 3 */
         .dialog-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: all var(--md-sys-motion-duration-medium);
-            backdrop-filter: blur(4px);
-            padding: var(--md-sys-spacing-4);
+            transition: all var(--motion-medium);
+            backdrop-filter: blur(8px);
+            padding: var(--space-4);
         }
 
         .dialog-overlay.active {
@@ -1067,111 +1101,397 @@
         }
 
         .dialog {
-            background-color: var(--md-sys-color-surface);
-            border-radius: var(--md-sys-shape-corner-extra-large);
-            padding: var(--md-sys-spacing-6);
-            min-width: 320px;
+            background-color: var(--md-surface);
+            border-radius: var(--md-shape-xl);
+            padding: var(--space-6);
+            min-width: 360px;
             max-width: 90vw;
             max-height: 90vh;
             overflow-y: auto;
-            transform: scale(0.9);
-            transition: transform var(--md-sys-motion-duration-medium);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transform: scale(0.8) translateY(20px);
+            transition: transform var(--motion-medium);
+            box-shadow: var(--md-elevation-5);
             width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .dialog {
-                padding: var(--md-sys-spacing-4);
-                min-width: unset;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .dialog {
-                padding: var(--md-sys-spacing-3);
-                border-radius: var(--md-sys-shape-corner-large);
-            }
+            border: var(--tech-border-subtle);
         }
 
         .dialog-overlay.active .dialog {
-            transform: scale(1);
+            transform: scale(1) translateY(0);
         }
 
         .dialog-title {
-            font: var(--md-sys-typescale-headline-small, 400 1.5rem/2rem 'Roboto Flex');
-            color: var(--md-sys-color-on-surface);
-            margin-bottom: var(--md-sys-spacing-4);
-        }
-
-        @media (max-width: 768px) {
-            .dialog-title {
-                font: var(--md-sys-typescale-title-large);
-                margin-bottom: var(--md-sys-spacing-3);
-            }
+            font: var(--font-headline-md);
+            color: var(--md-on-surface);
+            margin-bottom: var(--space-4);
+            font-weight: 700;
         }
 
         .dialog-content {
-            font: var(--md-sys-typescale-body-medium);
-            color: var(--md-sys-color-on-surface-variant);
-            margin-bottom: var(--md-sys-spacing-6);
-        }
-
-        @media (max-width: 768px) {
-            .dialog-content {
-                font: var(--md-sys-typescale-body-medium);
-                margin-bottom: var(--md-sys-spacing-4);
-            }
+            font: var(--font-body-md);
+            color: var(--md-on-surface-variant);
+            margin-bottom: var(--space-6);
+            line-height: 1.7;
         }
 
         .dialog-actions {
             display: flex;
             justify-content: flex-end;
-            gap: var(--md-sys-spacing-2);
+            gap: var(--space-2);
         }
 
-        @media (max-width: 480px) {
-            .dialog-actions {
-                flex-direction: column-reverse;
-            }
-            
-            .dialog-actions .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: var(--md-sys-spacing-12) var(--md-sys-spacing-6);
-            color: var(--md-sys-color-on-surface-variant);
-        }
-
-        @media (max-width: 768px) {
-            .empty-state {
-                padding: var(--md-sys-spacing-8) var(--md-sys-spacing-4);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .empty-state {
-                padding: var(--md-sys-spacing-6) var(--md-sys-spacing-3);
-            }
+            padding: var(--space-12) var(--space-6);
+            color: var(--md-on-surface-variant);
         }
 
         .empty-state-icon {
-            font-size: 48px;
-            margin-bottom: var(--md-sys-spacing-4);
+            font-size: 64px;
+            margin-bottom: var(--space-4);
             opacity: 0.5;
+            color: var(--md-primary);
         }
 
-        @media (max-width: 768px) {
-            .empty-state-icon {
-                font-size: 36px;
-                margin-bottom: var(--md-sys-spacing-3);
-            }
+        /* Upload Area */
+        .upload-area {
+            border: 3px dashed var(--md-outline);
+            border-radius: var(--md-shape-lg);
+            padding: var(--space-8);
+            text-align: center;
+            background-color: var(--md-surface-variant);
+            transition: all var(--motion-medium);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--tech-grid);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .upload-area:hover {
+            border-color: var(--md-primary);
+            background-color: var(--md-primary-container);
+            transform: scale(1.02);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--md-secondary);
+            background-color: var(--md-secondary-container);
+            transform: scale(1.05);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: var(--md-primary);
+            margin-bottom: var(--space-4);
+        }
+
+        .upload-text {
+            font: var(--font-title-md);
+            color: var(--md-on-surface);
+            margin-bottom: var(--space-2);
+        }
+
+        .upload-hint {
+            font: var(--font-body-sm);
+            color: var(--md-on-surface-variant);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        /* Tool Navigation */
+        .tool-nav {
+            display: flex;
+            gap: var(--space-2);
+            margin-bottom: var(--space-6);
+            border-bottom: 2px solid var(--md-outline-variant);
+            padding-bottom: var(--space-4);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tool-nav-btn {
+            padding: var(--space-3) var(--space-6);
+            background: transparent;
+            border: none;
+            color: var(--md-on-surface-variant);
+            font: var(--font-label-lg);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: var(--md-shape-sm);
+            transition: all var(--motion-quick);
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tool-nav-btn:hover {
+            background-color: var(--md-surface-variant);
+            color: var(--md-on-surface);
+        }
+
+        .tool-nav-btn.active {
+            color: var(--md-primary);
+            background-color: var(--md-primary-container);
+        }
+
+        .tool-nav-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--miku-cyan), var(--sakura-pink));
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* Tool Content */
+        .tool-content {
+            display: none;
+        }
+
+        .tool-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Live Indicator */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            font: var(--font-label-md);
+            color: var(--md-primary);
+            margin-left: auto;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--sakura-pink);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 8px var(--sakura-pink);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.8); }
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 8px;
+            background: linear-gradient(135deg, var(--miku-cyan), var(--sakura-pink));
+            color: white;
+            border-radius: var(--md-shape-full);
+            font: var(--font-label-md);
+            font-weight: 700;
+            margin-left: var(--space-2);
+            box-shadow: var(--md-elevation-1);
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: var(--space-4);
+        }
+
+        .form-label {
+            display: block;
+            font: var(--font-label-lg);
+            color: var(--md-on-surface);
+            margin-bottom: var(--space-2);
+            font-weight: 600;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border: 2px solid var(--md-outline);
+            border-radius: var(--md-shape-sm);
+            background-color: var(--md-surface);
+            color: var(--md-on-surface);
+            font: var(--font-body-md);
+            outline: none;
+            transition: all var(--motion-quick);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--md-primary);
+            box-shadow: 0 0 0 4px var(--md-primary-container);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        /* Output Area */
+        .output-area {
+            background-color: var(--md-surface);
+            border: 2px solid var(--md-outline-variant);
+            border-radius: var(--md-shape-md);
+            padding: var(--space-4);
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font: var(--font-body-md);
+            line-height: 1.8;
+            color: var(--md-on-surface);
+            white-space: pre-wrap;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .output-area:empty::before {
+            content: 'Hasil prompt akan muncul di sini...';
+            color: var(--md-outline);
+            font-style: italic;
+        }
+
+        /* Preset Chips */
+        .preset-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+
+        .preset-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-2) var(--space-3);
+            background: linear-gradient(135deg, var(--md-tertiary-container), var(--md-secondary-container));
+            color: var(--md-on-tertiary-container);
+            border-radius: var(--md-shape-sm);
+            font: var(--font-label-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--motion-quick);
+            border: 2px solid transparent;
+            white-space: nowrap;
+            box-shadow: var(--md-elevation-1);
+        }
+
+        .preset-chip:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--md-elevation-2);
+            border-color: var(--md-tertiary);
+        }
+
+        /* Field Editor Tabs */
+        .field-editor-tabs {
+            display: flex;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+            border-bottom: 2px solid var(--md-outline-variant);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .field-editor-tab {
+            padding: var(--space-3) var(--space-4);
+            background: transparent;
+            border: none;
+            color: var(--md-on-surface-variant);
+            font: var(--font-label-lg);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: var(--md-shape-sm) var(--md-shape-sm) 0 0;
+            transition: all var(--motion-quick);
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .field-editor-tab:hover {
+            background-color: var(--md-surface-variant);
+            color: var(--md-on-surface);
+        }
+
+        .field-editor-tab.active {
+            color: var(--md-primary);
+            background-color: var(--md-primary-container);
+        }
+
+        .field-editor-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--miku-cyan), var(--sakura-pink));
+        }
+
+        .field-editor-content {
+            display: none;
+        }
+
+        .field-editor-content.active {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Example Box */
+        .example-box {
+            background: linear-gradient(135deg, var(--md-secondary-container), rgba(255, 105, 180, 0.1));
+            border-left: 4px solid var(--md-secondary);
+            padding: var(--space-4);
+            margin-top: var(--space-3);
+            border-radius: 0 var(--md-shape-sm) var(--md-shape-sm) 0;
+            font: var(--font-body-md);
+            color: var(--md-on-secondary-container);
+            border: 1px solid var(--md-outline-variant);
+            border-left-width: 4px;
+        }
+
+        .example-box-title {
+            font: var(--font-label-lg);
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--md-secondary);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .tree-inputs, .field-inputs {
                 flex-direction: column;
@@ -1205,14 +1525,15 @@
         @media (max-width: 480px) {
             .tree-actions, .field-actions {
                 position: absolute;
-                top: var(--md-sys-spacing-2);
-                right: var(--md-sys-spacing-2);
-                background: rgba(var(--md-sys-color-surface), 0.9);
-                border-radius: var(--md-sys-shape-corner-small);
-                padding: 2px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                top: var(--space-2);
+                right: var(--space-2);
+                background: rgba(var(--md-surface), 0.95);
+                border-radius: var(--md-shape-sm);
+                padding: var(--space-1);
+                box-shadow: var(--md-elevation-3);
                 opacity: 0;
                 transition: opacity 0.2s;
+                z-index: 10;
             }
 
             .tree-node-content:active .tree-actions,
@@ -1223,193 +1544,97 @@
             }
         }
 
-        .json-preview {
-            font-size: 0.75rem;
-        }
-
-        @media (max-width: 480px) {
-            .json-preview {
-                font-size: 0.7rem;
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
 
-        .texture-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.02;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        *:focus-visible {
+            outline: 3px solid var(--md-primary);
+            outline-offset: 2px;
         }
 
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 20px;
-            height: 20px;
-            padding: 0 6px;
-            background-color: var(--md-sys-color-error);
-            color: var(--md-sys-color-on-primary);
-            border-radius: var(--md-sys-shape-corner-full);
-            font: var(--md-sys-typescale-label-small, 500 0.7rem/1 'Roboto Flex');
-            margin-left: var(--md-sys-spacing-2);
-        }
-
-        .live-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-2);
-            font: var(--md-sys-typescale-label-medium);
-            color: var(--md-sys-color-primary);
-            margin-left: auto;
-        }
-
-        @media (max-width: 480px) {
-            .live-indicator {
-                display: none;
+        /* Touch improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .drag-handle, .field-drag-handle {
+                opacity: 1;
+                padding: var(--space-3);
+            }
+            
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .tree-toggle, .field-toggle {
+                width: 28px;
+                height: 28px;
             }
         }
 
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--md-sys-color-primary);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+        /* Dragging state */
+        .dragging, .dragging * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Article Generator Styles */
-        .article-generator {
-            margin-top: var(--md-sys-spacing-6);
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-4);
         }
 
         @media (max-width: 768px) {
-            .article-generator {
-                margin-top: var(--md-sys-spacing-4);
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: var(--space-3);
             }
         }
 
-        .article-section {
-            margin-bottom: var(--md-sys-spacing-6);
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--md-outline-variant), transparent);
+            margin: var(--space-6) 0;
+        }
+
+        /* Article Tools Grid */
+        .article-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-6);
         }
 
         @media (max-width: 768px) {
-            .article-section {
-                margin-bottom: var(--md-sys-spacing-4);
+            .article-tools-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-4);
             }
         }
 
-        .article-section-title {
-            font: var(--md-sys-typescale-title-medium);
-            color: var(--md-sys-color-on-surface);
-            margin-bottom: var(--md-sys-spacing-3);
-            display: flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-2);
+        /* Character Counter */
+        .char-counter {
+            text-align: right;
+            font: var(--font-label-md);
+            color: var(--md-on-surface-variant);
+            margin-top: var(--space-1);
         }
 
-        @media (max-width: 480px) {
-            .article-section-title {
-                font: var(--md-sys-typescale-body-large);
-                font-weight: 600;
-            }
+        .char-counter.warning {
+            color: var(--md-error);
+            font-weight: 700;
         }
 
-        .form-group {
-            margin-bottom: var(--md-sys-spacing-4);
-        }
-
-        @media (max-width: 768px) {
-            .form-group {
-                margin-bottom: var(--md-sys-spacing-3);
-            }
-        }
-
-        .form-label {
-            display: block;
-            font: var(--md-sys-typescale-label-large);
-            color: var(--md-sys-color-on-surface);
-            margin-bottom: var(--md-sys-spacing-2);
-        }
-
-        @media (max-width: 480px) {
-            .form-label {
-                font: var(--md-sys-typescale-label-medium);
-            }
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-            border: 1px solid var(--md-sys-color-outline);
-            border-radius: var(--md-sys-shape-corner-small);
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            font: var(--md-sys-typescale-body-medium);
-            outline: none;
-            transition: all var(--md-sys-motion-duration-short);
-        }
-
-        @media (max-width: 768px) {
-            .form-input,
-            .form-select,
-            .form-textarea {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-body-medium);
-            }
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
-        }
-
-        .form-textarea {
-            min-height: 120px;
-            resize: vertical;
-            font-family: 'Roboto Flex', sans-serif;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .form-textarea {
-                min-height: 100px;
-            }
-        }
-
-        .form-select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-            padding-right: 40px;
-        }
-
+        /* Radio Group */
         .radio-group {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--md-sys-spacing-2);
-        }
-
-        @media (max-width: 480px) {
-            .radio-group {
-                gap: var(--md-sys-spacing-1);
-            }
+            gap: var(--space-2);
         }
 
         .radio-item {
@@ -1425,516 +1650,107 @@
         .radio-label {
             display: inline-flex;
             align-items: center;
-            gap: var(--md-sys-spacing-2);
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-small);
-            font: var(--md-sys-typescale-label-large);
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background-color: var(--md-surface-variant);
+            color: var(--md-on-surface-variant);
+            border-radius: var(--md-shape-sm);
+            font: var(--font-label-lg);
+            font-weight: 600;
             cursor: pointer;
-            transition: all var(--md-sys-motion-duration-short);
+            transition: all var(--motion-quick);
             border: 2px solid transparent;
             white-space: nowrap;
         }
 
-        @media (max-width: 768px) {
-            .radio-label {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-label-medium);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .radio-label {
-                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-label-small);
-                gap: var(--md-sys-spacing-1);
-            }
-            
-            .radio-label .material-symbols-rounded {
-                font-size: 16px !important;
-            }
-        }
-
         .radio-item input[type="radio"]:checked + .radio-label {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-            border-color: var(--md-sys-color-primary);
+            background-color: var(--md-primary-container);
+            color: var(--md-on-primary-container);
+            border-color: var(--md-primary);
+            box-shadow: var(--md-elevation-1);
         }
 
         .radio-label:hover {
-            background-color: var(--md-sys-color-secondary-container);
+            background-color: var(--md-secondary-container);
         }
 
-        .output-area {
-            background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
-            border-radius: var(--md-sys-shape-corner-medium);
-            padding: var(--md-sys-spacing-4);
-            min-height: 200px;
-            max-height: 400px;
-            overflow-y: auto;
-            font: var(--md-sys-typescale-body-medium);
-            line-height: 1.8;
-            color: var(--md-sys-color-on-surface);
-            white-space: pre-wrap;
-            position: relative;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        @media (max-width: 768px) {
-            .output-area {
-                padding: var(--md-sys-spacing-3);
-                min-height: 150px;
-                max-height: 300px;
-                font: var(--md-sys-typescale-body-medium);
-            }
-        }
-
-        .output-area:empty::before {
-            content: 'Hasil prompt akan muncul di sini...';
-            color: var(--md-sys-color-outline);
-            font-style: italic;
-        }
-
-        .btn-generate {
-            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
-            color: var(--md-sys-color-on-primary);
-            font-size: 1rem;
-            padding: var(--md-sys-spacing-4) var(--md-sys-spacing-8);
-            box-shadow: 0 4px 12px rgba(56, 106, 32, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .btn-generate {
-                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-6);
-                font-size: 0.9375rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .btn-generate {
-                width: 100%;
-                padding: var(--md-sys-spacing-3);
-            }
-        }
-
-        .btn-generate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 106, 32, 0.4);
-        }
-
-        .btn-generate:active {
-            transform: translateY(0);
-        }
-
-        .btn-copy {
-            position: absolute;
-            top: var(--md-sys-spacing-3);
-            right: var(--md-sys-spacing-3);
-            background-color: var(--md-sys-color-surface-1);
-            border: 1px solid var(--md-sys-color-outline-variant);
-        }
-
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--md-sys-spacing-4);
-        }
-
-        @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: var(--md-sys-spacing-3);
-            }
-        }
-
-        .hint-text {
-            font: var(--md-sys-typescale-label-medium);
-            color: var(--md-sys-color-on-surface-variant);
-            margin-top: var(--md-sys-spacing-1);
-        }
-
-        @media (max-width: 480px) {
-            .hint-text {
-                font: var(--md-sys-typescale-label-small);
-            }
-        }
-
-        .divider {
-            height: 1px;
-            background-color: var(--md-sys-color-outline-variant);
-            margin: var(--md-sys-spacing-6) 0;
-        }
-
-        @media (max-width: 768px) {
-            .divider {
-                margin: var(--md-sys-spacing-4) 0;
-            }
-        }
-
-        .article-tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--md-sys-spacing-6);
-        }
-
-        @media (max-width: 768px) {
-            .article-tools-grid {
-                grid-template-columns: 1fr;
-                gap: var(--md-sys-spacing-4);
-            }
-        }
-
-        .tool-nav {
-            display: flex;
-            gap: var(--md-sys-spacing-2);
-            margin-bottom: var(--md-sys-spacing-4);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            padding-bottom: var(--md-sys-spacing-4);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        @media (max-width: 768px) {
-            .tool-nav {
-                margin-bottom: var(--md-sys-spacing-3);
-                padding-bottom: var(--md-sys-spacing-3);
-                gap: var(--md-sys-spacing-1);
-            }
-        }
-
-        .tool-nav-btn {
-            padding: var(--md-sys-spacing-3) var(--md-sys-spacing-5);
-            background: transparent;
-            border: none;
-            color: var(--md-sys-color-on-surface-variant);
-            font: var(--md-sys-typescale-label-large);
-            cursor: pointer;
-            border-radius: var(--md-sys-shape-corner-small);
-            transition: all var(--md-sys-motion-duration-short);
-            position: relative;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .tool-nav-btn {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
-                font: var(--md-sys-typescale-label-medium);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tool-nav-btn {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-label-medium);
-            }
-            
-            .tool-nav-btn .material-symbols-rounded {
-                margin-right: 4px !important;
-                font-size: 18px !important;
-            }
-        }
-
-        .tool-nav-btn:hover {
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface);
-        }
-
-        .tool-nav-btn.active {
-            color: var(--md-sys-color-primary);
-            background-color: var(--md-sys-color-primary-container);
-        }
-
-        .tool-nav-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -17px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: var(--md-sys-color-primary);
-            border-radius: 3px 3px 0 0;
-        }
-
-        @media (max-width: 768px) {
-            .tool-nav-btn.active::after {
-                bottom: -13px;
-            }
-        }
-
-        .tool-content {
-            display: none;
-        }
-
-        .tool-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .char-counter {
-            text-align: right;
-            font: var(--md-sys-typescale-label-medium);
-            color: var(--md-sys-color-on-surface-variant);
-            margin-top: var(--md-sys-spacing-1);
-        }
-
-        @media (max-width: 480px) {
-            .char-counter {
-                font: var(--md-sys-typescale-label-small);
-            }
-        }
-
-        .char-counter.warning {
-            color: var(--md-sys-color-error);
-        }
-
-        /* Example Box Styles */
-        .example-box {
-            background-color: var(--md-sys-color-secondary-container);
-            border-left: 4px solid var(--md-sys-color-secondary);
-            padding: var(--md-sys-spacing-4);
-            margin-top: var(--md-sys-spacing-3);
-            border-radius: 0 var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0;
-            font: var(--md-sys-typescale-body-medium);
-            color: var(--md-sys-color-on-secondary-container);
-        }
-
-        @media (max-width: 768px) {
-            .example-box {
-                padding: var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-body-medium);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .example-box {
-                padding: var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-body-small);
-            }
-        }
-
-        .example-box-title {
-            font: var(--md-sys-typescale-label-large);
-            font-weight: 600;
-            margin-bottom: var(--md-sys-spacing-2);
+        /* Status Indicator */
+        .status-indicator {
             display: flex;
             align-items: center;
-            gap: var(--md-sys-spacing-2);
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--md-shape-sm);
+            font: var(--font-body-md);
+            font-weight: 500;
         }
 
-        @media (max-width: 480px) {
-            .example-box-title {
-                font: var(--md-sys-typescale-label-medium);
-            }
+        .status-indicator.valid {
+            background-color: rgba(57, 197, 187, 0.15);
+            color: var(--miku-cyan-dark);
+            border: 1px solid var(--miku-cyan);
         }
 
-        .example-item {
-            margin-bottom: var(--md-sys-spacing-2);
-            padding-left: var(--md-sys-spacing-3);
-            border-left: 2px solid var(--md-sys-color-outline-variant);
+        .status-indicator.error {
+            background-color: var(--md-error-container);
+            color: var(--md-error);
+            border: 1px solid var(--md-error);
         }
 
-        @media (max-width: 480px) {
-            .example-item {
-                margin-bottom: var(--md-sys-spacing-1);
-                padding-left: var(--md-sys-spacing-2);
-            }
-        }
-
-        .example-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .example-label {
-            font-weight: 600;
-            color: var(--md-sys-color-secondary);
-        }
-
-        .load-example-btn {
-            margin-top: var(--md-sys-spacing-3);
-            font-size: 0.875rem;
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
-        }
-
-        @media (max-width: 480px) {
-            .load-example-btn {
-                width: 100%;
-                margin-top: var(--md-sys-spacing-2);
-            }
-        }
-
-        /* Field Editor Tabs */
-        .field-editor-tabs {
-            display: flex;
-            gap: var(--md-sys-spacing-2);
-            margin-bottom: var(--md-sys-spacing-4);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        @media (max-width: 768px) {
-            .field-editor-tabs {
-                margin-bottom: var(--md-sys-spacing-3);
-                gap: var(--md-sys-spacing-1);
-            }
-        }
-
-        .field-editor-tab {
-            padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-            background: transparent;
-            border: none;
-            color: var(--md-sys-color-on-surface-variant);
-            font: var(--md-sys-typescale-label-large);
-            cursor: pointer;
-            border-radius: var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0 0;
-            transition: all var(--md-sys-motion-duration-short);
-            position: relative;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .field-editor-tab {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-label-medium);
-            }
-        }
-
-        .field-editor-tab:hover {
-            background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface);
-        }
-
-        .field-editor-tab.active {
-            color: var(--md-sys-color-primary);
-            background-color: var(--md-sys-color-primary-container);
-        }
-
-        .field-editor-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: var(--md-sys-color-primary);
-        }
-
-        .field-editor-content {
-            display: none;
-        }
-
-        .field-editor-content.active {
-            display: block;
-        }
-
-        .preset-fields {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--md-sys-spacing-2);
-            margin-bottom: var(--md-sys-spacing-4);
-        }
-
-        @media (max-width: 768px) {
-            .preset-fields {
-                gap: var(--md-sys-spacing-1);
-                margin-bottom: var(--md-sys-spacing-3);
-            }
-        }
-
-        .preset-chip {
+        /* File Upload Button */
+        .file-upload-btn {
             display: inline-flex;
             align-items: center;
-            gap: var(--md-sys-spacing-1);
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            background-color: var(--md-sys-color-tertiary-container);
-            color: var(--md-sys-color-on-tertiary-container);
-            border-radius: var(--md-sys-shape-corner-small);
-            font: var(--md-sys-typescale-label-medium);
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
+            background: linear-gradient(135deg, var(--miku-cyan), var(--miku-cyan-dark));
+            color: white;
+            border-radius: var(--md-shape-full);
+            font: var(--font-label-lg);
+            font-weight: 600;
             cursor: pointer;
-            transition: all var(--md-sys-motion-duration-short);
-            border: 1px solid transparent;
-            white-space: nowrap;
+            transition: all var(--motion-quick);
+            box-shadow: var(--md-elevation-2);
+            border: none;
+        }
+
+        .file-upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--md-elevation-3);
+        }
+
+        /* Import/Export Actions */
+        .import-export-bar {
+            display: flex;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
         }
 
         @media (max-width: 480px) {
-            .preset-chip {
-                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-label-small);
+            .import-export-bar {
+                flex-direction: column;
             }
             
-            .preset-chip .material-symbols-rounded {
-                font-size: 16px !important;
-            }
-        }
-
-        .preset-chip:hover {
-            background-color: var(--md-sys-color-tertiary);
-            color: var(--md-sys-color-on-tertiary);
-        }
-
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            .drag-handle, .field-drag-handle {
-                opacity: 1;
-                padding: var(--md-sys-spacing-2);
-            }
-            
-            .icon-btn {
-                width: 36px;
-                height: 36px;
-            }
-            
-            .tree-toggle, .field-toggle {
-                width: 24px;
-                height: 24px;
-            }
-        }
-
-        /* Prevent text selection during drag */
-        .dragging, .dragging * {
-            user-select: none !important;
-            -webkit-user-select: none !important;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Focus visible for accessibility */
-        *:focus-visible {
-            outline: 2px solid var(--md-sys-color-primary);
-            outline-offset: 2px;
-        }
-
-        /* Reduce motion for accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .import-export-bar .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="nature-bg">
-        <div class="leaf-ornament leaf-1"></div>
-        <div class="leaf-ornament leaf-2"></div>
-        <div class="leaf-ornament leaf-3"></div>
-        <div class="circle-ornament circle-1"></div>
-        <div class="circle-ornament circle-2"></div>
+    <!-- Sakura Petals Background -->
+    <div class="sakura-bg">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
     </div>
-    <div class="texture-overlay"></div>
+    
+    <!-- Tech Grid Overlay -->
+    <div class="tech-overlay"></div>
 
     <div class="app-container">
         <header class="app-bar">
@@ -1942,11 +1758,11 @@
                 <div class="logo">
                     <span class="material-symbols-rounded">account_tree</span>
                 </div>
-                <h1 class="app-title">Nature JSON Builder</h1>
+                <h1 class="app-title">Sakura Miku JSON Builder</h1>
             </div>
             <div class="app-bar-actions">
                 <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
-                    <span class="material-symbols-rounded">dark_mode</span>
+                    <span class="material-symbols-rounded">contrast</span>
                 </button>
                 <button class="icon-btn" onclick="showHelp()" title="Help" aria-label="Show help">
                     <span class="material-symbols-rounded">help</span>
@@ -1974,33 +1790,54 @@
                             <span class="material-symbols-rounded">tune</span>
                             Tree Structure Editor
                         </div>
-                        <div class="card-subtitle">Edit struktur JSON hierarkis - Live Preview otomatis</div>
+                        <div class="card-subtitle">Edit struktur JSON hierarkis dengan drag & drop. Upload file JSON untuk mengedit.</div>
                         
-                        <div class="chip-group">
+                        <!-- Upload Area -->
+                        <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()" 
+                             ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="upload-icon material-symbols-rounded">upload_file</div>
+                            <div class="upload-text">Upload JSON File</div>
+                            <div class="upload-hint">Drag & drop file JSON atau klik untuk browse</div>
+                            <input type="file" id="fileInput" accept=".json,application/json" onchange="handleFileSelect(event)">
+                        </div>
+
+                        <div class="import-export-bar" style="margin-top: var(--space-4);">
+                            <button class="btn btn-tonal" onclick="document.getElementById('fileInput').click()">
+                                <span class="material-symbols-rounded">file_upload</span>
+                                Import JSON
+                            </button>
+                            <button class="btn btn-outlined" onclick="downloadJSON()">
+                                <span class="material-symbols-rounded">download</span>
+                                Export JSON
+                            </button>
+                        </div>
+
+                        <div class="chip-group" style="margin-top: var(--space-4);">
                             <span class="chip active" onclick="loadTemplate('empty')">Empty</span>
-                            <span class="chip" onclick="loadTemplate('image_to_text')">Image to Text (Lite)</span>
-                            <span class="chip" onclick="loadTemplate('image_prompt')">Image Prompt (Pro)</span>
+                            <span class="chip" onclick="loadTemplate('image_to_text')">Image to Text</span>
+                            <span class="chip" onclick="loadTemplate('image_prompt')">Image Prompt Pro</span>
+                            <span class="chip" onclick="loadTemplate('api_config')">API Config</span>
                         </div>
 
                         <div class="tree-container" id="treeContainer">
                         </div>
 
-                        <div class="action-bar" style="margin-top: var(--md-sys-spacing-4);">
+                        <div class="action-bar" style="margin-top: var(--space-4);">
                             <button class="btn btn-filled" onclick="addRootNode()">
                                 <span class="material-symbols-rounded">add</span>
                                 <span>Tambah Root</span>
                             </button>
-                            <button class="btn btn-outlined" onclick="expandAll()">
+                            <button class="btn btn-tonal" onclick="expandAll()">
                                 <span class="material-symbols-rounded">unfold_more</span>
-                                <span class="btn-text">Expand</span>
+                                <span>Expand</span>
                             </button>
-                            <button class="btn btn-outlined" onclick="collapseAll()">
+                            <button class="btn btn-tonal" onclick="collapseAll()">
                                 <span class="material-symbols-rounded">unfold_less</span>
-                                <span class="btn-text">Collapse</span>
+                                <span>Collapse</span>
                             </button>
                             <button class="btn btn-text" onclick="clearAll()">
                                 <span class="material-symbols-rounded">delete_sweep</span>
-                                <span class="btn-text">Clear</span>
+                                <span>Clear</span>
                             </button>
                         </div>
                     </div>
@@ -2008,19 +1845,15 @@
                     <div class="card">
                         <div class="card-title">
                             <span class="material-symbols-rounded">tips_and_updates</span>
-                            Perbedaan Template
+                            Tips Penggunaan
                         </div>
-                        <ul style="color: var(--md-sys-color-on-surface-variant); padding-left: 20px; line-height: 1.8;">
-                            <li><strong>Image to Text (Lite):</strong> Struktur sederhana dengan override dan output basic</li>
-                            <li><strong>Image Prompt (Pro):</strong> Struktur lengkap 8 kategori untuk AI image generation</li>
-                            <li><strong>Main Subject:</strong> Deskripsi karakter (Gender, Age, Ethnicity, Body Type, Skin Color)</li>
-                            <li><strong>Facial Features:</strong> Detail wajah dan rambut</li>
-                            <li><strong>Clothing:</strong> Pakaian lengkap dengan aksesoris</li>
-                            <li><strong>Pose:</strong> Gaya pose dan arah pandangan</li>
-                            <li><strong>Environment:</strong> Setting dan background</li>
-                            <li><strong>Visual Technique:</strong> Gaya seni dan pencahayaan</li>
-                            <li><strong>Quality:</strong> Resolusi dan parameter teknis</li>
-                            <li><strong>Negative Prompt:</strong> Elemen yang dihindari</li>
+                        <ul style="color: var(--md-on-surface-variant); padding-left: 20px; line-height: 1.9; font: var(--font-body-md);">
+                            <li><strong>Upload JSON:</strong> Drag & drop atau klik area upload untuk mengimpor file</li>
+                            <li><strong>Edit Real-time:</strong> Klik value untuk mengedit langsung</li>
+                            <li><strong>Drag & Drop:</strong> Seret handle (garis-garis) untuk mengurutkan ulang node</li>
+                            <li><strong>Tipe Data:</strong> Pilih String, Number, Boolean, Object, Array, atau Null</li>
+                            <li><strong>Object/Array:</strong> Otomatis bisa memiliki children</li>
+                            <li><strong>Template:</strong> Pilih preset untuk memulai dengan struktur siap pakai</li>
                         </ul>
                     </div>
                 </div>
@@ -2029,7 +1862,7 @@
                     <div class="card output-card">
                         <div class="card-title">
                             <span class="material-symbols-rounded">code</span>
-                            Live Preview JSON
+                            Live Preview
                             <span class="badge" id="nodeCount">0</span>
                             <div class="live-indicator">
                                 <div class="live-dot"></div>
@@ -2041,7 +1874,7 @@
                             <button class="icon-btn copy-btn" onclick="copyOutput()" title="Copy to Clipboard" aria-label="Copy to clipboard">
                                 <span class="material-symbols-rounded">content_copy</span>
                             </button>
-                            <code id="jsonCode"></code>
+                            <code id="jsonCode">{}</code>
                         </div>
 
                         <div class="action-bar">
@@ -2056,14 +1889,14 @@
                         </div>
                     </div>
 
-                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
+                    <div class="card" style="margin-top: var(--space-4);">
                         <div class="card-title">
                             <span class="material-symbols-rounded">fact_check</span>
-                            Status
+                            Status Validasi
                         </div>
-                        <div id="validationStatus" style="color: var(--md-sys-color-on-surface-variant); font: var(--md-sys-typescale-body-medium);">
-                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
-                            Struktur valid
+                        <div class="status-indicator valid" id="validationStatus">
+                            <span class="material-symbols-rounded">check_circle</span>
+                            <span>Struktur JSON valid dan siap digunakan</span>
                         </div>
                     </div>
                 </div>
@@ -2079,10 +1912,19 @@
                             <span class="material-symbols-rounded">edit_note</span>
                             Article Generator - Field Editor
                         </div>
-                        <div class="card-subtitle">Buat struktur field dinamis untuk konfigurasi artikel</div>
+                        <div class="card-subtitle">Buat struktur field dinamis untuk konfigurasi artikel dengan editor visual</div>
                         
+                        <!-- Upload Area -->
+                        <div class="upload-area" id="articleUploadArea" onclick="document.getElementById('articleFileInput').click()" 
+                             ondrop="handleArticleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                            <div class="upload-icon material-symbols-rounded">upload_file</div>
+                            <div class="upload-text">Upload Config JSON</div>
+                            <div class="upload-hint">Import konfigurasi artikel yang sudah tersimpan</div>
+                            <input type="file" id="articleFileInput" accept=".json,application/json" onchange="handleArticleFileSelect(event)">
+                        </div>
+
                         <!-- Field Editor Tabs -->
-                        <div class="field-editor-tabs">
+                        <div class="field-editor-tabs" style="margin-top: var(--space-4);">
                             <button class="field-editor-tab active" onclick="switchFieldTab('fields')">
                                 <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 6px; font-size: 18px;">account_tree</span>
                                 Edit Fields
@@ -2131,7 +1973,6 @@
                             </div>
 
                             <div class="article-field-container" id="articleFieldContainer">
-                                <!-- Fields will be rendered here -->
                             </div>
 
                             <div class="action-bar">
@@ -2139,17 +1980,17 @@
                                     <span class="material-symbols-rounded">add</span>
                                     <span>Tambah Field</span>
                                 </button>
-                                <button class="btn btn-outlined" onclick="expandAllArticleFields()">
+                                <button class="btn btn-tonal" onclick="expandAllArticleFields()">
                                     <span class="material-symbols-rounded">unfold_more</span>
-                                    <span class="btn-text">Expand</span>
+                                    <span>Expand</span>
                                 </button>
-                                <button class="btn btn-outlined" onclick="collapseAllArticleFields()">
+                                <button class="btn btn-tonal" onclick="collapseAllArticleFields()">
                                     <span class="material-symbols-rounded">unfold_less</span>
-                                    <span class="btn-text">Collapse</span>
+                                    <span>Collapse</span>
                                 </button>
                                 <button class="btn btn-text" onclick="clearAllArticleFields()">
                                     <span class="material-symbols-rounded">delete_sweep</span>
-                                    <span class="btn-text">Clear</span>
+                                    <span>Clear</span>
                                 </button>
                             </div>
                         </div>
@@ -2165,12 +2006,12 @@
                                 <span class="chip" onclick="loadArticlePreset('email')">Email Marketing</span>
                             </div>
 
-                            <div class="example-box" style="margin-top: var(--md-sys-spacing-4);">
+                            <div class="example-box">
                                 <div class="example-box-title">
                                     <span class="material-symbols-rounded">info</span>
                                     Tentang Preset
                                 </div>
-                                <p style="margin-bottom: var(--md-sys-spacing-2);">Preset akan mengisi field editor dengan struktur yang sudah dioptimalkan untuk setiap jenis konten.</p>
+                                <p style="margin-bottom: var(--space-2);">Preset akan mengisi field editor dengan struktur yang sudah dioptimalkan untuk setiap jenis konten.</p>
                                 <ul style="padding-left: 20px; line-height: 1.8;">
                                     <li><strong>Umum:</strong> Struktur dasar untuk artikel berita umum</li>
                                     <li><strong>Blog Post:</strong> Optimasi untuk konten blog dengan SEO</li>
@@ -2187,13 +2028,12 @@
                             <span class="material-symbols-rounded">tips_and_updates</span>
                             Panduan Field Editor
                         </div>
-                        <ul style="color: var(--md-sys-color-on-surface-variant); padding-left: 20px; line-height: 1.8;">
-                            <li><strong>Tambah Field:</strong> Gunakan tombol preset cepat atau "Tambah Field"</li>
-                            <li><strong>Drag & Drop:</strong> Seret handle (garis-garis) untuk mengurutkan ulang field</li>
-                            <li><strong>Tipe Data:</strong> Pilih String, Number, Boolean, Object, atau Array</li>
-                            <li><strong>Object/Array:</strong> Field bertipe Object/Array bisa memiliki child fields</li>
-                            <li><strong>Custom Field:</strong> Buat field dengan nama dan struktur bebas</li>
-                            <li><strong>Live Preview:</strong> JSON di panel kanan update otomatis</li>
+                        <ul style="color: var(--md-on-surface-variant); padding-left: 20px; line-height: 1.9; font: var(--font-body-md);">
+                            <li><strong>Upload Config:</strong> Import file JSON konfigurasi yang sudah tersimpan</li>
+                            <li><strong>Preset Cepat:</strong> Klik chip pink untuk menambah field umum</li>
+                            <li><strong>Drag & Drop:</strong> Seret handle untuk mengurutkan field</li>
+                            <li><strong>Nested Fields:</strong> Buat Object/Array dengan children tak terbatas</li>
+                            <li><strong>Generate Prompt:</strong> Konversi field ke teks prompt otomatis</li>
                         </ul>
                     </div>
                 </div>
@@ -2226,22 +2066,22 @@
                                 <span class="material-symbols-rounded">download</span>
                                 Unduh JSON
                             </button>
-                            <button class="btn btn-outlined" onclick="generateFromFields()">
+                            <button class="btn btn-elevated" onclick="generateFromFields()">
                                 <span class="material-symbols-rounded">auto_fix_high</span>
-                                Generate
+                                Generate Prompt
                             </button>
                         </div>
                     </div>
 
-                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
+                    <div class="card" style="margin-top: var(--space-4);">
                         <div class="card-title">
                             <span class="material-symbols-rounded">auto_stories</span>
                             Generated Prompt
                         </div>
-                        <div class="output-area" id="generated-prompt-area" style="min-height: 150px; font-size: 0.875rem;">
-                            Prompt akan muncul di sini setelah klik "Generate"
+                        <div class="output-area" id="generated-prompt-area" style="min-height: 150px; font-size: 0.9375rem;">
+                            Prompt akan muncul di sini setelah klik "Generate Prompt"
                         </div>
-                        <div class="action-bar" style="margin-top: var(--md-sys-spacing-3);">
+                        <div class="action-bar" style="margin-top: var(--space-3);">
                             <button class="btn btn-tonal" onclick="copyGeneratedPrompt()">
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin Prompt
@@ -2249,14 +2089,14 @@
                         </div>
                     </div>
 
-                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
+                    <div class="card" style="margin-top: var(--space-4);">
                         <div class="card-title">
                             <span class="material-symbols-rounded">fact_check</span>
                             Status
                         </div>
-                        <div id="article-validation-status" style="color: var(--md-sys-color-on-surface-variant); font: var(--md-sys-typescale-body-medium);">
-                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
-                            Struktur valid - Siap generate prompt
+                        <div class="status-indicator valid" id="article-validation-status">
+                            <span class="material-symbols-rounded">check_circle</span>
+                            <span>Struktur valid - Siap generate prompt</span>
                         </div>
                     </div>
                 </div>
@@ -2274,97 +2114,22 @@
             <h2 class="dialog-title" id="dialogTitle">Title</h2>
             <div class="dialog-content" id="dialogContent">Content</div>
             <div class="dialog-actions">
-                <button class="btn btn-text" onclick="closeDialog()">Tutup</button>
+                <button class="btn btn-text" onclick="closeDialog()">Batal</button>
                 <button class="btn btn-filled" id="dialogConfirm" onclick="confirmDialog()">OK</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Global variables for JSON Builder
+        // Global variables
         let treeData = [];
         let draggedNode = null;
         let draggedPath = null;
-
-        // Global variables for Article Generator Field Editor
         let articleFields = [];
         let draggedArticleField = null;
         let draggedArticlePath = null;
 
-        // Article Presets
-        const articlePresets = {
-            empty: [],
-            
-            general: [
-                { id: 'af_1', key: 'topic', value: 'general', type: 'string', expanded: true, children: [] },
-                { id: 'af_2', key: 'ai_role', value: 'Jurnalis senior dengan pengalaman 10 tahun', type: 'string', expanded: true, children: [] },
-                { id: 'af_3', key: 'language_style', value: 'formal', type: 'string', expanded: true, children: [] },
-                { id: 'af_4', key: 'target_audience', value: 'Masyarakat umum, pembaca 25-50 tahun', type: 'string', expanded: true, children: [] },
-                { id: 'af_5', key: 'word_limit', value: 800, type: 'number', expanded: true, children: [] },
-                { id: 'af_6', key: 'main_task', value: 'Tulis artikel berita tentang peluncuran teknologi renewable energy terbaru di Indonesia', type: 'string', expanded: true, children: [] },
-                { id: 'af_7', key: 'technical_specs', value: 'Gunakan fakta terkini, sertakan data statistik, hindari opini pribadi', type: 'string', expanded: true, children: [] }
-            ],
-            
-            blog: [
-                { id: 'af_1', key: 'topic', value: 'blog', type: 'string', expanded: true, children: [] },
-                { id: 'af_2', key: 'ai_role', value: 'Content writer profesional spesialis lifestyle', type: 'string', expanded: true, children: [] },
-                { id: 'af_3', key: 'language_style', value: 'casual', type: 'string', expanded: true, children: [] },
-                { id: 'af_4', key: 'target_audience', value: 'Millennial dan Gen Z, pengguna aktif media sosial', type: 'string', expanded: true, children: [] },
-                { id: 'af_5', key: 'word_limit', value: 1200, type: 'number', expanded: true, children: [] },
-                { id: 'af_6', key: 'main_task', value: 'Buat blog post tentang 5 Morning Routine yang Bikin Hari Lebih Produktif', type: 'string', expanded: true, children: [] },
-                { id: 'af_7', key: 'seo_keywords', value: 'morning routine, produktivitas, habits', type: 'string', expanded: true, children: [] },
-                { id: 'af_8', key: 'technical_specs', value: 'Gunakan tone friendly, tambahkan emoji strategis, sertakan CTA di akhir', type: 'string', expanded: true, children: [] }
-            ],
-            
-            coding: [
-                { id: 'af_1', key: 'topic', value: 'coding', type: 'string', expanded: true, children: [] },
-                { id: 'af_2', key: 'ai_role', value: 'Senior Software Engineer dan technical writer', type: 'string', expanded: true, children: [] },
-                { id: 'af_3', key: 'language_style', value: 'professional', type: 'string', expanded: true, children: [] },
-                { id: 'af_4', key: 'target_audience', value: 'Developer pemula hingga menengah', type: 'string', expanded: true, children: [] },
-                { id: 'af_5', key: 'word_limit', value: 1500, type: 'number', expanded: true, children: [] },
-                { id: 'af_6', key: 'main_task', value: 'Buat tutorial lengkap Membangun REST API dengan Node.js dan Express', type: 'string', expanded: true, children: [] },
-                { id: 'af_7', key: 'code_requirements', value: 'Sertakan code snippet, penjelasan step-by-step, best practices', type: 'string', expanded: true, children: [] },
-                { id: 'af_8', key: 'technical_specs', value: 'Gunakan bahasa Indonesia dengan terminologi teknis dalam bahasa Inggris', type: 'string', expanded: true, children: [] }
-            ],
-            
-            storytelling: [
-                { id: 'af_1', key: 'topic', value: 'storytelling', type: 'string', expanded: true, children: [] },
-                { id: 'af_2', key: 'ai_role', value: 'Penulis fiksi kreatif yang telah menerbitkan 3 novel thriller', type: 'string', expanded: true, children: [] },
-                { id: 'af_3', key: 'language_style', value: 'creative', type: 'string', expanded: true, children: [] },
-                { id: 'af_4', key: 'target_audience', value: 'Pecinta genre thriller psikologis', type: 'string', expanded: true, children: [] },
-                { id: 'af_5', key: 'word_limit', value: 2000, type: 'number', expanded: true, children: [] },
-                { id: 'af_6', key: 'main_task', value: 'Tulis cerita pendek thriller dengan setting di stasiun kereta api tua yang angker', type: 'string', expanded: true, children: [] },
-                { id: 'af_7', key: 'character', value: 'Alex Mercer, mantan detektif yang kehilangan ingatan', type: 'string', expanded: true, children: [] },
-                { id: 'af_8', key: 'plot_twist', value: 'Ending dengan twist yang tak terduga', type: 'string', expanded: true, children: [] },
-                { id: 'af_9', key: 'technical_specs', value: 'Gunakan teknik show dont tell, deskripsikan setting dengan detail sensorial', type: 'string', expanded: true, children: [] }
-            ],
-            
-            email: [
-                { id: 'af_1', key: 'topic', value: 'email', type: 'string', expanded: true, children: [] },
-                { id: 'af_2', key: 'ai_role', value: 'Email marketing specialist dengan conversion rate tinggi', type: 'string', expanded: true, children: [] },
-                { id: 'af_3', key: 'language_style', value: 'persuasive', type: 'string', expanded: true, children: [] },
-                { id: 'af_4', key: 'target_audience', value: 'Customer existing dan potential leads, usia 25-45 tahun', type: 'string', expanded: true, children: [] },
-                { id: 'af_5', key: 'word_limit', value: 300, type: 'number', expanded: true, children: [] },
-                { id: 'af_6', key: 'main_task', value: 'Buat email marketing untuk launching produk skincare baru Glow Serum', type: 'string', expanded: true, children: [] },
-                { id: 'af_7', key: 'cta_goal', value: 'Drive traffic ke landing page dan tingkatkan pre-order', type: 'string', expanded: true, children: [] },
-                { id: 'af_8', key: 'urgency', value: 'Limited time offer - 48 jam', type: 'string', expanded: true, children: [] },
-                { id: 'af_9', key: 'technical_specs', value: 'Subject line catchy max 50 karakter, personalisasi dengan nama recipient', type: 'string', expanded: true, children: [] }
-            ]
-        };
-
-        // Preset field definitions
-        const presetFieldDefinitions = {
-            topic: { key: 'topic', value: 'general', type: 'string' },
-            role: { key: 'ai_role', value: '', type: 'string' },
-            style: { key: 'language_style', value: 'formal', type: 'string' },
-            audience: { key: 'target_audience', value: '', type: 'string' },
-            task: { key: 'main_task', value: '', type: 'string' },
-            word_count: { key: 'word_limit', value: 1000, type: 'number' },
-            format: { key: 'output_format', value: 'narrative', type: 'string' },
-            custom: { key: 'custom_field', value: '', type: 'string' }
-        };
-
-        // TEMPLATE definitions
+        // Templates
         const templates = {
             empty: [],
             
@@ -2380,7 +2145,7 @@
                 {
                     id: 'root_2',
                     key: 'task',
-                    value: 'membuat prompt lengkap berdasarkan referensi gambar dengan lengkap',
+                    value: 'membuat prompt lengkap berdasarkan referensi gambar',
                     type: 'string',
                     expanded: true,
                     children: []
@@ -2400,8 +2165,7 @@
                             expanded: true,
                             children: [
                                 { id: 'child_1_1_1', key: 'Rasio', value: '9:16', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_1_2', key: 'Art_Style', value: 'Photo Realistic', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_1_3', key: 'Photo_Shot', value: 'Full Body', type: 'string', expanded: true, children: [] }
+                                { id: 'child_1_1_2', key: 'Art_Style', value: 'Photo Realistic', type: 'string', expanded: true, children: [] }
                             ]
                         },
                         {
@@ -2412,8 +2176,7 @@
                             expanded: true,
                             children: [
                                 { id: 'child_1_2_1', key: 'word_limit', value: 'maks 80 kata', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_2_2', key: 'language', value: 'inggris', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_2_3', key: 'Note', value: 'hindari prompt ambigu', type: 'string', expanded: true, children: [] }
+                                { id: 'child_1_2_2', key: 'language', value: 'inggris', type: 'string', expanded: true, children: [] }
                             ]
                         }
                     ]
@@ -2432,7 +2195,7 @@
                 {
                     id: 'root_2',
                     key: 'task',
-                    value: 'membuat prompt lengkap berdasarkan referensi gambar dengan lengkap',
+                    value: 'membuat prompt lengkap berdasarkan referensi gambar',
                     type: 'string',
                     expanded: true,
                     children: []
@@ -2454,9 +2217,7 @@
                                 { id: 'child_1_1', key: 'Description', value: '', type: 'string', expanded: true, children: [] },
                                 { id: 'child_1_2', key: 'Gender', value: '', type: 'string', expanded: true, children: [] },
                                 { id: 'child_1_3', key: 'Age', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_4', key: 'Ethnicity', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_5', key: 'Body_Type', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_1_6', key: 'Skin_Color', value: '', type: 'string', expanded: true, children: [] }
+                                { id: 'child_1_4', key: 'Ethnicity', value: '', type: 'string', expanded: true, children: [] }
                             ]
                         },
                         {
@@ -2468,10 +2229,7 @@
                             children: [
                                 { id: 'child_2_1', key: 'Face_Shape', value: '', type: 'string', expanded: true, children: [] },
                                 { id: 'child_2_2', key: 'Eye_Color', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_2_3', key: 'Hair_Color', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_2_4', key: 'Hair_Length', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_2_5', key: 'Hairstyle', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_2_6', key: 'Facial_Expression', value: '', type: 'string', expanded: true, children: [] }
+                                { id: 'child_2_3', key: 'Hair_Color', value: '', type: 'string', expanded: true, children: [] }
                             ]
                         },
                         {
@@ -2482,79 +2240,126 @@
                             expanded: true,
                             children: [
                                 { id: 'child_3_1', key: 'Main_Clothing_Type', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_3_2', key: 'Top_and_bottom_clothes', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_3_3', key: 'Clothing_Details', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_3_4', key: 'Accessories', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_3_5', key: 'Footwear', value: '', type: 'string', expanded: true, children: [] }
+                                { id: 'child_3_2', key: 'Accessories', value: '', type: 'string', expanded: true, children: [] }
                             ]
-                        },
-                        {
-                            id: 'child_4',
-                            key: 'Pose',
-                            value: '',
-                            type: 'object',
-                            expanded: true,
-                            children: [
-                                { id: 'child_4_1', key: 'Pose_Style', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_4_2', key: 'Movement_Details', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_4_3', key: 'Eye Gaze Direction', value: '', type: 'string', expanded: true, children: [] }
-                            ]
-                        },
-                        {
-                            id: 'child_5',
-                            key: 'Environment',
-                            value: '',
-                            type: 'object',
-                            expanded: true,
-                            children: [
-                                { id: 'child_5_1', key: 'Location_Setting', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_5_2', key: 'Background_Description', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_5_3', key: 'Supporting_Objects', value: '', type: 'string', expanded: true, children: [] }
-                            ]
-                        },
-                        {
-                            id: 'child_6',
-                            key: 'Visual_Technique',
-                            value: '',
-                            type: 'object',
-                            expanded: true,
-                            children: [
-                                { id: 'child_6_1', key: 'Art_Style', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_6_2', key: 'Lighting', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_6_3', key: 'Visual_Technique', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_6_4', key: 'Mood', value: '', type: 'string', expanded: true, children: [] }
-                            ]
-                        },
-                        {
-                            id: 'child_7',
-                            key: 'Quality',
-                            value: '',
-                            type: 'object',
-                            expanded: true,
-                            children: [
-                                { id: 'child_7_1', key: 'Resolution', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_7_2', key: 'Seed', value: '', type: 'string', expanded: true, children: [] },
-                                { id: 'child_7_3', key: 'Aspect Ratio', value: '', type: 'string', expanded: true, children: [] }
-                            ]
-                        },
-                        {
-                            id: 'child_8',
-                            key: 'Negative_Prompt',
-                            value: '',
-                            type: 'string',
-                            expanded: true,
-                            children: []
                         }
+                    ]
+                }
+            ],
+
+            api_config: [
+                {
+                    id: 'root_1',
+                    key: 'api_version',
+                    value: 'v2.0',
+                    type: 'string',
+                    expanded: true,
+                    children: []
+                },
+                {
+                    id: 'root_2',
+                    key: 'endpoints',
+                    value: '',
+                    type: 'object',
+                    expanded: true,
+                    children: [
+                        { id: 'child_1', key: 'auth', value: '/api/v2/auth', type: 'string', expanded: true, children: [] },
+                        { id: 'child_2', key: 'users', value: '/api/v2/users', type: 'string', expanded: true, children: [] },
+                        { id: 'child_3', key: 'data', value: '/api/v2/data', type: 'string', expanded: true, children: [] }
+                    ]
+                },
+                {
+                    id: 'root_3',
+                    key: 'settings',
+                    value: '',
+                    type: 'object',
+                    expanded: true,
+                    children: [
+                        { id: 'child_3_1', key: 'timeout', value: 30000, type: 'number', expanded: true, children: [] },
+                        { id: 'child_3_2', key: 'retry', value: 3, type: 'number', expanded: true, children: [] },
+                        { id: 'child_3_3', key: 'cache', value: true, type: 'boolean', expanded: true, children: [] }
                     ]
                 }
             ]
         };
 
+        // Article Presets
+        const articlePresets = {
+            empty: [],
+            general: [
+                { id: 'af_1', key: 'topic', value: 'general', type: 'string', expanded: true, children: [] },
+                { id: 'af_2', key: 'ai_role', value: 'Jurnalis senior dengan pengalaman 10 tahun', type: 'string', expanded: true, children: [] },
+                { id: 'af_3', key: 'language_style', value: 'formal', type: 'string', expanded: true, children: [] },
+                { id: 'af_4', key: 'target_audience', value: 'Masyarakat umum, pembaca 25-50 tahun', type: 'string', expanded: true, children: [] },
+                { id: 'af_5', key: 'word_limit', value: 800, type: 'number', expanded: true, children: [] },
+                { id: 'af_6', key: 'main_task', value: 'Tulis artikel berita tentang teknologi terbaru', type: 'string', expanded: true, children: [] }
+            ],
+            blog: [
+                { id: 'af_1', key: 'topic', value: 'blog', type: 'string', expanded: true, children: [] },
+                { id: 'af_2', key: 'ai_role', value: 'Content writer profesional', type: 'string', expanded: true, children: [] },
+                { id: 'af_3', key: 'language_style', value: 'casual', type: 'string', expanded: true, children: [] },
+                { id: 'af_4', key: 'target_audience', value: 'Millennial dan Gen Z', type: 'string', expanded: true, children: [] },
+                { id: 'af_5', key: 'word_limit', value: 1200, type: 'number', expanded: true, children: [] },
+                { id: 'af_6', key: 'main_task', value: 'Buat blog post tentang morning routine', type: 'string', expanded: true, children: [] },
+                { id: 'af_7', key: 'seo_keywords', value: 'produktivitas, habits, lifestyle', type: 'string', expanded: true, children: [] }
+            ],
+            coding: [
+                { id: 'af_1', key: 'topic', value: 'coding', type: 'string', expanded: true, children: [] },
+                { id: 'af_2', key: 'ai_role', value: 'Senior Software Engineer', type: 'string', expanded: true, children: [] },
+                { id: 'af_3', key: 'language_style', value: 'professional', type: 'string', expanded: true, children: [] },
+                { id: 'af_4', key: 'target_audience', value: 'Developer pemula hingga menengah', type: 'string', expanded: true, children: [] },
+                { id: 'af_5', key: 'word_limit', value: 1500, type: 'number', expanded: true, children: [] },
+                { id: 'af_6', key: 'main_task', value: 'Buat tutorial REST API dengan Node.js', type: 'string', expanded: true, children: [] }
+            ],
+            storytelling: [
+                { id: 'af_1', key: 'topic', value: 'storytelling', type: 'string', expanded: true, children: [] },
+                { id: 'af_2', key: 'ai_role', value: 'Penulis fiksi kreatif', type: 'string', expanded: true, children: [] },
+                { id: 'af_3', key: 'language_style', value: 'creative', type: 'string', expanded: true, children: [] },
+                { id: 'af_4', key: 'target_audience', value: 'Pecinta genre thriller', type: 'string', expanded: true, children: [] },
+                { id: 'af_5', key: 'word_limit', value: 2000, type: 'number', expanded: true, children: [] },
+                { id: 'af_6', key: 'main_task', value: 'Tulis cerita thriller di stasiun kereta tua', type: 'string', expanded: true, children: [] }
+            ],
+            email: [
+                { id: 'af_1', key: 'topic', value: 'email', type: 'string', expanded: true, children: [] },
+                { id: 'af_2', key: 'ai_role', value: 'Email marketing specialist', type: 'string', expanded: true, children: [] },
+                { id: 'af_3', key: 'language_style', value: 'persuasive', type: 'string', expanded: true, children: [] },
+                { id: 'af_4', key: 'target_audience', value: 'Customer existing', type: 'string', expanded: true, children: [] },
+                { id: 'af_5', key: 'word_limit', value: 300, type: 'number', expanded: true, children: [] },
+                { id: 'af_6', key: 'main_task', value: 'Buat email marketing untuk product launch', type: 'string', expanded: true, children: [] }
+            ]
+        };
+
+        const presetFieldDefinitions = {
+            topic: { key: 'topic', value: 'general', type: 'string' },
+            role: { key: 'ai_role', value: '', type: 'string' },
+            style: { key: 'language_style', value: 'formal', type: 'string' },
+            audience: { key: 'target_audience', value: '', type: 'string' },
+            task: { key: 'main_task', value: '', type: 'string' },
+            word_count: { key: 'word_limit', value: 1000, type: 'number' },
+            format: { key: 'output_format', value: 'narrative', type: 'string' },
+            custom: { key: 'custom_field', value: '', type: 'string' }
+        };
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderTree();
             updateOutput();
             renderArticleFields();
             updateArticleOutput();
+            
+            // Check system dark mode preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            
+            // Listen for changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (e.matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            });
         });
 
         function generateId() {
@@ -2565,7 +2370,150 @@
             return 'af_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
 
-        // JSON Builder Functions
+        // File Upload Handlers
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                processFile(files[0], 'json');
+            }
+        }
+
+        function handleArticleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                processFile(files[0], 'article');
+            }
+        }
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                processFile(file, 'json');
+            }
+        }
+
+        function handleArticleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                processFile(file, 'article');
+            }
+        }
+
+        function processFile(file, type) {
+            if (!file.name.endsWith('.json')) {
+                showSnackbar('Error: File harus berformat JSON!');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const json = JSON.parse(e.target.result);
+                    if (type === 'json') {
+                        importJSONToTree(json);
+                    } else {
+                        importJSONToArticleFields(json);
+                    }
+                    showSnackbar('File berhasil diimport!');
+                } catch (err) {
+                    showSnackbar('Error: File JSON tidak valid!');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function importJSONToTree(json) {
+            function convertToTree(obj, key = 'root') {
+                const id = generateId();
+                const type = Array.isArray(obj) ? 'array' : 
+                           typeof obj === 'object' && obj !== null ? 'object' :
+                           typeof obj === 'number' ? 'number' :
+                           typeof obj === 'boolean' ? 'boolean' :
+                           obj === null ? 'null' : 'string';
+                
+                const node = {
+                    id: id,
+                    key: key,
+                    value: type === 'object' || type === 'array' ? '' : String(obj),
+                    type: type,
+                    expanded: true,
+                    children: []
+                };
+
+                if (type === 'object' && obj !== null) {
+                    node.children = Object.entries(obj).map(([k, v]) => convertToTree(v, k));
+                } else if (type === 'array') {
+                    node.children = obj.map((v, i) => convertToTree(v, String(i)));
+                }
+
+                return node;
+            }
+
+            if (Array.isArray(json)) {
+                treeData = json.map((v, i) => convertToTree(v, String(i)));
+            } else if (typeof json === 'object' && json !== null) {
+                treeData = Object.entries(json).map(([k, v]) => convertToTree(v, k));
+            } else {
+                treeData = [convertToTree(json, 'root')];
+            }
+
+            renderTree();
+            updateOutput();
+        }
+
+        function importJSONToArticleFields(json) {
+            function convertToFields(obj, key = 'field') {
+                const id = generateArticleFieldId();
+                const type = Array.isArray(obj) ? 'array' : 
+                           typeof obj === 'object' && obj !== null ? 'object' :
+                           typeof obj === 'number' ? 'number' :
+                           typeof obj === 'boolean' ? 'boolean' :
+                           obj === null ? 'null' : 'string';
+                
+                const node = {
+                    id: id,
+                    key: key,
+                    value: type === 'object' || type === 'array' ? '' : String(obj),
+                    type: type,
+                    expanded: true,
+                    children: []
+                };
+
+                if (type === 'object' && obj !== null) {
+                    node.children = Object.entries(obj).map(([k, v]) => convertToFields(v, k));
+                } else if (type === 'array') {
+                    node.children = obj.map((v, i) => convertToFields(v, String(i)));
+                }
+
+                return node;
+            }
+
+            if (Array.isArray(json)) {
+                articleFields = json.map((v, i) => convertToFields(v, String(i)));
+            } else if (typeof json === 'object' && json !== null) {
+                articleFields = Object.entries(json).map(([k, v]) => convertToFields(v, k));
+            } else {
+                articleFields = [convertToFields(json, 'field')];
+            }
+
+            renderArticleFields();
+            updateArticleOutput();
+        }
+
+        // Tree Functions
         function getNodeByPath(pathArray) {
             let current = treeData;
             let parent = null;
@@ -2589,7 +2537,7 @@
                 container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon material-symbols-rounded">account_tree</div>
-                        <p>Belum ada data. Klik "Tambah Root" untuk memulai.</p>
+                        <p style="font: var(--font-body-lg);">Belum ada data. Upload JSON atau klik "Tambah Root".</p>
                     </div>
                 `;
                 updateNodeCount();
@@ -2633,13 +2581,13 @@
                                 ${indentHtml}
                                 ${showToggle ? `
                                     <div class="tree-toggle ${toggleClass} ${hasChildren ? '' : 'leaf'}" onclick="toggleNode('${pathString}')">
-                                        <span class="material-symbols-rounded" style="font-size: 16px;">chevron_right</span>
+                                        <span class="material-symbols-rounded" style="font-size: 18px;">chevron_right</span>
                                     </div>
                                 ` : '<div class="tree-toggle leaf"></div>'}
                             </div>
                             
                             <div class="drag-handle" title="Drag untuk mengurutkan">
-                                <span class="material-symbols-rounded" style="font-size: 18px;">drag_indicator</span>
+                                <span class="material-symbols-rounded" style="font-size: 20px;">drag_indicator</span>
                             </div>
 
                             <span class="material-symbols-rounded ${iconClass}">${icon}</span>
@@ -2808,10 +2756,7 @@
             const path = pathString.split('-').map(Number);
             const result = getNodeByPath(path);
             
-            if (!result || !result.node) {
-                console.error('Node not found at path:', path);
-                return;
-            }
+            if (!result || !result.node) return;
             
             const node = result.node;
             
@@ -3023,8 +2968,9 @@
             
             const templateNames = {
                 'empty': 'Empty',
-                'image_to_text': 'Image to Text (Lite)',
-                'image_prompt': 'Image Prompt (Pro)'
+                'image_to_text': 'Image to Text',
+                'image_prompt': 'Image Prompt Pro',
+                'api_config': 'API Config'
             };
             showSnackbar(`Template "${templateNames[templateName]}" dimuat`);
         }
@@ -3091,7 +3037,7 @@
                     return `<span class="${cls}">${match}</span>`;
                 })
                 .replace(/\b(true|false)\b/g, '<span class="json-boolean">$1</span>')
-                .replace(/\b(null)\b/g, '<span class="json-boolean">$1</span>')
+                .replace(/\b(null)\b/g, '<span class="json-null">$1</span>')
                 .replace(/\b(\d+\.?\d*)\b/g, '<span class="json-number">$1</span>');
             
             document.getElementById('jsonCode').innerHTML = highlighted;
@@ -3102,15 +3048,17 @@
             try {
                 const json = generateJSON();
                 JSON.stringify(json);
+                document.getElementById('validationStatus').className = 'status-indicator valid';
                 document.getElementById('validationStatus').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
-                    Struktur valid
+                    <span class="material-symbols-rounded">check_circle</span>
+                    <span>Struktur JSON valid dan siap digunakan</span>
                 `;
                 return true;
             } catch(e) {
+                document.getElementById('validationStatus').className = 'status-indicator error';
                 document.getElementById('validationStatus').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-error);">error</span>
-                    Error: ${e.message}
+                    <span class="material-symbols-rounded">error</span>
+                    <span>Error: ${e.message}</span>
                 `;
                 return false;
             }
@@ -3119,7 +3067,7 @@
         function copyOutput() {
             const json = JSON.stringify(generateJSON(), null, 2);
             navigator.clipboard.writeText(json).then(() => {
-                showSnackbar('JSON disalin!');
+                showSnackbar('JSON disalin ke clipboard!');
             }).catch(() => {
                 const textarea = document.createElement('textarea');
                 textarea.value = json;
@@ -3127,7 +3075,7 @@
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                showSnackbar('JSON disalin!');
+                showSnackbar('JSON disalin ke clipboard!');
             });
         }
 
@@ -3137,19 +3085,19 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'config.json';
+            a.download = 'sakura-config.json';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            showSnackbar('File diunduh');
+            showSnackbar('File JSON diunduh!');
         }
 
         function updateNodeCount() {
             document.getElementById('nodeCount').textContent = countAllNodes(treeData);
         }
 
-        // Article Generator Field Editor Functions
+        // Article Generator Functions
         function getArticleFieldByPath(pathArray) {
             let current = articleFields;
             let parent = null;
@@ -3173,7 +3121,7 @@
                 container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon material-symbols-rounded">edit_note</div>
-                        <p>Belum ada field. Klik "Tambah Field" atau pilih preset untuk memulai.</p>
+                        <p style="font: var(--font-body-lg);">Belum ada field. Upload config atau pilih preset.</p>
                     </div>
                 `;
                 updateArticleFieldCount();
@@ -3217,13 +3165,13 @@
                                 ${indentHtml}
                                 ${showToggle ? `
                                     <div class="field-toggle ${toggleClass} ${hasChildren ? '' : 'leaf'}" onclick="toggleArticleField('${pathString}')">
-                                        <span class="material-symbols-rounded" style="font-size: 16px;">chevron_right</span>
+                                        <span class="material-symbols-rounded" style="font-size: 18px;">chevron_right</span>
                                     </div>
                                 ` : '<div class="field-toggle leaf"></div>'}
                             </div>
                             
                             <div class="field-drag-handle" title="Drag untuk mengurutkan">
-                                <span class="material-symbols-rounded" style="font-size: 18px;">drag_indicator</span>
+                                <span class="material-symbols-rounded" style="font-size: 20px;">drag_indicator</span>
                             </div>
 
                             <span class="material-symbols-rounded ${iconClass}">${icon}</span>
@@ -3382,10 +3330,7 @@
             const path = pathString.split('-').map(Number);
             const result = getArticleFieldByPath(path);
             
-            if (!result || !result.node) {
-                console.error('Field not found at path:', path);
-                return;
-            }
+            if (!result || !result.node) return;
             
             const node = result.node;
             
@@ -3548,7 +3493,7 @@
                     articleFields = [];
                     renderArticleFields();
                     updateArticleOutput();
-                    document.getElementById('generated-prompt-area').textContent = 'Prompt akan muncul di sini setelah klik "Generate"';
+                    document.getElementById('generated-prompt-area').textContent = 'Prompt akan muncul di sini setelah klik "Generate Prompt"';
                 }
             );
         }
@@ -3634,7 +3579,6 @@
             };
             showSnackbar(`Preset "${presetNames[presetName]}" dimuat`);
             
-            // Switch back to fields tab
             document.querySelectorAll('.field-editor-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.field-editor-content').forEach(c => c.classList.remove('active'));
             document.querySelector('.field-editor-tab:first-child').classList.add('active');
@@ -3703,7 +3647,7 @@
                     return `<span class="${cls}">${match}</span>`;
                 })
                 .replace(/\b(true|false)\b/g, '<span class="json-boolean">$1</span>')
-                .replace(/\b(null)\b/g, '<span class="json-boolean">$1</span>')
+                .replace(/\b(null)\b/g, '<span class="json-null">$1</span>')
                 .replace(/\b(\d+\.?\d*)\b/g, '<span class="json-number">$1</span>');
             
             document.getElementById('article-json-code').innerHTML = highlighted;
@@ -3714,15 +3658,17 @@
             try {
                 const json = generateArticleJSON();
                 JSON.stringify(json);
+                document.getElementById('article-validation-status').className = 'status-indicator valid';
                 document.getElementById('article-validation-status').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
-                    Struktur valid - Siap generate prompt
+                    <span class="material-symbols-rounded">check_circle</span>
+                    <span>Struktur valid - Siap generate prompt</span>
                 `;
                 return true;
             } catch(e) {
+                document.getElementById('article-validation-status').className = 'status-indicator error';
                 document.getElementById('article-validation-status').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-error);">error</span>
-                    Error: ${e.message}
+                    <span class="material-symbols-rounded">error</span>
+                    <span>Error: ${e.message}</span>
                 `;
                 return false;
             }
@@ -3778,7 +3724,6 @@
                 prompt += `FORMAT OUTPUT: ${json.output_format}.\n\n`;
             }
 
-            // Add any additional fields
             const skipFields = ['topic', 'ai_role', 'language_style', 'target_audience', 'main_task', 'word_limit', 'output_format'];
             const extraFields = Object.keys(json).filter(key => !skipFields.includes(key));
             
@@ -3908,31 +3853,38 @@
             const html = document.documentElement;
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
             
-            const icon = document.querySelector('.app-bar-actions .icon-btn .material-symbols-rounded');
-            icon.textContent = newTheme === 'dark' ? 'light_mode' : 'dark_mode';
+            if (newTheme === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.removeAttribute('data-theme');
+            }
             
             showSnackbar(`Tema ${newTheme === 'dark' ? 'gelap' : 'terang'} aktif`);
         }
 
         function showHelp() {
             showDialog(
-                'Bantuan',
+                'Bantuan Penggunaan',
                 `
-                <div style="line-height: 1.8;">
-                    <p><strong>Dua Tools Tersedia:</strong></p>
-                    <p><strong>1. JSON Builder:</strong> Buat dan edit struktur JSON hierarkis dengan drag-drop.</p>
-                    <p><strong>2. Article Generator:</strong> Buat konfigurasi artikel dengan field editor yang fleksibel.</p>
-                    <br>
-                    <p><strong>Fitur Article Generator:</strong></p>
+                <div style="line-height: 1.9;">
+                    <p style="margin-bottom: 12px;"><strong>🌸 Sakura Miku JSON Builder</strong></p>
+                    <p style="margin-bottom: 16px;">Aplikasi modern untuk membangun dan mengedit struktur JSON dengan tema Hatsune Miku Sakura.</p>
+                    
+                    <p style="margin-bottom: 8px;"><strong>Fitur Utama:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 16px;">
+                        <li><strong>Upload JSON:</strong> Drag & drop atau browse file JSON</li>
+                        <li><strong>Visual Editor:</strong> Edit struktur dengan interface tree</li>
+                        <li><strong>Drag & Drop:</strong> Urutkan ulang node dengan mudah</li>
+                        <li><strong>Live Preview:</strong> JSON update real-time</li>
+                        <li><strong>Template:</strong> Pilih dari berbagai preset siap pakai</li>
+                        <li><strong>Article Generator:</strong> Buat prompt AI dari field konfigurasi</li>
+                    </ul>
+                    
+                    <p style="margin-bottom: 8px;"><strong>Shortcut Keyboard:</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>Edit Fields: Tambah, hapus, edit field dengan tipe data beragam</li>
-                        <li>Preset Templates: Pilih dari 5 template siap pakai</li>
-                        <li>Drag & Drop: Urutkan ulang field sesuai kebutuhan</li>
-                        <li>Nested Structure: Buat Object/Array dengan child fields</li>
-                        <li>Live Preview: JSON update otomatis saat field berubah</li>
-                        <li>Generate Prompt: Konversi field menjadi teks prompt</li>
+                        <li>Ctrl + Enter: Tambah root node/field</li>
+                        <li>Ctrl + S: Download JSON</li>
                     </ul>
                 </div>
                 `,
@@ -3971,27 +3923,6 @@
                 }
             }
         });
-
-        // Touch event improvements for mobile drag and drop
-        let touchStartY = 0;
-        let touchStartX = 0;
-
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-            touchStartX = e.touches[0].clientX;
-        }, { passive: true });
-
-        document.addEventListener('touchmove', (e) => {
-            if (!draggedNode && !draggedArticleField) return;
-            
-            const touchY = e.touches[0].clientY;
-            const touchX = e.touches[0].clientX;
-            
-            // Prevent scrolling while dragging
-            if (Math.abs(touchY - touchStartY) > 10 || Math.abs(touchX - touchStartX) > 10) {
-                e.preventDefault();
-            }
-        }, { passive: false });
     </script>
 </body>
 </html>
