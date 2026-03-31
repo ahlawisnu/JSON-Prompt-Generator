@@ -2634,6 +2634,1538 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+
+        /* ============================================
+           PERBAIKAN WARNA ARTICLE GENERATOR
+           ============================================ */
+
+        /* Warna berbeda untuk Article Generator vs JSON Builder */
+        #article-tool {
+            --article-primary: #00D9C0;
+            --article-primary-dark: #00B8A3;
+            --article-primary-light: #5FF5E3;
+            --article-secondary: #FF6B9D;
+            --article-tertiary: #B8A0FF;
+        }
+
+        /* Article Generator - Warna Teal/Cyan yang berbeda dari Pink */
+        #article-tool .card::before {
+            background: linear-gradient(90deg, var(--article-primary), var(--article-secondary), var(--article-tertiary));
+        }
+
+        #article-tool .tree-icon,
+        #article-tool .field-icon {
+            color: var(--article-primary);
+        }
+
+        #article-tool .tree-icon.object,
+        #article-tool .field-icon.object {
+            color: var(--article-secondary);
+        }
+
+        #article-tool .tree-icon.array,
+        #article-tool .field-icon.array {
+            color: var(--article-tertiary);
+        }
+
+        #article-tool .tree-toggle,
+        #article-tool .field-toggle {
+            color: var(--article-primary);
+            border-color: var(--article-primary);
+        }
+
+        #article-tool .tree-toggle:hover,
+        #article-tool .field-toggle:hover {
+            background: linear-gradient(135deg, var(--article-primary), var(--article-primary-dark));
+        }
+
+        #article-tool .move-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--article-primary), var(--article-primary-dark));
+            border-color: var(--article-primary);
+            box-shadow: 0 4px 8px rgba(0, 217, 192, 0.4);
+        }
+
+        #article-tool .tree-key-input:focus,
+        #article-tool .field-key-input:focus {
+            border-color: var(--article-primary);
+            box-shadow: 0 0 0 4px rgba(0, 217, 192, 0.25), 0 4px 12px rgba(0, 217, 192, 0.15);
+        }
+
+        #article-tool .icon-btn.add-child:hover {
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.3), rgba(0, 217, 192, 0.1));
+            color: var(--article-primary);
+            box-shadow: 0 4px 12px rgba(0, 217, 192, 0.3);
+        }
+
+        #article-tool .chip.active {
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.3), rgba(255, 107, 157, 0.3));
+            border-color: var(--article-primary);
+            box-shadow: 0 4px 12px rgba(0, 217, 192, 0.3);
+            animation: chip-glow-article 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes chip-glow-article {
+            from { box-shadow: 0 4px 12px rgba(0, 217, 192, 0.3); }
+            to { box-shadow: 0 6px 20px rgba(0, 217, 192, 0.5); }
+        }
+
+        #article-tool .card:hover {
+            box-shadow: 0 12px 40px rgba(0, 217, 192, 0.15), 0 4px 0 var(--article-primary);
+        }
+
+        #article-tool .json-key {
+            color: #5FF5E3;
+            text-shadow: 0 0 10px rgba(0, 217, 192, 0.3);
+        }
+
+        #article-tool .json-string {
+            color: #FFB8D0;
+        }
+
+        #article-tool .json-number {
+            color: #D4C4FF;
+            text-shadow: 0 0 10px rgba(184, 160, 255, 0.3);
+        }
+
+        #article-tool .json-boolean {
+            color: #6EE8E0;
+            text-shadow: 0 0 10px rgba(0, 217, 192, 0.3);
+        }
+
+        /* Preset chip dengan warna berbeda */
+        #article-tool .preset-chip {
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.2), rgba(184, 160, 255, 0.2));
+            color: #E0F7FA;
+        }
+
+        #article-tool .preset-chip:hover {
+            background: linear-gradient(135deg, var(--article-primary), var(--article-primary-dark));
+            border-color: var(--article-primary);
+        }
+
+        /* Tool nav active state berbeda */
+        #article-tool .tool-nav-btn.active {
+            color: var(--article-primary);
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.15), rgba(255, 107, 157, 0.15));
+        }
+
+        #article-tool .tool-nav-btn.active::after {
+            background: linear-gradient(90deg, var(--article-primary), var(--article-secondary));
+        }
+
+        /* Field editor tab berbeda */
+        #article-tool .field-editor-tab.active {
+            color: var(--article-primary);
+            background: linear-gradient(135deg, rgba(0, 217, 192, 0.15), rgba(255, 107, 157, 0.15));
+        }
+
+        #article-tool .field-editor-tab.active::after {
+            background: linear-gradient(90deg, var(--article-primary), var(--article-secondary));
+        }
+
+        /* ============================================
+           PERBAIKAN RESPONSIVITAS & USER FRIENDLY
+           ============================================ */
+
+        /* Touch target yang lebih besar untuk mobile */
+        @media (max-width: 768px) {
+            .tree-node-content, .article-field-content {
+                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-2);
+                gap: var(--md-sys-spacing-2);
+            }
+
+            .tree-inputs, .field-inputs {
+                flex-wrap: wrap;
+                gap: var(--md-sys-spacing-2);
+            }
+
+            .tree-key-input, .field-key-input {
+                min-width: 100%;
+                max-width: 100%;
+                font-size: 16px; /* Prevent zoom on iOS */
+            }
+
+            .tree-value-input, .field-value-input {
+                min-width: 100%;
+                font-size: 16px;
+            }
+
+            .tree-type-select, .field-type-select {
+                width: 100%;
+                font-size: 16px;
+            }
+
+            .move-buttons {
+                flex-direction: row;
+                gap: 4px;
+            }
+
+            .move-btn {
+                width: 40px;
+                height: 36px;
+            }
+
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .tree-actions, .field-actions {
+                gap: 4px;
+            }
+
+            /* App bar lebih compact */
+            .app-bar {
+                padding: var(--md-sys-spacing-3);
+                gap: var(--md-sys-spacing-2);
+            }
+
+            .app-title {
+                font-size: 1rem;
+                max-width: 150px;
+            }
+
+            /* Card padding lebih kecil */
+            .card {
+                padding: var(--md-sys-spacing-4);
+            }
+
+            /* Action bar stack pada mobile */
+            .action-bar {
+                flex-direction: column;
+                gap: var(--md-sys-spacing-2);
+            }
+
+            .action-bar .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Tool nav scroll horizontal */
+            .tool-nav {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .tool-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .tool-nav-btn {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+
+            /* Chip group scroll horizontal */
+            .chip-group {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                flex-wrap: nowrap;
+                padding-bottom: var(--md-sys-spacing-2);
+            }
+
+            .chip-group::-webkit-scrollbar {
+                display: none;
+            }
+
+            .chip {
+                flex-shrink: 0;
+            }
+
+            /* Preset fields scroll horizontal */
+            .preset-fields {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                flex-wrap: nowrap;
+                padding-bottom: var(--md-sys-spacing-2);
+            }
+
+            .preset-fields::-webkit-scrollbar {
+                display: none;
+            }
+
+            .preset-chip {
+                flex-shrink: 0;
+            }
+
+            /* JSON preview font lebih kecil */
+            .json-preview {
+                font-size: 0.75rem;
+                padding: var(--md-sys-spacing-3);
+            }
+
+            /* Dialog full screen pada mobile kecil */
+            @media (max-width: 480px) {
+                .dialog {
+                    margin: var(--md-sys-spacing-2);
+                    min-height: calc(100vh - 32px);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+
+                .dialog-actions {
+                    flex-direction: column-reverse;
+                    gap: var(--md-sys-spacing-2);
+                }
+
+                .dialog-actions .btn {
+                    width: 100%;
+                }
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .output-section {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        /* ============================================
+           USER FRIENDLY IMPROVEMENTS
+           ============================================ */
+
+        /* Focus visible yang jelas untuk accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--luka-pink);
+            outline-offset: 2px;
+            border-radius: var(--md-sys-shape-corner-small);
+        }
+
+        #article-tool *:focus-visible {
+            outline-color: var(--article-primary);
+        }
+
+        /* Hover states yang lebih jelas */
+        .tree-node-content:hover .tree-key-input,
+        .article-field-content:hover .field-key-input {
+            border-color: var(--md-sys-color-outline);
+        }
+
+        .tree-node-content:hover .tree-value-input:not(:disabled),
+        .article-field-content:hover .field-value-input:not(:disabled) {
+            border-color: var(--md-sys-color-outline);
+        }
+
+        /* Loading state untuk buttons */
+        .btn.loading {
+            position: relative;
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Tooltip sederhana dengan data attribute */
+        [data-tooltip] {
+            position: relative;
+        }
+
+        [data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            padding: 6px 12px;
+            background: var(--md-sys-color-surface-2);
+            color: var(--md-sys-color-on-surface);
+            font-size: 0.75rem;
+            border-radius: var(--md-sys-shape-corner-small);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-4px);
+        }
+
+        /* Empty state yang lebih informatif */
+        .empty-state {
+            padding: var(--md-sys-spacing-8) var(--md-sys-spacing-4);
+        }
+
+        .empty-state p {
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Better scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--md-sys-color-surface-variant);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--md-sys-color-outline);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--luka-pink);
+        }
+
+        #article-tool ::-webkit-scrollbar-thumb:hover {
+            background: var(--article-primary);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: rgba(255, 107, 157, 0.3);
+            color: var(--md-sys-color-on-surface);
+        }
+
+        #article-tool ::selection {
+            background: rgba(0, 217, 192, 0.3);
+        }
+
+        /* Disabled state yang lebih jelas */
+        button:disabled,
+        input:disabled,
+        select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Active state untuk better feedback */
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .icon-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Transition untuk semua interactive elements */
+        button, input, select, textarea {
+            transition: all 0.2s ease;
+        }
+
+        /* Better form labels */
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: var(--md-sys-spacing-2);
+        }
+
+        .form-label .material-symbols-rounded {
+            font-size: 18px;
+            color: var(--luka-pink);
+        }
+
+        #article-tool .form-label .material-symbols-rounded {
+            color: var(--article-primary);
+        }
+
+        /* Help text styling */
+        .hint-text {
+            display: flex;
+            align-items: center;
+            gap: var(--md-sys-spacing-1);
+        }
+
+        .hint-text::before {
+            content: 'info';
+            font-family: 'Material Symbols Rounded';
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        /* Status indicator dengan icon */
+        .status-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            margin-right: var(--md-sys-spacing-2);
+        }
+
+        /* Better radio buttons */
+        .radio-label {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .radio-label::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--md-sys-color-outline);
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .radio-item input[type="radio"]:checked + .radio-label::before {
+            border-color: var(--luka-pink);
+            background: var(--luka-pink);
+            box-shadow: inset 0 0 0 3px var(--md-sys-color-surface);
+        }
+
+        #article-tool .radio-item input[type="radio"]:checked + .radio-label::before {
+            border-color: var(--article-primary);
+            background: var(--article-primary);
+        }
+
+        /* Better textarea */
+        .form-textarea {
+            line-height: 1.8;
+        }
+
+        /* Output area styling */
+        .output-area {
+            position: relative;
+        }
+
+        .output-area:focus-within {
+            border-color: var(--luka-pink);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        #article-tool .output-area:focus-within {
+            border-color: var(--article-primary);
+            box-shadow: 0 0 0 3px rgba(0, 217, 192, 0.1);
+        }
+
+        /* Character counter styling */
+        .char-counter {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: var(--md-sys-spacing-1);
+        }
+
+        .char-counter::before {
+            content: 'text_fields';
+            font-family: 'Material Symbols Rounded';
+            font-size: 14px;
+        }
+
+        /* Example box improvements */
+        .example-box {
+            position: relative;
+            padding-left: var(--md-sys-spacing-5);
+        }
+
+        .example-box::before {
+            content: 'lightbulb';
+            font-family: 'Material Symbols Rounded';
+            position: absolute;
+            left: var(--md-sys-spacing-3);
+            top: var(--md-sys-spacing-3);
+            color: var(--luka-coral);
+            font-size: 20px;
+        }
+
+        /* Divider dengan gradient */
+        .divider {
+            position: relative;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--luka-pink) 20%, 
+                var(--luka-coral) 50%, 
+                var(--luka-purple) 80%, 
+                transparent 100%
+            );
+        }
+
+        #article-tool .divider {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--article-primary) 20%, 
+                var(--article-secondary) 50%, 
+                var(--article-tertiary) 80%, 
+                transparent 100%
+            );
+        }
+
+        /* Live indicator improvements */
+        .live-indicator {
+            animation: live-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes live-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Badge improvements */
+        .badge {
+            animation: badge-pop 0.3s ease-out;
+        }
+
+        @keyframes badge-pop {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Card title dengan icon alignment */
+        .card-title {
+            gap: var(--md-sys-spacing-3);
+        }
+
+        .card-title .material-symbols-rounded {
+            font-size: 24px;
+        }
+
+        /* Import textarea improvements */
+        .import-textarea {
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Dialog improvements */
+        .dialog-title {
+            display: flex;
+            align-items: center;
+            gap: var(--md-sys-spacing-3);
+        }
+
+        .dialog-title::before {
+            content: 'info';
+            font-family: 'Material Symbols Rounded';
+            font-size: 28px;
+            color: var(--luka-pink);
+        }
+
+        #article-tool .dialog-title::before {
+            color: var(--article-primary);
+        }
+
+        /* Snackbar improvements */
+        .snackbar {
+            display: flex;
+            align-items: center;
+            gap: var(--md-sys-spacing-3);
+        }
+
+        /* Tree container improvements */
+        .tree-container, .article-field-container {
+            border-radius: var(--md-sys-shape-corner-medium);
+            overflow: hidden;
+        }
+
+        /* Better focus untuk tree nodes */
+        .tree-node:focus-within > .tree-node-content,
+        .article-field-node:focus-within > .article-field-content {
+            background: linear-gradient(90deg, rgba(255, 107, 157, 0.1) 0%, transparent 100%);
+        }
+
+        #article-tool .tree-node:focus-within > .tree-node-content,
+        #article-tool .article-field-node:focus-within > .article-field-content {
+            background: linear-gradient(90deg, rgba(0, 217, 192, 0.1) 0%, transparent 100%);
+        }
+
+        /* Print styles */
+        @media print {
+            .app-bar, .action-bar, .tool-nav, .icon-btn, .move-buttons, .drag-handle {
+                display: none !important;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            .json-preview {
+                max-height: none;
+                overflow: visible;
+                white-space: pre-wrap;
+                word-break: break-all;
+            }
+        }
+
+        /* ============================================
+           PERBAIKAN LIGHT MODE - KONTRAS LEBIH BAIK
+           ============================================ */
+
+        [data-theme="light"] {
+            /* Warna surface lebih terang dengan kontras baik */
+            --md-sys-color-surface: #FFFFFF;
+            --md-sys-color-surface-1: #F8F9FA;
+            --md-sys-color-surface-2: #F1F3F4;
+            --md-sys-color-surface-3: #E8EAED;
+            --md-sys-color-surface-4: #E0E2E5;
+            --md-sys-color-surface-5: #D8DADC;
+
+            /* Warna teks dengan kontras tinggi */
+            --md-sys-color-on-surface: #1A1A1A;
+            --md-sys-color-on-surface-variant: #444746;
+
+            /* Outline lebih terlihat */
+            --md-sys-color-outline: #5F6368;
+            --md-sys-color-outline-variant: #C4C7C5;
+
+            /* Warna primary lebih gelap untuk kontras */
+            --md-sys-color-primary: #C44569;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #FFE4EC;
+            --md-sys-color-on-primary-container: #5A0030;
+
+            /* Warna secondary */
+            --md-sys-color-secondary: #E64A19;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #FFF0E8;
+            --md-sys-color-on-secondary-container: #5A1A00;
+
+            /* Warna tertiary */
+            --md-sys-color-tertiary: #6B3FA0;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #F0E8FF;
+            --md-sys-color-on-tertiary-container: #3D0066;
+
+            /* Tree colors */
+            --tree-line-color: #DADCE0;
+            --tree-hover: #F1F3F4;
+        }
+
+        /* Perbaikan khusus light mode untuk komponen */
+        [data-theme="light"] .tree-node-content,
+        [data-theme="light"] .article-field-content {
+            background-color: var(--md-sys-color-surface);
+            border-bottom-color: var(--md-sys-color-outline-variant);
+        }
+
+        [data-theme="light"] .tree-node-content:hover,
+        [data-theme="light"] .article-field-content:hover {
+            background: linear-gradient(90deg, #FFF5F7 0%, var(--md-sys-color-surface-1) 100%);
+        }
+
+        [data-theme="light"] .tree-key-input,
+        [data-theme="light"] .field-key-input,
+        [data-theme="light"] .tree-value-input,
+        [data-theme="light"] .field-value-input,
+        [data-theme="light"] .tree-type-select,
+        [data-theme="light"] .field-type-select {
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+            color: #1A1A1A;
+        }
+
+        [data-theme="light"] .tree-key-input:focus,
+        [data-theme="light"] .field-key-input:focus {
+            border-color: #C44569;
+            box-shadow: 0 0 0 4px rgba(196, 69, 105, 0.15);
+        }
+
+        [data-theme="light"] .tree-value-input:focus,
+        [data-theme="light"] .field-value-input:focus {
+            border-color: #E64A19;
+            box-shadow: 0 0 0 4px rgba(230, 74, 25, 0.15);
+        }
+
+        [data-theme="light"] .move-btn {
+            background: linear-gradient(135deg, #F1F3F4, #E8EAED);
+            border-color: #DADCE0;
+            color: #5F6368;
+        }
+
+        [data-theme="light"] .move-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #C44569, #A7385C);
+            border-color: #C44569;
+            color: white;
+        }
+
+        [data-theme="light"] .icon-btn {
+            color: #5F6368;
+        }
+
+        [data-theme="light"] .icon-btn:hover {
+            background: linear-gradient(135deg, #F1F3F4, #E8EAED);
+            color: #1A1A1A;
+        }
+
+        [data-theme="light"] .tree-toggle,
+        [data-theme="light"] .field-toggle {
+            background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
+            border-color: #C44569;
+            color: #C44569;
+        }
+
+        [data-theme="light"] .tree-toggle:hover,
+        [data-theme="light"] .field-toggle:hover {
+            background: linear-gradient(135deg, #C44569, #A7385C);
+            color: white;
+        }
+
+        [data-theme="light"] .json-preview {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+            border-color: #DADCE0;
+        }
+
+        [data-theme="light"] .json-key {
+            color: #C44569;
+            text-shadow: none;
+            font-weight: 700;
+        }
+
+        [data-theme="light"] .json-string {
+            color: #E64A19;
+        }
+
+        [data-theme="light"] .json-number {
+            color: #6B3FA0;
+            text-shadow: none;
+            font-weight: 700;
+        }
+
+        [data-theme="light"] .json-boolean {
+            color: #2A9D8F;
+            text-shadow: none;
+            font-weight: 700;
+        }
+
+        [data-theme="light"] .chip {
+            background-color: #F1F3F4;
+            color: #444746;
+            border-color: transparent;
+        }
+
+        [data-theme="light"] .chip:hover {
+            background: linear-gradient(135deg, #FFF0E8, rgba(255, 107, 157, 0.1));
+            border-color: #E64A19;
+            color: #1A1A1A;
+        }
+
+        [data-theme="light"] .chip.active {
+            background: linear-gradient(135deg, rgba(196, 69, 105, 0.15), rgba(230, 74, 25, 0.15));
+            color: #5A0030;
+            border-color: #C44569;
+        }
+
+        [data-theme="light"] .card {
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+        }
+
+        [data-theme="light"] .card:hover {
+            border-color: #C44569;
+            box-shadow: 0 12px 40px rgba(196, 69, 105, 0.15), 0 4px 0 #C44569;
+        }
+
+        [data-theme="light"] .app-bar {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+            border-color: #C44569;
+        }
+
+        [data-theme="light"] .tree-container,
+        [data-theme="light"] .article-field-container {
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+        }
+
+        [data-theme="light"] .tree-children,
+        [data-theme="light"] .field-children {
+            background-color: #F8F9FA;
+        }
+
+        [data-theme="light"] .output-area {
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+            color: #1A1A1A;
+        }
+
+        [data-theme="light"] .import-textarea {
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+            color: #1A1A1A;
+        }
+
+        [data-theme="light"] .form-input,
+        [data-theme="light"] .form-select,
+        [data-theme="light"] .form-textarea {
+            background-color: #FFFFFF;
+            border-color: #DADCE0;
+            color: #1A1A1A;
+        }
+
+        [data-theme="light"] .empty-state {
+            color: #5F6368;
+        }
+
+        [data-theme="light"] .preset-chip {
+            background: linear-gradient(135deg, rgba(107, 63, 160, 0.1), rgba(42, 157, 143, 0.1));
+            color: #3D0066;
+        }
+
+        [data-theme="light"] .preset-chip:hover {
+            background: linear-gradient(135deg, #6B3FA0, #5A3385);
+            color: white;
+        }
+
+        /* Article Generator light mode colors */
+        [data-theme="light"] #article-tool .tree-icon,
+        [data-theme="light"] #article-tool .field-icon {
+            color: #2A9D8F;
+        }
+
+        [data-theme="light"] #article-tool .tree-icon.object,
+        [data-theme="light"] #article-tool .field-icon.object {
+            color: #E64A19;
+        }
+
+        [data-theme="light"] #article-tool .tree-icon.array,
+        [data-theme="light"] #article-tool .field-icon.array {
+            color: #6B3FA0;
+        }
+
+        [data-theme="light"] #article-tool .tree-toggle,
+        [data-theme="light"] #article-tool .field-toggle {
+            border-color: #2A9D8F;
+            color: #2A9D8F;
+        }
+
+        [data-theme="light"] #article-tool .tree-toggle:hover,
+        [data-theme="light"] #article-tool .field-toggle:hover {
+            background: linear-gradient(135deg, #2A9D8F, #238B7E);
+            color: white;
+        }
+
+        [data-theme="light"] #article-tool .move-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #2A9D8F, #238B7E);
+            border-color: #2A9D8F;
+        }
+
+        [data-theme="light"] #article-tool .json-key {
+            color: #2A9D8F;
+        }
+
+        [data-theme="light"] #article-tool .chip.active {
+            background: linear-gradient(135deg, rgba(42, 157, 143, 0.15), rgba(230, 74, 25, 0.15));
+            border-color: #2A9D8F;
+            color: #004D40;
+        }
+
+        /* ============================================
+           PERBAIKAN RESPONSIVITAS TOTAL
+           ============================================ */
+
+        /* Base responsive settings */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        /* Fluid typography */
+        body {
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        h1, .app-title {
+            font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+        }
+
+        h2, .card-title {
+            font-size: clamp(1rem, 0.9rem + 0.5vw, 1.375rem);
+        }
+
+        /* Container fluid */
+        .app-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(0.75rem, 2vw, 1.5rem);
+        }
+
+        /* Main layout dengan CSS Grid yang responsif */
+        .main-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 450px;
+            gap: clamp(1rem, 3vw, 1.5rem);
+            align-items: start;
+        }
+
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .output-section {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
+        }
+
+        /* App bar responsif */
+        .app-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .app-bar-left {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.5rem, 2vw, 0.75rem);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .app-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .app-bar-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Tool nav yang scrollable */
+        .tool-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--md-sys-color-outline-variant);
+            padding-bottom: 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .tool-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tool-nav-btn {
+            flex-shrink: 0;
+            white-space: nowrap;
+            padding: 0.75rem 1.25rem;
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        /* Card yang responsif */
+        .card {
+            padding: clamp(1rem, 3vw, 1.5rem);
+            border-radius: clamp(8px, 2vw, 12px);
+        }
+
+        /* Tree container yang scrollable */
+        .tree-container, .article-field-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+        }
+
+        /* Tree node yang responsif */
+        .tree-node-content, .article-field-content {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.25rem, 1vw, 0.5rem);
+            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.5rem, 2vw, 1rem);
+            min-width: fit-content;
+        }
+
+        .tree-inputs, .field-inputs {
+            display: flex;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 0;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 769px) {
+            .tree-inputs, .field-inputs {
+                flex-wrap: nowrap;
+            }
+        }
+
+        .tree-key-input, .field-key-input {
+            flex: 1;
+            min-width: 80px;
+            max-width: none;
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        .tree-value-input, .field-value-input {
+            flex: 2;
+            min-width: 120px;
+            max-width: none;
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        .tree-type-select, .field-type-select {
+            min-width: 90px;
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        /* Action bar yang responsif */
+        .action-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .action-bar .btn {
+            flex: 1;
+            min-width: fit-content;
+            white-space: nowrap;
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
+        }
+
+        @media (max-width: 480px) {
+            .action-bar {
+                flex-direction: column;
+            }
+
+            .action-bar .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Chip group yang scrollable */
+        .chip-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .chip-group {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding-bottom: 0.5rem;
+            }
+
+            .chip-group::-webkit-scrollbar {
+                display: none;
+            }
+
+            .chip {
+                flex-shrink: 0;
+            }
+        }
+
+        .chip {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
+        }
+
+        /* Preset fields yang scrollable */
+        .preset-fields {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .preset-fields {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding-bottom: 0.5rem;
+            }
+
+            .preset-fields::-webkit-scrollbar {
+                display: none;
+            }
+
+            .preset-chip {
+                flex-shrink: 0;
+            }
+        }
+
+        .preset-chip {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
+        }
+
+        /* JSON Preview yang responsif */
+        .json-preview {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            padding: clamp(0.75rem, 2vw, 1rem);
+            max-height: clamp(300px, 50vh, 600px);
+            overflow-x: auto;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        /* Output area yang responsif */
+        .output-area {
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+            padding: clamp(0.75rem, 2vw, 1rem);
+            min-height: clamp(120px, 20vh, 200px);
+            max-height: clamp(250px, 40vh, 400px);
+        }
+
+        /* Form elements yang responsif */
+        .form-input, .form-select, .form-textarea {
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+        }
+
+        .form-textarea {
+            min-height: clamp(80px, 15vh, 120px);
+        }
+
+        /* Dialog yang responsif */
+        .dialog-overlay {
+            padding: clamp(0.5rem, 2vw, 1rem);
+        }
+
+        .dialog {
+            min-width: auto;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            padding: clamp(1rem, 4vw, 1.5rem);
+            margin: auto;
+        }
+
+        @media (max-width: 480px) {
+            .dialog {
+                max-width: none;
+                min-height: auto;
+                margin: 0.5rem;
+            }
+
+            .dialog-actions {
+                flex-direction: column-reverse;
+            }
+
+            .dialog-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Snackbar yang responsif */
+        .snackbar {
+            max-width: 90vw;
+            width: auto;
+            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        /* Two column layout yang responsif */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(0.75rem, 2vw, 1rem);
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Article tools grid yang responsif */
+        .article-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        @media (max-width: 768px) {
+            .article-tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Field editor tabs yang scrollable */
+        .field-editor-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--md-sys-color-outline-variant);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .field-editor-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .field-editor-tab {
+            flex-shrink: 0;
+            white-space: nowrap;
+            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        /* Radio group yang responsif */
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .radio-group {
+                flex-direction: column;
+            }
+
+            .radio-label {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Example box yang responsif */
+        .example-box {
+            padding: clamp(0.75rem, 2vw, 1rem);
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        /* Import textarea yang responsif */
+        .import-textarea {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            min-height: clamp(100px, 20vh, 150px);
+        }
+
+        /* Status indicator yang responsif */
+        .status-indicator {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
+        }
+
+        /* Badge yang responsif */
+        .badge {
+            min-width: 20px;
+            height: 20px;
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+        }
+
+        /* Live indicator yang responsif */
+        .live-indicator {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+        }
+
+        @media (max-width: 480px) {
+            .live-indicator {
+                display: none;
+            }
+        }
+
+        /* Logo yang responsif */
+        .logo {
+            width: clamp(36px, 8vw, 48px);
+            height: clamp(36px, 8vw, 48px);
+        }
+
+        /* Icon btn yang responsif */
+        .icon-btn {
+            width: clamp(36px, 8vw, 40px);
+            height: clamp(36px, 8vw, 40px);
+        }
+
+        /* Move buttons yang responsif */
+        .move-buttons {
+            gap: clamp(2px, 0.5vw, 4px);
+        }
+
+        .move-btn {
+            width: clamp(28px, 6vw, 32px);
+            height: clamp(24px, 5vw, 28px);
+        }
+
+        .move-btn .material-symbols-rounded {
+            font-size: clamp(16px, 4vw, 20px) !important;
+        }
+
+        /* Tree toggle yang responsif */
+        .tree-toggle, .field-toggle {
+            width: clamp(24px, 5vw, 28px);
+            height: clamp(24px, 5vw, 28px);
+        }
+
+        /* Drag handle yang responsif */
+        .drag-handle, .field-drag-handle {
+            padding: clamp(0.25rem, 1vw, 0.5rem);
+        }
+
+        /* Tree line yang responsif */
+        .tree-line, .field-line {
+            width: clamp(12px, 3vw, 16px);
+        }
+
+        /* Tree indent yang responsif */
+        .tree-indent, .field-indent {
+            gap: clamp(0.125rem, 0.5vw, 0.25rem);
+        }
+
+        /* Hint text yang responsif */
+        .hint-text {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+        }
+
+        /* Char counter yang responsif */
+        .char-counter {
+            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+        }
+
+        /* Divider yang responsif */
+        .divider {
+            margin: clamp(1rem, 4vw, 1.5rem) 0;
+        }
+
+        /* Empty state yang responsif */
+        .empty-state {
+            padding: clamp(2rem, 8vw, 3rem) clamp(1rem, 4vw, 1.5rem);
+        }
+
+        .empty-state-icon {
+            font-size: clamp(36px, 10vw, 56px);
+        }
+
+        .empty-state p {
+            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+        }
+
+        /* App bar actions yang responsif */
+        @media (max-width: 360px) {
+            .app-bar-actions {
+                gap: 0.25rem;
+            }
+
+            .app-bar-actions .icon-btn {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .app-bar, .action-bar, .tool-nav, .icon-btn, .move-buttons, .drag-handle,
+            .tree-toggle, .field-toggle, .snackbar, .dialog-overlay {
+                display: none !important;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-bottom: 1rem;
+            }
+
+            .json-preview, .output-area {
+                max-height: none;
+                overflow: visible;
+                white-space: pre-wrap;
+                word-break: break-all;
+                border: 1px solid #ccc;
+            }
+
+            .tree-container, .article-field-container {
+                overflow: visible;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            .tree-node-content, .article-field-content {
+                border-bottom-width: 2px;
+            }
+
+            .btn, .icon-btn, .move-btn {
+                border-width: 2px;
+            }
+
+            input, select, textarea {
+                border-width: 2px;
+            }
+        }
+
+        /* Dark mode dengan warna yang lebih baik */
+        @media (prefers-color-scheme: dark) {
+            html:not([data-theme="light"]) {
+                /* Warna yang sudah didefinisikan di :root akan digunakan */
+            }
+        }
 </style>
 <base target="_blank">
 </head>
