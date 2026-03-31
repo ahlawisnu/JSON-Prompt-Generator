@@ -1871,6 +1871,230 @@
         [data-theme="light"] .status-error {
             background-color: rgba(237, 73, 86, 0.15);
         }
+
+        /* ============================================
+           FLOATING TEXT EDITOR MODAL
+           ============================================ */
+        .text-editor-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--md-sys-motion-duration-medium);
+            backdrop-filter: blur(8px);
+            padding: var(--md-sys-spacing-4);
+        }
+
+        .text-editor-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .text-editor-modal {
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-sys-shape-corner-extra-large);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9) translateY(20px);
+            transition: transform var(--md-sys-motion-duration-medium);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--md-sys-color-outline);
+            overflow: hidden;
+        }
+
+        .text-editor-overlay.active .text-editor-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .text-editor-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--md-sys-spacing-4) var(--md-sys-spacing-5);
+            background: var(--ig-gradient);
+            border-bottom: 1px solid var(--md-sys-color-outline);
+        }
+
+        .text-editor-title {
+            font: var(--md-sys-typescale-title-large);
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: var(--md-sys-spacing-2);
+        }
+
+        .text-editor-close {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: var(--md-sys-shape-corner-small);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--md-sys-motion-duration-short);
+        }
+
+        .text-editor-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .text-editor-body {
+            padding: var(--md-sys-spacing-4);
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .text-editor-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--md-sys-spacing-3);
+            flex-wrap: wrap;
+            gap: var(--md-sys-spacing-2);
+        }
+
+        .text-editor-path {
+            font: var(--md-sys-typescale-label-medium);
+            color: var(--md-sys-color-on-surface-variant);
+            background-color: var(--md-sys-color-surface-variant);
+            padding: var(--md-sys-spacing-1) var(--md-sys-spacing-3);
+            border-radius: var(--md-sys-shape-corner-small);
+        }
+
+        .text-editor-char-count {
+            font: var(--md-sys-typescale-label-medium);
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .text-editor-textarea {
+            width: 100%;
+            flex: 1;
+            min-height: 250px;
+            padding: var(--md-sys-spacing-4);
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: var(--md-sys-shape-corner-medium);
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font: var(--md-sys-typescale-body-medium);
+            line-height: 1.8;
+            resize: none;
+            outline: none;
+            transition: all var(--md-sys-motion-duration-short);
+        }
+
+        .text-editor-textarea:focus {
+            border-color: var(--ig-pink);
+            box-shadow: 0 0 0 3px rgba(225, 48, 108, 0.15);
+        }
+
+        .text-editor-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: var(--md-sys-spacing-3);
+            padding: var(--md-sys-spacing-4);
+            border-top: 1px solid var(--md-sys-color-outline);
+            background-color: var(--md-sys-color-surface-variant);
+        }
+
+        @media (max-width: 768px) {
+            .text-editor-modal {
+                max-width: 100%;
+                max-height: 95vh;
+                border-radius: var(--md-sys-shape-corner-large);
+            }
+
+            .text-editor-header {
+                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+            }
+
+            .text-editor-title {
+                font: var(--md-sys-typescale-title-medium);
+            }
+
+            .text-editor-body {
+                padding: var(--md-sys-spacing-3);
+            }
+
+            .text-editor-textarea {
+                min-height: 200px;
+                padding: var(--md-sys-spacing-3);
+            }
+
+            .text-editor-footer {
+                padding: var(--md-sys-spacing-3);
+                flex-direction: column-reverse;
+            }
+
+            .text-editor-footer .btn {
+                width: 100%;
+            }
+        }
+
+        /* Expand button for inputs */
+        .input-expand-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: transparent;
+            color: var(--md-sys-color-on-surface-variant);
+            border-radius: var(--md-sys-shape-corner-small);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--md-sys-motion-duration-short);
+            flex-shrink: 0;
+            margin-left: 2px;
+        }
+
+        .input-expand-btn:hover {
+            background: var(--ig-gradient);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .tree-value-input-wrapper,
+        .field-value-input-wrapper {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            position: relative;
+            min-width: 120px;
+        }
+
+        @media (max-width: 992px) {
+            .tree-value-input-wrapper,
+            .field-value-input-wrapper { min-width: 100px; }
+        }
+
+        @media (max-width: 768px) {
+            .tree-value-input-wrapper,
+            .field-value-input-wrapper { min-width: 80px; }
+        }
+
+        @media (max-width: 480px) {
+            .tree-value-input-wrapper,
+            .field-value-input-wrapper { min-width: 60px; }
+        }
     </style>
     <base target="_blank">
 </head>
@@ -2192,6 +2416,38 @@
         </div>
     </div>
 
+    <!-- Floating Text Editor Modal -->
+    <div class="text-editor-overlay" id="textEditorOverlay" onclick="closeTextEditor(event)">
+        <div class="text-editor-modal" onclick="event.stopPropagation()">
+            <div class="text-editor-header">
+                <div class="text-editor-title">
+                    <span class="material-symbols-rounded">edit</span>
+                    <span>Edit Teks</span>
+                </div>
+                <button class="text-editor-close" onclick="closeTextEditor()" title="Tutup">
+                    <span class="material-symbols-rounded">close</span>
+                </button>
+            </div>
+            <div class="text-editor-body">
+                <div class="text-editor-info">
+                    <span class="text-editor-path" id="textEditorPath">root.key</span>
+                    <span class="text-editor-char-count" id="textEditorCharCount">0 karakter</span>
+                </div>
+                <textarea class="text-editor-textarea" id="textEditorTextarea" placeholder="Masukkan teks..."></textarea>
+            </div>
+            <div class="text-editor-footer">
+                <button class="btn btn-text" onclick="closeTextEditor()">
+                    <span class="material-symbols-rounded">close</span>
+                    Batal
+                </button>
+                <button class="btn btn-filled" onclick="saveTextEditor()">
+                    <span class="material-symbols-rounded">save</span>
+                    Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
 
         // Global variables for JSON Builder
@@ -2203,6 +2459,11 @@
         let articleFields = [];
         let draggedArticleField = null;
         let draggedArticlePath = null;
+
+        // Global variables for Floating Text Editor
+        let textEditorTarget = null;
+        let textEditorCallback = null;
+        let textEditorOriginalValue = '';
 
         // Article Presets
         const articlePresets = {
@@ -2799,15 +3060,27 @@
                             <span class="material-symbols-rounded ${iconClass}">${icon}</span>
 
                             <div class="tree-inputs">
-                                <input type="text" class="tree-key-input" placeholder="Key" value="${escapeHtml(node.key)}" 
-                                    oninput="updateNode('${pathString}', 'key', this.value)"
-                                    onkeydown="handleInputKey(event, '${pathString}', 'key')">
+                                <div class="tree-value-input-wrapper">
+                                    <input type="text" class="tree-key-input" placeholder="Key" value="${escapeHtml(node.key)}" 
+                                        oninput="updateNode('${pathString}', 'key', this.value)"
+                                        onkeydown="handleInputKey(event, '${pathString}', 'key')">
+                                    <button class="input-expand-btn" onclick="openTreeKeyEditor('${pathString}', '${escapeHtml(node.key)}')" title="Edit key di editor">
+                                        <span class="material-symbols-rounded" style="font-size: 16px;">open_in_full</span>
+                                    </button>
+                                </div>
                                 
-                                <input type="text" class="tree-value-input ${isExpandable ? 'object-mode' : ''}" 
-                                    placeholder="Value" value="${escapeHtml(node.value)}" 
-                                    oninput="updateNode('${pathString}', 'value', this.value)"
-                                    onkeydown="handleInputKey(event, '${pathString}', 'value')"
-                                    ${isExpandable ? 'disabled title="Object/Array memiliki children"' : ''}>
+                                <div class="tree-value-input-wrapper">
+                                    <input type="text" class="tree-value-input ${isExpandable ? 'object-mode' : ''}" 
+                                        placeholder="Value" value="${escapeHtml(node.value)}" 
+                                        oninput="updateNode('${pathString}', 'value', this.value)"
+                                        onkeydown="handleInputKey(event, '${pathString}', 'value')"
+                                        ${isExpandable ? 'disabled title="Object/Array memiliki children"' : ''}>
+                                    ${!isExpandable ? `
+                                    <button class="input-expand-btn" onclick="openTreeValueEditor('${pathString}', '${escapeHtml(node.key)}')" title="Edit value di editor">
+                                        <span class="material-symbols-rounded" style="font-size: 16px;">open_in_full</span>
+                                    </button>
+                                    ` : ''}
+                                </div>
                                 
                                 <select class="tree-type-select" onchange="updateNode('${pathString}', 'type', this.value)">
                                     <option value="string" ${node.type === 'string' ? 'selected' : ''}>String</option>
@@ -3396,15 +3669,27 @@
                             <span class="material-symbols-rounded ${iconClass}">${icon}</span>
 
                             <div class="field-inputs">
-                                <input type="text" class="field-key-input" placeholder="Key" value="${escapeHtml(node.key)}" 
-                                    oninput="updateArticleField('${pathString}', 'key', this.value)"
-                                    onkeydown="handleArticleFieldInputKey(event, '${pathString}', 'key')">
+                                <div class="field-value-input-wrapper">
+                                    <input type="text" class="field-key-input" placeholder="Key" value="${escapeHtml(node.key)}" 
+                                        oninput="updateArticleField('${pathString}', 'key', this.value)"
+                                        onkeydown="handleArticleFieldInputKey(event, '${pathString}', 'key')">
+                                    <button class="input-expand-btn" onclick="openArticleKeyEditor('${pathString}', '${escapeHtml(node.key)}')" title="Edit key di editor">
+                                        <span class="material-symbols-rounded" style="font-size: 16px;">open_in_full</span>
+                                    </button>
+                                </div>
                                 
-                                <input type="text" class="field-value-input ${isExpandable ? 'object-mode' : ''}" 
-                                    placeholder="Value" value="${escapeHtml(node.value)}" 
-                                    oninput="updateArticleField('${pathString}', 'value', this.value)"
-                                    onkeydown="handleArticleFieldInputKey(event, '${pathString}', 'value')"
-                                    ${isExpandable ? 'disabled title="Object/Array memiliki children"' : ''}>
+                                <div class="field-value-input-wrapper">
+                                    <input type="text" class="field-value-input ${isExpandable ? 'object-mode' : ''}" 
+                                        placeholder="Value" value="${escapeHtml(node.value)}" 
+                                        oninput="updateArticleField('${pathString}', 'value', this.value)"
+                                        onkeydown="handleArticleFieldInputKey(event, '${pathString}', 'value')"
+                                        ${isExpandable ? 'disabled title="Object/Array memiliki children"' : ''}>
+                                    ${!isExpandable ? `
+                                    <button class="input-expand-btn" onclick="openArticleValueEditor('${pathString}', '${escapeHtml(node.key)}')" title="Edit value di editor">
+                                        <span class="material-symbols-rounded" style="font-size: 16px;">open_in_full</span>
+                                    </button>
+                                    ` : ''}
+                                </div>
                                 
                                 <select class="field-type-select" onchange="updateArticleField('${pathString}', 'type', this.value)">
                                     <option value="string" ${node.type === 'string' ? 'selected' : ''}>String</option>
@@ -4074,11 +4359,18 @@
                     <br>
                     <p><strong style="color: var(--ig-orange);">Fitur Utama:</strong></p>
                     <ul style="margin-left: 20px;">
+                        <li><strong>Floating Text Editor:</strong> Klik tombol <span class="material-symbols-rounded" style="font-size: 14px; vertical-align: middle;">open_in_full</span> di samping input untuk edit teks panjang</li>
                         <li>Tombol panah naik/turun untuk mengurutkan field</li>
                         <li>Drag & Drop untuk memindahkan node</li>
                         <li>Dark mode default dengan tema Instagram</li>
                         <li>Tombol dengan sudut rounded yang modern</li>
                         <li>Responsif di semua ukuran layar</li>
+                    </ul>
+                    <br>
+                    <p><strong style="color: var(--ig-purple);">Shortcut Editor:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li><kbd>Esc</kbd> - Tutup editor</li>
+                        <li><kbd>Ctrl+Enter</kbd> - Simpan dan tutup editor</li>
                     </ul>
                 </div>
                 `,
@@ -4099,8 +4391,27 @@
 
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
+            // Close text editor on Escape
+            if (e.key === 'Escape') {
+                const overlay = document.getElementById('textEditorOverlay');
+                if (overlay.classList.contains('active')) {
+                    closeTextEditor();
+                    return;
+                }
+            }
+
+            // Save text editor on Ctrl+Enter
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                const overlay = document.getElementById('textEditorOverlay');
+                if (overlay.classList.contains('active')) {
+                    e.preventDefault();
+                    saveTextEditor();
+                    return;
+                }
+            }
+
             if (e.ctrlKey || e.metaKey) {
-                if (e.key === 'Enter') {
+                if (e.key === 'Enter' && !document.getElementById('textEditorOverlay').classList.contains('active')) {
                     e.preventDefault();
                     if (document.getElementById('json-tool').classList.contains('active')) {
                         addRootNode();
@@ -4122,6 +4433,146 @@
                 }
             }
         });
+
+        // ==================== FLOATING TEXT EDITOR FUNCTIONS ====================
+
+        function openTextEditor(pathString, fieldType, currentValue, callback, pathLabel) {
+            textEditorTarget = pathString;
+            textEditorCallback = callback;
+            textEditorOriginalValue = currentValue;
+
+            const overlay = document.getElementById('textEditorOverlay');
+            const textarea = document.getElementById('textEditorTextarea');
+            const pathDisplay = document.getElementById('textEditorPath');
+            const charCount = document.getElementById('textEditorCharCount');
+
+            textarea.value = currentValue;
+            pathDisplay.textContent = pathLabel || pathString;
+            charCount.textContent = `${currentValue.length} karakter`;
+
+            overlay.classList.add('active');
+            textarea.focus();
+
+            // Update char count on input
+            textarea.oninput = function() {
+                charCount.textContent = `${this.value.length} karakter`;
+            };
+        }
+
+        function closeTextEditor(e) {
+            if (e && e.target !== document.getElementById('textEditorOverlay')) {
+                return;
+            }
+
+            const overlay = document.getElementById('textEditorOverlay');
+            overlay.classList.remove('active');
+
+            textEditorTarget = null;
+            textEditorCallback = null;
+            textEditorOriginalValue = '';
+        }
+
+        function saveTextEditor() {
+            const textarea = document.getElementById('textEditorTextarea');
+            const newValue = textarea.value;
+
+            if (textEditorCallback && textEditorTarget) {
+                textEditorCallback(textEditorTarget, newValue);
+            }
+
+            closeTextEditor();
+            showSnackbar('Teks berhasil disimpan!');
+        }
+
+        function openTreeValueEditor(pathString, keyName) {
+            const path = pathString.split('-').map(Number);
+            const result = getNodeByPath(path);
+            
+            if (!result || !result.node) return;
+
+            const node = result.node;
+            const pathLabel = buildPathLabel(path);
+
+            openTextEditor(pathString, 'value', node.value, (target, newValue) => {
+                updateNode(target, 'value', newValue);
+            }, pathLabel);
+        }
+
+        function openTreeKeyEditor(pathString, keyName) {
+            const path = pathString.split('-').map(Number);
+            const result = getNodeByPath(path);
+            
+            if (!result || !result.node) return;
+
+            const node = result.node;
+            const pathLabel = buildPathLabel(path, true);
+
+            openTextEditor(pathString, 'key', node.key, (target, newValue) => {
+                updateNode(target, 'key', newValue);
+            }, pathLabel);
+        }
+
+        function openArticleValueEditor(pathString, keyName) {
+            const path = pathString.split('-').map(Number);
+            const result = getArticleFieldByPath(path);
+            
+            if (!result || !result.node) return;
+
+            const node = result.node;
+            const pathLabel = buildArticlePathLabel(path);
+
+            openTextEditor(pathString, 'value', node.value, (target, newValue) => {
+                updateArticleField(target, 'value', newValue);
+            }, pathLabel);
+        }
+
+        function openArticleKeyEditor(pathString, keyName) {
+            const path = pathString.split('-').map(Number);
+            const result = getArticleFieldByPath(path);
+            
+            if (!result || !result.node) return;
+
+            const node = result.node;
+            const pathLabel = buildArticlePathLabel(path, true);
+
+            openTextEditor(pathString, 'key', node.key, (target, newValue) => {
+                updateArticleField(target, 'key', newValue);
+            }, pathLabel);
+        }
+
+        function buildPathLabel(path, isKey = false) {
+            let label = 'root';
+            let current = treeData;
+            
+            for (let i = 0; i < path.length; i++) {
+                const node = current[path[i]];
+                if (node) {
+                    label += '.' + node.key;
+                    if (i < path.length - 1 && node.children) {
+                        current = node.children;
+                    }
+                }
+            }
+            
+            return isKey ? label : label + '.value';
+        }
+
+        function buildArticlePathLabel(path, isKey = false) {
+            let label = 'fields';
+            let current = articleFields;
+            
+            for (let i = 0; i < path.length; i++) {
+                const node = current[path[i]];
+                if (node) {
+                    label += '.' + node.key;
+                    if (i < path.length - 1 && node.children) {
+                        current = node.children;
+                    }
+                }
+            }
+            
+            return isKey ? label : label + '.value';
+        }
     </script>
 </body>
 </html>
