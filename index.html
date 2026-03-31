@@ -1,69 +1,49 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Megurine Luka JSON Builder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Nature JSON Tree Builder - Material Design 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <style>
         :root {
-            /* Megurine Luka Theme Colors - Pink/Coral/Dark */
-            --luka-pink: #FF6B9D;
-            --luka-pink-light: #FF9EBB;
-            --luka-pink-dark: #C44569;
-            --luka-pink-container: #FFE4EC;
-            
-            --luka-coral: #FF8A65;
-            --luka-coral-light: #FFAB91;
-            --luka-coral-dark: #E64A19;
-            
-            --luka-purple: #9C6BFF;
-            --luka-purple-light: #BFA0FF;
-            --luka-purple-dark: #6B3FA0;
-            
-            --luka-teal: #4ECDC4;
-            --luka-teal-light: #7FDBD4;
-            --luka-teal-dark: #2A9D8F;
-            
-            /* Material Design System Colors - Luka Theme */
-            --md-sys-color-primary: var(--luka-pink);
+            --md-sys-color-primary: #386a20;
             --md-sys-color-on-primary: #ffffff;
-            --md-sys-color-primary-container: var(--luka-pink-container);
-            --md-sys-color-on-primary-container: #5A0030;
+            --md-sys-color-primary-container: #b7f397;
+            --md-sys-color-on-primary-container: #042100;
             
-            --md-sys-color-secondary: var(--luka-coral);
+            --md-sys-color-secondary: #55624c;
             --md-sys-color-on-secondary: #ffffff;
-            --md-sys-color-secondary-container: #FFF0E8;
-            --md-sys-color-on-secondary-container: #5A1A00;
+            --md-sys-color-secondary-container: #d9e7cb;
+            --md-sys-color-on-secondary-container: #131f0d;
             
-            --md-sys-color-tertiary: var(--luka-purple);
+            --md-sys-color-tertiary: #19686d;
             --md-sys-color-on-tertiary: #ffffff;
-            --md-sys-color-tertiary-container: #F0E8FF;
-            --md-sys-color-on-tertiary-container: #3D0066;
+            --md-sys-color-tertiary-container: #a4eff4;
+            --md-sys-color-on-tertiary-container: #002022;
             
-            --md-sys-color-surface: #1A1A2E;
-            --md-sys-color-on-surface: #E8E8EC;
-            --md-sys-color-surface-variant: #2D2D44;
-            --md-sys-color-on-surface-variant: #B8B8C8;
+            --md-sys-color-surface: #fdfdf6;
+            --md-sys-color-on-surface: #1a1c18;
+            --md-sys-color-surface-variant: #dfe4d6;
+            --md-sys-color-on-surface-variant: #43483e;
             
-            --md-sys-color-outline: #6B6B80;
-            --md-sys-color-outline-variant: #3D3D5C;
+            --md-sys-color-outline: #73796e;
+            --md-sys-color-outline-variant: #c3c8bb;
             
-            --md-sys-color-error: #FF6B6B;
-            --md-sys-color-error-container: #FFDDDD;
+            --md-sys-color-error: #ba1a1a;
+            --md-sys-color-error-container: #ffdad6;
             
-            --md-sys-color-surface-tint: var(--luka-pink);
-            --md-sys-color-surface-1: #1E1E36;
-            --md-sys-color-surface-2: #222240;
-            --md-sys-color-surface-3: #26264A;
-            --md-sys-color-surface-4: #2A2A54;
-            --md-sys-color-surface-5: #2E2E5E;
+            --md-sys-color-surface-tint: #386a20;
+            --md-sys-color-surface-1: #f4f9eb;
+            --md-sys-color-surface-2: #eef6e4;
+            --md-sys-color-surface-3: #e9f2dd;
+            --md-sys-color-surface-4: #e6f0d9;
+            --md-sys-color-surface-5: #e2eed3;
             
             --tree-line-color: var(--md-sys-color-outline-variant);
             --tree-hover: var(--md-sys-color-surface-2);
             
-            /* Spacing */
             --md-sys-spacing-1: 4px;
             --md-sys-spacing-2: 8px;
             --md-sys-spacing-3: 12px;
@@ -73,79 +53,66 @@
             --md-sys-spacing-8: 32px;
             --md-sys-spacing-12: 48px;
             
-            /* Shapes - Square corners */
             --md-sys-shape-corner-none: 0px;
             --md-sys-shape-corner-extra-small: 4px;
-            --md-sys-shape-corner-small: 6px;
-            --md-sys-shape-corner-medium: 8px;
-            --md-sys-shape-corner-large: 10px;
-            --md-sys-shape-corner-extra-large: 12px;
-            --md-sys-shape-corner-full: 0px;
+            --md-sys-shape-corner-small: 8px;
+            --md-sys-shape-corner-medium: 12px;
+            --md-sys-shape-corner-large: 16px;
+            --md-sys-shape-corner-extra-large: 28px;
+            --md-sys-shape-corner-full: 50%;
             
-            /* Typography */
-            --md-sys-typescale-display-large: 600 3rem/3.5rem 'Poppins';
-            --md-sys-typescale-display-medium: 600 2.5rem/3rem 'Poppins';
-            --md-sys-typescale-headline-large: 600 2rem/2.5rem 'Poppins';
-            --md-sys-typescale-headline-medium: 600 1.75rem/2.25rem 'Poppins';
-            --md-sys-typescale-title-large: 600 1.375rem/1.75rem 'Poppins';
-            --md-sys-typescale-title-medium: 500 1rem/1.5rem 'Inter';
-            --md-sys-typescale-body-large: 400 1rem/1.75rem 'Inter';
-            --md-sys-typescale-body-medium: 400 0.9375rem/1.6rem 'Inter';
-            --md-sys-typescale-label-large: 600 0.875rem/1.25rem 'Inter';
-            --md-sys-typescale-label-medium: 500 0.8125rem/1rem 'Inter';
+            --md-sys-typescale-display-large: 400 3.5rem/4rem 'Roboto Flex';
+            --md-sys-typescale-display-medium: 400 2.8rem/3.2rem 'Roboto Flex';
+            --md-sys-typescale-headline-large: 400 2rem/2.5rem 'Roboto Flex';
+            --md-sys-typescale-headline-medium: 400 1.75rem/2.25rem 'Roboto Flex';
+            --md-sys-typescale-title-large: 400 1.375rem/1.75rem 'Roboto Flex';
+            --md-sys-typescale-title-medium: 500 1rem/1.5rem 'Roboto Flex';
+            --md-sys-typescale-body-large: 400 1rem/1.5rem 'Roboto Flex';
+            --md-sys-typescale-body-medium: 400 0.875rem/1.25rem 'Roboto Flex';
+            --md-sys-typescale-label-large: 500 0.875rem/1.25rem 'Roboto Flex';
+            --md-sys-typescale-label-medium: 500 0.75rem/1rem 'Roboto Flex';
             
-            /* Motion */
             --md-sys-motion-duration-short: 150ms;
             --md-sys-motion-duration-medium: 300ms;
             --md-sys-motion-duration-long: 500ms;
             --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
             --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
-            
-            /* Luka Box Border Style */
-            --luka-border: 2px solid var(--luka-pink);
-            --luka-border-coral: 2px solid var(--luka-coral);
-            --luka-box-shadow: 0 4px 0 var(--luka-pink-dark), 0 8px 20px rgba(255, 107, 157, 0.3);
-            --luka-box-shadow-coral: 0 4px 0 var(--luka-coral-dark), 0 8px 20px rgba(255, 138, 101, 0.3);
         }
 
-        [data-theme="light"] {
-            --md-sys-color-primary: var(--luka-pink-dark);
-            --md-sys-color-on-primary: #ffffff;
-            --md-sys-color-primary-container: var(--luka-pink-container);
-            --md-sys-color-on-primary-container: #5A0030;
+        [data-theme="dark"] {
+            --md-sys-color-primary: #9cd67d;
+            --md-sys-color-on-primary: #0f3900;
+            --md-sys-color-primary-container: #205107;
+            --md-sys-color-on-primary-container: #b7f397;
             
-            --md-sys-color-secondary: var(--luka-coral-dark);
-            --md-sys-color-on-secondary: #ffffff;
-            --md-sys-color-secondary-container: #FFF0E8;
-            --md-sys-color-on-secondary-container: #5A1A00;
+            --md-sys-color-secondary: #bdcbaf;
+            --md-sys-color-on-secondary: #283420;
+            --md-sys-color-secondary-container: #3e4a35;
+            --md-sys-color-on-secondary-container: #d9e7cb;
             
-            --md-sys-color-tertiary: var(--luka-purple-dark);
-            --md-sys-color-on-tertiary: #ffffff;
-            --md-sys-color-tertiary-container: #F0E8FF;
-            --md-sys-color-on-tertiary-container: #3D0066;
+            --md-sys-color-tertiary: #88d1d7;
+            --md-sys-color-on-tertiary: #00363a;
+            --md-sys-color-tertiary-container: #004f55;
+            --md-sys-color-on-tertiary-container: #a4eff4;
             
-            --md-sys-color-surface: #FFFBFE;
-            --md-sys-color-on-surface: #1D1B1E;
-            --md-sys-color-surface-variant: #F2EFF1;
-            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-surface: #1a1c18;
+            --md-sys-color-on-surface: #e2e3dc;
+            --md-sys-color-surface-variant: #43483e;
+            --md-sys-color-on-surface-variant: #c3c8bb;
             
-            --md-sys-color-outline: #938F99;
-            --md-sys-color-outline-variant: #E7E0EC;
+            --md-sys-color-outline: #8d9287;
+            --md-sys-color-outline-variant: #43483e;
             
-            --md-sys-color-surface-tint: var(--luka-pink);
-            --md-sys-color-surface-1: #F8F4F6;
-            --md-sys-color-surface-2: #F0EAED;
-            --md-sys-color-surface-3: #E8E0E4;
-            --md-sys-color-surface-4: #E0D6DB;
-            --md-sys-color-surface-5: #D8CCD2;
+            --md-sys-color-surface-tint: #9cd67d;
+            --md-sys-color-surface-1: #1f241b;
+            --md-sys-color-surface-2: #232920;
+            --md-sys-color-surface-3: #282e25;
+            --md-sys-color-surface-4: #293026;
+            --md-sys-color-surface-5: #2c3328;
             
-            --tree-line-color: #E7E0EC;
-            --tree-hover: #F2EFF1;
-            
-            --luka-box-shadow: 0 4px 0 var(--luka-pink), 0 8px 20px rgba(255, 107, 157, 0.2);
-            --luka-box-shadow-coral: 0 4px 0 var(--luka-coral), 0 8px 20px rgba(255, 138, 101, 0.2);
+            --tree-line-color: #43483e;
+            --tree-hover: #2d322b;
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -164,9 +131,8 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-2) 50%, #2D1B2E 100%);
-            background-attachment: fixed;
+            font-family: 'Roboto Flex', sans-serif;
+            background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
             min-height: 100vh;
             overflow-x: hidden;
@@ -175,7 +141,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .luka-bg {
+        .nature-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -186,84 +152,70 @@
             overflow: hidden;
         }
 
-        .luka-petal {
+        .leaf-ornament {
             position: absolute;
             opacity: 0.08;
-            animation: float-petal 15s ease-in-out infinite;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .petal-1 {
-            top: 5%;
-            left: 8%;
-            width: 60px;
-            height: 60px;
-            background: radial-gradient(circle at 30% 30%, var(--luka-pink), transparent 70%);
-            border-radius: 50% 0 50% 50%;
-            transform: rotate(-30deg);
+        .leaf-1 {
+            top: 10%;
+            left: 5%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, var(--md-sys-color-primary), transparent 70%);
+            border-radius: 0 70% 0 70%;
+            transform: rotate(-45deg);
             animation-delay: 0s;
         }
 
-        .petal-2 {
-            top: 40%;
-            right: 12%;
-            width: 45px;
-            height: 45px;
-            background: radial-gradient(circle at 30% 30%, var(--luka-coral), transparent 70%);
-            border-radius: 50% 50% 0 50%;
-            transform: rotate(45deg);
-            animation-delay: -4s;
+        .leaf-2 {
+            top: 60%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, var(--md-sys-color-tertiary), transparent 70%);
+            border-radius: 0 60% 0 60%;
+            transform: rotate(15deg);
+            animation-delay: -5s;
         }
 
-        .petal-3 {
-            bottom: 25%;
-            left: 5%;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle at 40% 40%, var(--luka-purple), transparent 70%);
-            border-radius: 0 50% 50% 50%;
-            transform: rotate(60deg);
-            animation-delay: -8s;
-        }
-
-        .petal-4 {
-            top: 70%;
-            right: 20%;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle at 30% 30%, var(--luka-teal), transparent 70%);
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
-            animation-delay: -12s;
-        }
-
-        .luka-note {
-            position: absolute;
-            font-size: 48px;
-            opacity: 0.05;
-            color: var(--luka-pink);
-            animation: float-note 20s ease-in-out infinite;
-        }
-
-        .note-1 {
-            top: 15%;
-            right: 8%;
-            animation-delay: -2s;
-        }
-
-        .note-2 {
-            bottom: 15%;
+        .leaf-3 {
+            bottom: 20%;
             left: 15%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 40% 40%, var(--md-sys-color-secondary), transparent 70%);
+            border-radius: 0 80% 0 50%;
+            transform: rotate(45deg);
             animation-delay: -10s;
         }
 
-        @keyframes float-petal {
-            0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
-            50% { transform: translateY(-25px) rotate(calc(var(--rot, 0deg) + 15deg)) scale(1.1); }
+        .circle-ornament {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            background: var(--md-sys-color-primary);
         }
 
-        @keyframes float-note {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -50px;
+            background: var(--md-sys-color-tertiary);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-20px) rotate(calc(var(--rot, 0deg) + 5deg)); }
         }
 
         .app-container {
@@ -285,22 +237,22 @@
             align-items: center;
             justify-content: space-between;
             padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
-            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-1) 100%);
-            border: var(--luka-border);
-            border-radius: var(--md-sys-shape-corner-large);
+            background-color: var(--md-sys-color-surface);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            margin: calc(-1 * var(--md-sys-spacing-6));
             margin-bottom: var(--md-sys-spacing-6);
             position: sticky;
-            top: var(--md-sys-spacing-4);
+            top: 0;
             z-index: 100;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--luka-box-shadow);
+            backdrop-filter: blur(10px);
+            background-color: rgba(var(--md-sys-color-surface), 0.8);
         }
 
         @media (max-width: 768px) {
             .app-bar {
+                margin: calc(-1 * var(--md-sys-spacing-3));
+                margin-bottom: var(--md-sys-spacing-3);
                 padding: var(--md-sys-spacing-3);
-                margin-bottom: var(--md-sys-spacing-4);
-                top: var(--md-sys-spacing-2);
             }
         }
 
@@ -317,51 +269,46 @@
         }
 
         .logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-tertiary-container));
             border-radius: var(--md-sys-shape-corner-medium);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--md-sys-color-on-primary-container);
             font-variation-settings: 'FILL' 1, 'wght' 600;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4);
-            border: 3px solid white;
         }
 
         @media (max-width: 480px) {
             .logo {
-                width: 40px;
-                height: 40px;
+                width: 32px;
+                height: 32px;
             }
         }
 
         .app-title {
             font: var(--md-sys-typescale-title-large);
             color: var(--md-sys-color-on-surface);
-            font-weight: 700;
+            font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         @media (max-width: 768px) {
             .app-title {
                 font: var(--md-sys-typescale-title-medium);
-                max-width: 180px;
+                max-width: 200px;
             }
         }
 
         @media (max-width: 480px) {
             .app-title {
-                font-size: 1rem;
-                max-width: 120px;
+                font: var(--md-sys-typescale-body-large);
+                font-weight: 600;
+                max-width: 150px;
             }
         }
 
@@ -390,29 +337,12 @@
         }
 
         .card {
-            background-color: var(--md-sys-color-surface);
+            background-color: var(--md-sys-color-surface-1);
             border-radius: var(--md-sys-shape-corner-large);
             padding: var(--md-sys-spacing-6);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
-        }
-
-        .card:hover {
-            border-color: var(--luka-pink);
-            box-shadow: var(--luka-box-shadow);
-            transform: translateY(-2px);
+            border: 1px solid var(--md-sys-color-outline-variant);
         }
 
         @media (max-width: 768px) {
@@ -428,6 +358,10 @@
             }
         }
 
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
         .card-title {
             font: var(--md-sys-typescale-title-medium);
             color: var(--md-sys-color-on-surface);
@@ -436,7 +370,6 @@
             align-items: center;
             gap: var(--md-sys-spacing-2);
             flex-wrap: wrap;
-            font-weight: 600;
         }
 
         @media (max-width: 480px) {
@@ -451,11 +384,11 @@
             font: var(--md-sys-typescale-body-medium);
             color: var(--md-sys-color-on-surface-variant);
             margin-bottom: var(--md-sys-spacing-4);
-            line-height: 1.7;
         }
 
         @media (max-width: 480px) {
             .card-subtitle {
+                font: var(--md-sys-typescale-body-medium);
                 margin-bottom: var(--md-sys-spacing-3);
             }
         }
@@ -463,7 +396,7 @@
         .tree-container, .article-field-container {
             background-color: var(--md-sys-color-surface);
             border-radius: var(--md-sys-shape-corner-medium);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
             overflow: hidden;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -480,10 +413,9 @@
             gap: var(--md-sys-spacing-2);
             padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
             border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            transition: all var(--md-sys-motion-duration-short);
+            transition: background-color var(--md-sys-motion-duration-short);
             position: relative;
             min-width: fit-content;
-            background-color: var(--md-sys-color-surface);
         }
 
         @media (max-width: 768px) {
@@ -498,14 +430,12 @@
         }
 
         .tree-node-content.dragging, .article-field-content.dragging {
-            opacity: 0.7;
+            opacity: 0.5;
             background-color: var(--md-sys-color-primary-container);
-            border: 2px dashed var(--luka-pink);
         }
 
         .tree-node-content.drag-over, .article-field-content.drag-over {
-            border-top: 3px solid var(--luka-pink);
-            background-color: rgba(255, 107, 157, 0.1);
+            border-top: 3px solid var(--md-sys-color-primary);
         }
 
         .tree-indent, .field-indent {
@@ -534,9 +464,8 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--luka-pink), var(--luka-coral));
-            border-radius: 1px;
+            width: 1px;
+            background-color: var(--tree-line-color);
         }
 
         .tree-line::after, .field-line::after {
@@ -545,9 +474,8 @@
             left: 50%;
             top: 50%;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--luka-pink), transparent);
-            border-radius: 1px;
+            height: 1px;
+            background-color: var(--tree-line-color);
         }
 
         .tree-line.last::before, .field-line.last::before {
@@ -555,79 +483,33 @@
         }
 
         .tree-toggle, .field-toggle {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             border-radius: var(--md-sys-shape-corner-small);
-            color: var(--luka-pink);
+            color: var(--md-sys-color-on-surface-variant);
             transition: all var(--md-sys-motion-duration-short);
             z-index: 2;
             background-color: var(--md-sys-color-surface);
-            border: 2px solid var(--luka-pink);
+            border: 1px solid var(--md-sys-color-outline-variant);
             flex-shrink: 0;
         }
 
         .tree-toggle:hover, .field-toggle:hover {
-            background-color: var(--luka-pink);
-            color: white;
-            transform: scale(1.1);
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-primary);
         }
 
         .tree-toggle.expanded, .field-toggle.expanded {
             transform: rotate(90deg);
-            background-color: var(--luka-pink);
-            color: white;
         }
 
         .tree-toggle.leaf, .field-toggle.leaf {
             visibility: hidden;
             pointer-events: none;
-        }
-
-        /* Move Buttons - Arrow Up/Down */
-        .move-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            flex-shrink: 0;
-        }
-
-        .move-btn {
-            width: 20px;
-            height: 18px;
-            border: none;
-            background: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-small);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--md-sys-motion-duration-short);
-            font-size: 14px;
-            padding: 0;
-        }
-
-        .move-btn:hover {
-            background-color: var(--luka-pink);
-            color: white;
-        }
-
-        .move-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .move-btn:disabled:hover {
-            background: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface-variant);
-        }
-
-        .move-btn .material-symbols-rounded {
-            font-size: 16px !important;
         }
 
         .drag-handle, .field-drag-handle {
@@ -648,13 +530,13 @@
             
             .drag-handle .material-symbols-rounded,
             .field-drag-handle .material-symbols-rounded {
-                font-size: 18px !important;
+                font-size: 16px !important;
             }
         }
 
         .drag-handle:hover, .field-drag-handle:hover {
             background-color: var(--md-sys-color-surface-variant);
-            color: var(--luka-pink);
+            color: var(--md-sys-color-on-surface);
         }
 
         .drag-handle:active, .field-drag-handle:active {
@@ -662,23 +544,23 @@
         }
 
         .tree-icon, .field-icon {
-            color: var(--luka-pink);
+            color: var(--md-sys-color-primary);
             font-variation-settings: 'FILL' 1;
             flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
             .tree-icon, .field-icon {
-                font-size: 20px !important;
+                font-size: 18px !important;
             }
         }
 
         .tree-icon.object, .field-icon.object {
-            color: var(--luka-coral);
+            color: var(--md-sys-color-tertiary);
         }
 
         .tree-icon.array, .field-icon.array {
-            color: var(--luka-purple);
+            color: var(--md-sys-color-secondary);
         }
 
         .tree-inputs, .field-inputs {
@@ -701,12 +583,11 @@
             min-width: 100px;
             max-width: 200px;
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
             font: var(--md-sys-typescale-body-medium);
-            font-weight: 500;
             outline: none;
             transition: all var(--md-sys-motion-duration-short);
         }
@@ -715,6 +596,8 @@
             .tree-key-input, .field-key-input {
                 min-width: 80px;
                 max-width: 150px;
+                font: var(--md-sys-typescale-body-medium);
+                padding: var(--md-sys-spacing-2);
             }
         }
 
@@ -727,15 +610,15 @@
         }
 
         .tree-key-input:focus, .field-key-input:focus {
-            border-color: var(--luka-pink);
-            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
         }
 
         .tree-value-input, .field-value-input {
             flex: 2;
             min-width: 150px;
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
@@ -747,6 +630,8 @@
         @media (max-width: 768px) {
             .tree-value-input, .field-value-input {
                 min-width: 100px;
+                font: var(--md-sys-typescale-body-medium);
+                padding: var(--md-sys-spacing-2);
             }
         }
 
@@ -758,8 +643,8 @@
         }
 
         .tree-value-input:focus, .field-value-input:focus {
-            border-color: var(--luka-coral);
-            box-shadow: 0 0 0 3px rgba(255, 138, 101, 0.2);
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
         }
 
         .tree-value-input:disabled,
@@ -774,12 +659,11 @@
 
         .tree-type-select, .field-type-select {
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
             font: var(--md-sys-typescale-body-medium);
-            font-weight: 500;
             cursor: pointer;
             outline: none;
             min-width: 90px;
@@ -789,6 +673,8 @@
         @media (max-width: 768px) {
             .tree-type-select, .field-type-select {
                 min-width: 80px;
+                font: var(--md-sys-typescale-body-medium);
+                padding: var(--md-sys-spacing-2);
             }
         }
 
@@ -800,8 +686,8 @@
         }
 
         .tree-type-select:focus, .field-type-select:focus {
-            border-color: var(--luka-purple);
-            box-shadow: 0 0 0 3px rgba(156, 107, 255, 0.2);
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
         }
 
         .tree-actions, .field-actions {
@@ -817,12 +703,12 @@
         }
 
         .icon-btn {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border: none;
             background: transparent;
             color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-small);
+            border-radius: var(--md-sys-shape-corner-full);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -834,8 +720,8 @@
 
         @media (max-width: 768px) {
             .icon-btn {
-                width: 32px;
-                height: 32px;
+                width: 28px;
+                height: 28px;
             }
             
             .icon-btn .material-symbols-rounded {
@@ -846,22 +732,21 @@
         .icon-btn:hover {
             background-color: var(--md-sys-color-surface-variant);
             color: var(--md-sys-color-on-surface);
-            transform: scale(1.05);
         }
 
         .icon-btn.delete:hover {
-            background-color: rgba(255, 107, 107, 0.2);
+            background-color: var(--md-sys-color-error-container);
             color: var(--md-sys-color-error);
         }
 
         .icon-btn.add-child:hover {
-            background-color: rgba(255, 107, 157, 0.2);
-            color: var(--luka-pink);
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-primary);
         }
 
         .icon-btn.copy:hover {
-            background-color: rgba(255, 138, 101, 0.2);
-            color: var(--luka-coral);
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
         }
 
         .tree-children, .field-children {
@@ -873,7 +758,6 @@
             display: none;
         }
 
-        /* Square Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -881,9 +765,8 @@
             gap: var(--md-sys-spacing-2);
             padding: var(--md-sys-spacing-3) var(--md-sys-spacing-5);
             border: none;
-            border-radius: var(--md-sys-shape-corner-medium);
+            border-radius: var(--md-sys-shape-corner-full);
             font: var(--md-sys-typescale-label-large);
-            font-weight: 600;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
             text-transform: none;
@@ -896,12 +779,14 @@
         @media (max-width: 768px) {
             .btn {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
+                font: var(--md-sys-typescale-label-medium);
             }
         }
 
         @media (max-width: 480px) {
             .btn {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+                font: var(--md-sys-typescale-label-medium);
                 gap: var(--md-sys-spacing-1);
             }
             
@@ -918,7 +803,7 @@
             width: 0;
             height: 0;
             background: rgba(255,255,255,0.3);
-            border-radius: 0;
+            border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
@@ -929,154 +814,50 @@
         }
 
         .btn-filled {
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
-            color: white;
-            box-shadow: 0 4px 0 var(--luka-pink-dark), 0 8px 20px rgba(255, 107, 157, 0.4);
-            border: 2px solid var(--luka-pink);
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .btn-filled:hover {
-            background: linear-gradient(135deg, var(--luka-pink-light), var(--luka-pink));
-            box-shadow: 0 6px 0 var(--luka-pink-dark), 0 12px 25px rgba(255, 107, 157, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-filled:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--luka-pink-dark), 0 4px 10px rgba(255, 107, 157, 0.4);
-        }
-
-        .btn-coral {
-            background: linear-gradient(135deg, var(--luka-coral), var(--luka-coral-dark));
-            color: white;
-            box-shadow: 0 4px 0 var(--luka-coral-dark), 0 8px 20px rgba(255, 138, 101, 0.4);
-            border: 2px solid var(--luka-coral);
-        }
-
-        .btn-coral:hover {
-            background: linear-gradient(135deg, var(--luka-coral-light), var(--luka-coral));
-            box-shadow: 0 6px 0 var(--luka-coral-dark), 0 12px 25px rgba(255, 138, 101, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-coral:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--luka-coral-dark), 0 4px 10px rgba(255, 138, 101, 0.4);
-        }
-
-        .btn-purple {
-            background: linear-gradient(135deg, var(--luka-purple), var(--luka-purple-dark));
-            color: white;
-            box-shadow: 0 4px 0 var(--luka-purple-dark), 0 8px 20px rgba(156, 107, 255, 0.4);
-            border: 2px solid var(--luka-purple);
-        }
-
-        .btn-purple:hover {
-            background: linear-gradient(135deg, var(--luka-purple-light), var(--luka-purple));
-            box-shadow: 0 6px 0 var(--luka-purple-dark), 0 12px 25px rgba(156, 107, 255, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-purple:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--luka-purple-dark), 0 4px 10px rgba(156, 107, 255, 0.4);
+            background-color: color-mix(in srgb, var(--md-sys-color-primary) 90%, black);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            transform: translateY(-1px);
         }
 
         .btn-tonal {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
-            box-shadow: 0 3px 0 var(--luka-coral-dark);
-            border: 2px solid var(--luka-coral);
         }
 
         .btn-tonal:hover {
             background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 90%, black);
-            box-shadow: 0 5px 0 var(--luka-coral-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-tonal:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 var(--luka-coral-dark);
         }
 
         .btn-outlined {
             background-color: transparent;
-            color: var(--luka-pink);
-            border: 2px solid var(--luka-pink);
-            box-shadow: 0 3px 0 var(--luka-pink);
+            color: var(--md-sys-color-primary);
+            border: 1px solid var(--md-sys-color-outline);
         }
 
         .btn-outlined:hover {
-            background-color: rgba(255, 107, 157, 0.1);
-            border-color: var(--luka-pink);
-            box-shadow: 0 5px 0 var(--luka-pink);
-            transform: translateY(-2px);
-        }
-
-        .btn-outlined:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 var(--luka-pink);
+            background-color: var(--md-sys-color-primary-container);
+            border-color: var(--md-sys-color-primary);
         }
 
         .btn-text {
             background-color: transparent;
-            color: var(--luka-coral);
+            color: var(--md-sys-color-primary);
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            font-weight: 600;
         }
 
         .btn-text:hover {
-            background-color: var(--md-sys-color-secondary-container);
-            border-radius: var(--md-sys-shape-corner-small);
-        }
-
-        .btn-teal {
-            background: linear-gradient(135deg, var(--luka-teal), var(--luka-teal-dark));
-            color: white;
-            box-shadow: 0 4px 0 var(--luka-teal-dark), 0 8px 20px rgba(78, 205, 196, 0.4);
-            border: 2px solid var(--luka-teal);
-        }
-
-        .btn-teal:hover {
-            background: linear-gradient(135deg, var(--luka-teal-light), var(--luka-teal));
-            box-shadow: 0 6px 0 var(--luka-teal-dark), 0 12px 25px rgba(78, 205, 196, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-teal:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--luka-teal-dark), 0 4px 10px rgba(78, 205, 196, 0.4);
-        }
-
-        .btn-rainbow {
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
-            background-size: 200% 200%;
-            color: white;
-            box-shadow: 0 4px 0 var(--luka-pink-dark), 0 8px 20px rgba(255, 107, 157, 0.4);
-            border: 2px solid white;
-            animation: rainbow-shift 3s ease infinite;
-        }
-
-        @keyframes rainbow-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .btn-rainbow:hover {
-            box-shadow: 0 6px 0 var(--luka-pink-dark), 0 12px 25px rgba(255, 107, 157, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-rainbow:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--luka-pink-dark), 0 4px 10px rgba(255, 107, 157, 0.4);
+            background-color: var(--md-sys-color-primary-container);
         }
 
         .output-section {
             position: sticky;
-            top: 120px;
+            top: 100px;
         }
 
         @media (max-width: 1200px) {
@@ -1092,12 +873,12 @@
 
         .json-preview {
             background-color: var(--md-sys-color-surface);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
             padding: var(--md-sys-spacing-4);
-            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-family: 'Roboto Mono', monospace;
             font-size: 0.875rem;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--md-sys-color-on-surface);
             overflow-x: auto;
             white-space: pre-wrap;
@@ -1111,7 +892,7 @@
         @media (max-width: 768px) {
             .json-preview {
                 padding: var(--md-sys-spacing-3);
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 max-height: 400px;
             }
         }
@@ -1119,27 +900,24 @@
         @media (max-width: 480px) {
             .json-preview {
                 padding: var(--md-sys-spacing-2);
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
         }
 
         .json-key {
-            color: var(--luka-pink);
-            font-weight: 600;
+            color: var(--md-sys-color-primary);
         }
 
         .json-string {
-            color: var(--luka-coral);
+            color: var(--md-sys-color-tertiary);
         }
 
         .json-number {
-            color: var(--luka-purple);
-            font-weight: 600;
+            color: var(--md-sys-color-secondary);
         }
 
         .json-boolean {
-            color: var(--luka-teal);
-            font-weight: 600;
+            color: var(--md-sys-color-error);
         }
 
         .copy-btn {
@@ -1147,7 +925,7 @@
             top: var(--md-sys-spacing-3);
             right: var(--md-sys-spacing-3);
             background-color: var(--md-sys-color-surface-1);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
             z-index: 10;
         }
 
@@ -1155,8 +933,8 @@
             .copy-btn {
                 top: var(--md-sys-spacing-2);
                 right: var(--md-sys-spacing-2);
-                width: 32px;
-                height: 32px;
+                width: 28px;
+                height: 28px;
             }
         }
 
@@ -1208,31 +986,28 @@
             color: var(--md-sys-color-on-surface-variant);
             border-radius: var(--md-sys-shape-corner-small);
             font: var(--md-sys-typescale-label-medium);
-            font-weight: 500;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
-            border: 2px solid transparent;
+            border: 1px solid transparent;
             white-space: nowrap;
         }
 
         @media (max-width: 480px) {
             .chip {
                 padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font-size: 0.75rem;
+                font: var(--md-sys-typescale-label-small);
             }
         }
 
         .chip:hover {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
-            border-color: var(--luka-coral);
         }
 
         .chip.active {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(255, 138, 101, 0.2));
+            background-color: var(--md-sys-color-primary-container);
             color: var(--md-sys-color-on-primary-container);
-            border-color: var(--luka-pink);
-            font-weight: 600;
+            border-color: var(--md-sys-color-primary);
         }
 
         .snackbar {
@@ -1240,11 +1015,11 @@
             bottom: var(--md-sys-spacing-6);
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
-            color: white;
+            background-color: var(--md-sys-color-inverse-surface, #2d322b);
+            color: var(--md-sys-color-inverse-on-surface, #f0f2eb);
             padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
-            border-radius: var(--md-sys-shape-corner-medium);
-            box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4);
+            border-radius: var(--md-sys-shape-corner-small);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
             display: flex;
             align-items: center;
             gap: var(--md-sys-spacing-4);
@@ -1253,13 +1028,12 @@
             transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
             max-width: 90vw;
             width: auto;
-            font-weight: 600;
         }
 
         @media (max-width: 480px) {
             .snackbar {
                 padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-                font-size: 0.875rem;
+                font: var(--md-sys-typescale-body-medium);
                 gap: var(--md-sys-spacing-2);
             }
         }
@@ -1275,7 +1049,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1283,7 +1057,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all var(--md-sys-motion-duration-medium);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
             padding: var(--md-sys-spacing-4);
         }
 
@@ -1302,8 +1076,7 @@
             overflow-y: auto;
             transform: scale(0.9);
             transition: transform var(--md-sys-motion-duration-medium);
-            box-shadow: var(--luka-box-shadow);
-            border: 3px solid var(--luka-pink);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             width: 100%;
         }
 
@@ -1326,14 +1099,9 @@
         }
 
         .dialog-title {
-            font: var(--md-sys-typescale-headline-small);
-            font-weight: 700;
+            font: var(--md-sys-typescale-headline-small, 400 1.5rem/2rem 'Roboto Flex');
             color: var(--md-sys-color-on-surface);
             margin-bottom: var(--md-sys-spacing-4);
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         @media (max-width: 768px) {
@@ -1347,11 +1115,11 @@
             font: var(--md-sys-typescale-body-medium);
             color: var(--md-sys-color-on-surface-variant);
             margin-bottom: var(--md-sys-spacing-6);
-            line-height: 1.7;
         }
 
         @media (max-width: 768px) {
             .dialog-content {
+                font: var(--md-sys-typescale-body-medium);
                 margin-bottom: var(--md-sys-spacing-4);
             }
         }
@@ -1392,34 +1160,102 @@
         }
 
         .empty-state-icon {
-            font-size: 56px;
+            font-size: 48px;
             margin-bottom: var(--md-sys-spacing-4);
             opacity: 0.5;
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         @media (max-width: 768px) {
             .empty-state-icon {
-                font-size: 42px;
+                font-size: 36px;
                 margin-bottom: var(--md-sys-spacing-3);
             }
+        }
+
+        @media (max-width: 768px) {
+            .tree-inputs, .field-inputs {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+
+            .tree-key-input, .field-key-input,
+            .tree-value-input, .field-value-input,
+            .tree-type-select, .field-type-select {
+                width: 100%;
+                max-width: none;
+                min-width: unset;
+            }
+
+            .tree-key-input, .field-key-input {
+                order: 1;
+            }
+
+            .tree-type-select, .field-type-select {
+                order: 2;
+                width: auto;
+                align-self: flex-start;
+            }
+
+            .tree-value-input, .field-value-input {
+                order: 3;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tree-actions, .field-actions {
+                position: absolute;
+                top: var(--md-sys-spacing-2);
+                right: var(--md-sys-spacing-2);
+                background: rgba(var(--md-sys-color-surface), 0.9);
+                border-radius: var(--md-sys-shape-corner-small);
+                padding: 2px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+
+            .tree-node-content:active .tree-actions,
+            .tree-node-content:hover .tree-actions,
+            .article-field-content:active .field-actions,
+            .article-field-content:hover .field-actions {
+                opacity: 1;
+            }
+        }
+
+        .json-preview {
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 480px) {
+            .json-preview {
+                font-size: 0.7rem;
+            }
+        }
+
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 24px;
-            height: 24px;
-            padding: 0 8px;
-            background: linear-gradient(135deg, var(--luka-coral), var(--luka-coral-dark));
-            color: white;
-            border-radius: var(--md-sys-shape-corner-small);
-            font: var(--md-sys-typescale-label-small);
-            font-weight: 700;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 6px;
+            background-color: var(--md-sys-color-error);
+            color: var(--md-sys-color-on-primary);
+            border-radius: var(--md-sys-shape-corner-full);
+            font: var(--md-sys-typescale-label-small, 500 0.7rem/1 'Roboto Flex');
             margin-left: var(--md-sys-spacing-2);
         }
 
@@ -1428,8 +1264,7 @@
             align-items: center;
             gap: var(--md-sys-spacing-2);
             font: var(--md-sys-typescale-label-medium);
-            font-weight: 600;
-            color: var(--luka-pink);
+            color: var(--md-sys-color-primary);
             margin-left: auto;
         }
 
@@ -1440,19 +1275,19 @@
         }
 
         .live-dot {
-            width: 10px;
-            height: 10px;
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
-            border-radius: 0;
+            width: 8px;
+            height: 8px;
+            background-color: var(--md-sys-color-primary);
+            border-radius: 50%;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 10px var(--luka-pink);
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.2); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
+        /* Article Generator Styles */
         .article-generator {
             margin-top: var(--md-sys-spacing-6);
         }
@@ -1480,7 +1315,6 @@
             display: flex;
             align-items: center;
             gap: var(--md-sys-spacing-2);
-            font-weight: 600;
         }
 
         @media (max-width: 480px) {
@@ -1505,7 +1339,6 @@
             font: var(--md-sys-typescale-label-large);
             color: var(--md-sys-color-on-surface);
             margin-bottom: var(--md-sys-spacing-2);
-            font-weight: 600;
         }
 
         @media (max-width: 480px) {
@@ -1519,7 +1352,7 @@
         .form-textarea {
             width: 100%;
             padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
@@ -1533,21 +1366,22 @@
             .form-select,
             .form-textarea {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+                font: var(--md-sys-typescale-body-medium);
             }
         }
 
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
-            border-color: var(--luka-pink);
-            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
         }
 
         .form-textarea {
             min-height: 120px;
             resize: vertical;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            font-family: 'Roboto Flex', sans-serif;
+            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
@@ -1559,7 +1393,7 @@
         .form-select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF6B9D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
             background-size: 16px;
@@ -1597,7 +1431,6 @@
             color: var(--md-sys-color-on-surface-variant);
             border-radius: var(--md-sys-shape-corner-small);
             font: var(--md-sys-typescale-label-large);
-            font-weight: 500;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
             border: 2px solid transparent;
@@ -1614,7 +1447,7 @@
         @media (max-width: 480px) {
             .radio-label {
                 padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font-size: 0.75rem;
+                font: var(--md-sys-typescale-label-small);
                 gap: var(--md-sys-spacing-1);
             }
             
@@ -1624,10 +1457,9 @@
         }
 
         .radio-item input[type="radio"]:checked + .radio-label {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(255, 138, 101, 0.2));
+            background-color: var(--md-sys-color-primary-container);
             color: var(--md-sys-color-on-primary-container);
-            border-color: var(--luka-pink);
-            font-weight: 600;
+            border-color: var(--md-sys-color-primary);
         }
 
         .radio-label:hover {
@@ -1636,7 +1468,7 @@
 
         .output-area {
             background-color: var(--md-sys-color-surface);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
             padding: var(--md-sys-spacing-4);
             min-height: 200px;
@@ -1655,6 +1487,7 @@
                 padding: var(--md-sys-spacing-3);
                 min-height: 150px;
                 max-height: 300px;
+                font: var(--md-sys-typescale-body-medium);
             }
         }
 
@@ -1665,12 +1498,11 @@
         }
 
         .btn-generate {
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
-            color: white;
+            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
+            color: var(--md-sys-color-on-primary);
             font-size: 1rem;
             padding: var(--md-sys-spacing-4) var(--md-sys-spacing-8);
-            box-shadow: 0 4px 0 var(--luka-coral-dark), 0 8px 20px rgba(255, 107, 157, 0.4);
-            border: 2px solid white;
+            box-shadow: 0 4px 12px rgba(56, 106, 32, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -1689,12 +1521,11 @@
 
         .btn-generate:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 0 var(--luka-coral-dark), 0 12px 25px rgba(255, 107, 157, 0.5);
+            box-shadow: 0 6px 20px rgba(56, 106, 32, 0.4);
         }
 
         .btn-generate:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 var(--luka-coral-dark), 0 4px 10px rgba(255, 107, 157, 0.4);
+            transform: translateY(0);
         }
 
         .btn-copy {
@@ -1702,7 +1533,7 @@
             top: var(--md-sys-spacing-3);
             right: var(--md-sys-spacing-3);
             background-color: var(--md-sys-color-surface-1);
-            border: 2px solid var(--md-sys-color-outline-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
         }
 
         .two-column {
@@ -1726,15 +1557,14 @@
 
         @media (max-width: 480px) {
             .hint-text {
-                font-size: 0.75rem;
+                font: var(--md-sys-typescale-label-small);
             }
         }
 
         .divider {
-            height: 2px;
-            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
+            height: 1px;
+            background-color: var(--md-sys-color-outline-variant);
             margin: var(--md-sys-spacing-6) 0;
-            border-radius: 1px;
         }
 
         @media (max-width: 768px) {
@@ -1760,7 +1590,7 @@
             display: flex;
             gap: var(--md-sys-spacing-2);
             margin-bottom: var(--md-sys-spacing-4);
-            border-bottom: 2px solid var(--md-sys-color-outline-variant);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
             padding-bottom: var(--md-sys-spacing-4);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -1780,7 +1610,6 @@
             border: none;
             color: var(--md-sys-color-on-surface-variant);
             font: var(--md-sys-typescale-label-large);
-            font-weight: 600;
             cursor: pointer;
             border-radius: var(--md-sys-shape-corner-small);
             transition: all var(--md-sys-motion-duration-short);
@@ -1799,7 +1628,7 @@
         @media (max-width: 480px) {
             .tool-nav-btn {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font-size: 0.875rem;
+                font: var(--md-sys-typescale-label-medium);
             }
             
             .tool-nav-btn .material-symbols-rounded {
@@ -1814,24 +1643,24 @@
         }
 
         .tool-nav-btn.active {
-            color: var(--luka-pink);
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.15), rgba(255, 138, 101, 0.15));
+            color: var(--md-sys-color-primary);
+            background-color: var(--md-sys-color-primary-container);
         }
 
         .tool-nav-btn.active::after {
             content: '';
             position: absolute;
-            bottom: -18px;
+            bottom: -17px;
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral));
-            border-radius: 0;
+            background-color: var(--md-sys-color-primary);
+            border-radius: 3px 3px 0 0;
         }
 
         @media (max-width: 768px) {
             .tool-nav-btn.active::after {
-                bottom: -14px;
+                bottom: -13px;
             }
         }
 
@@ -1858,47 +1687,46 @@
 
         @media (max-width: 480px) {
             .char-counter {
-                font-size: 0.75rem;
+                font: var(--md-sys-typescale-label-small);
             }
         }
 
         .char-counter.warning {
             color: var(--md-sys-color-error);
-            font-weight: 600;
         }
 
+        /* Example Box Styles */
         .example-box {
-            background: linear-gradient(135deg, rgba(255, 138, 101, 0.15), rgba(255, 107, 157, 0.15));
-            border-left: 4px solid var(--luka-coral);
+            background-color: var(--md-sys-color-secondary-container);
+            border-left: 4px solid var(--md-sys-color-secondary);
             padding: var(--md-sys-spacing-4);
             margin-top: var(--md-sys-spacing-3);
             border-radius: 0 var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0;
             font: var(--md-sys-typescale-body-medium);
             color: var(--md-sys-color-on-secondary-container);
-            line-height: 1.7;
         }
 
         @media (max-width: 768px) {
             .example-box {
                 padding: var(--md-sys-spacing-3);
+                font: var(--md-sys-typescale-body-medium);
             }
         }
 
         @media (max-width: 480px) {
             .example-box {
                 padding: var(--md-sys-spacing-2);
-                font-size: 0.875rem;
+                font: var(--md-sys-typescale-body-small);
             }
         }
 
         .example-box-title {
             font: var(--md-sys-typescale-label-large);
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: var(--md-sys-spacing-2);
             display: flex;
             align-items: center;
             gap: var(--md-sys-spacing-2);
-            color: var(--luka-coral);
         }
 
         @media (max-width: 480px) {
@@ -1925,8 +1753,8 @@
         }
 
         .example-label {
-            font-weight: 700;
-            color: var(--luka-coral);
+            font-weight: 600;
+            color: var(--md-sys-color-secondary);
         }
 
         .load-example-btn {
@@ -1942,11 +1770,12 @@
             }
         }
 
+        /* Field Editor Tabs */
         .field-editor-tabs {
             display: flex;
             gap: var(--md-sys-spacing-2);
             margin-bottom: var(--md-sys-spacing-4);
-            border-bottom: 2px solid var(--md-sys-color-outline-variant);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
@@ -1964,7 +1793,6 @@
             border: none;
             color: var(--md-sys-color-on-surface-variant);
             font: var(--md-sys-typescale-label-large);
-            font-weight: 600;
             cursor: pointer;
             border-radius: var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0 0;
             transition: all var(--md-sys-motion-duration-short);
@@ -1986,18 +1814,18 @@
         }
 
         .field-editor-tab.active {
-            color: var(--luka-pink);
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.15), rgba(255, 138, 101, 0.15));
+            color: var(--md-sys-color-primary);
+            background-color: var(--md-sys-color-primary-container);
         }
 
         .field-editor-tab.active::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -1px;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral));
+            height: 2px;
+            background-color: var(--md-sys-color-primary);
         }
 
         .field-editor-content {
@@ -2027,21 +1855,20 @@
             align-items: center;
             gap: var(--md-sys-spacing-1);
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            background: linear-gradient(135deg, rgba(156, 107, 255, 0.2), rgba(78, 205, 196, 0.2));
+            background-color: var(--md-sys-color-tertiary-container);
             color: var(--md-sys-color-on-tertiary-container);
             border-radius: var(--md-sys-shape-corner-small);
             font: var(--md-sys-typescale-label-medium);
-            font-weight: 600;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
-            border: 2px solid transparent;
+            border: 1px solid transparent;
             white-space: nowrap;
         }
 
         @media (max-width: 480px) {
             .preset-chip {
                 padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font-size: 0.75rem;
+                font: var(--md-sys-typescale-label-small);
             }
             
             .preset-chip .material-symbols-rounded {
@@ -2050,12 +1877,11 @@
         }
 
         .preset-chip:hover {
-            background: linear-gradient(135deg, var(--luka-purple), var(--luka-purple-dark));
-            color: white;
-            border-color: var(--luka-purple);
-            transform: translateY(-2px);
+            background-color: var(--md-sys-color-tertiary);
+            color: var(--md-sys-color-on-tertiary);
         }
 
+        /* Touch-friendly improvements */
         @media (hover: none) and (pointer: coarse) {
             .drag-handle, .field-drag-handle {
                 opacity: 1;
@@ -2063,30 +1889,34 @@
             }
             
             .icon-btn {
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
             }
             
             .tree-toggle, .field-toggle {
-                width: 28px;
-                height: 28px;
+                width: 24px;
+                height: 24px;
             }
         }
 
+        /* Prevent text selection during drag */
         .dragging, .dragging * {
             user-select: none !important;
             -webkit-user-select: none !important;
         }
 
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
+        /* Focus visible for accessibility */
         *:focus-visible {
-            outline: 3px solid var(--luka-pink);
+            outline: 2px solid var(--md-sys-color-primary);
             outline-offset: 2px;
         }
 
+        /* Reduce motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -2094,2090 +1924,17 @@
                 transition-duration: 0.01ms !important;
             }
         }
-
-        .import-textarea {
-            width: 100%;
-            min-height: 150px;
-            padding: var(--md-sys-spacing-3);
-            border: 2px solid var(--md-sys-color-outline-variant);
-            border-radius: var(--md-sys-shape-corner-medium);
-            background-color: var(--md-sys-color-surface);
-            color: var(--md-sys-color-on-surface);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
-            resize: vertical;
-            outline: none;
-            transition: all var(--md-sys-motion-duration-short);
-        }
-
-        .import-textarea:focus {
-            border-color: var(--luka-pink);
-            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.2);
-        }
-
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-2);
-            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border-radius: var(--md-sys-shape-corner-small);
-            font: var(--md-sys-typescale-label-medium);
-            font-weight: 600;
-        }
-
-        .status-success {
-            background-color: rgba(78, 205, 196, 0.2);
-            color: var(--luka-teal);
-        }
-
-        .status-error {
-            background-color: rgba(255, 107, 107, 0.2);
-            color: var(--md-sys-color-error);
-        }
-    
-        /* ============================================
-           PERBAIKAN DARK MODE - WARNA LEBIH TERANG
-           ============================================ */
-        [data-theme="dark"] {
-            --md-sys-color-on-surface: #F0F0F5 !important;
-            --md-sys-color-on-surface-variant: #C8C8D8 !important;
-            --md-sys-color-outline: #8B8BA0 !important;
-            --md-sys-color-outline-variant: #4A4A6A !important;
-        }
-
-        /* ============================================
-           PERBAIKAN MOVE BUTTONS - LEBIH BESAR
-           ============================================ */
-        .move-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            flex-shrink: 0;
-            padding: 2px;
-        }
-
-        .move-btn {
-            width: 32px;
-            height: 28px;
-            border: 2px solid var(--md-sys-color-outline);
-            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
-            color: var(--md-sys-color-on-surface);
-            border-radius: var(--md-sys-shape-corner-small);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 18px;
-            padding: 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .move-btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
-            color: white;
-            border-color: var(--luka-pink);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(255, 107, 157, 0.4);
-        }
-
-        .move-btn:active:not(:disabled) {
-            transform: translateY(0);
-            box-shadow: 0 1px 2px rgba(255, 107, 157, 0.3);
-        }
-
-        .move-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            background: var(--md-sys-color-surface-variant);
-            border-color: var(--md-sys-color-outline-variant);
-        }
-
-        .move-btn .material-symbols-rounded {
-            font-size: 20px !important;
-            font-weight: 700;
-        }
-
-        /* ============================================
-           PERBAIKAN INPUT DISABLED - KONTRAS LEBIH BAIK
-           ============================================ */
-        .tree-value-input:disabled,
-        .tree-value-input.object-mode,
-        .field-value-input:disabled,
-        .field-value-input.object-mode {
-            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
-            color: var(--md-sys-color-on-surface-variant);
-            font-style: italic;
-            cursor: not-allowed;
-            border-color: var(--md-sys-color-outline-variant);
-            opacity: 0.8;
-        }
-
-        /* ============================================
-           ANIMASI UNTUK TREE NODE
-           ============================================ */
-        .tree-node-content, .article-field-content {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .tree-node-content:hover, .article-field-content:hover {
-            background: linear-gradient(90deg, var(--tree-hover) 0%, var(--md-sys-color-surface-1) 100%);
-            transform: translateX(4px);
-        }
-
-        /* ============================================
-           ANIMASI DRAG
-           ============================================ */
-        .tree-node-content.dragging, .article-field-content.dragging {
-            opacity: 0.9;
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(255, 138, 101, 0.2));
-            border: 2px dashed var(--luka-pink);
-            box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3);
-            transform: scale(1.02) rotate(1deg);
-            animation: drag-pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes drag-pulse {
-            0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.3); }
-            50% { box-shadow: 0 12px 32px rgba(255, 107, 157, 0.5); }
-        }
-
-        .tree-node-content.drag-over, .article-field-content.drag-over {
-            border-top: 4px solid var(--luka-pink);
-            background: linear-gradient(180deg, rgba(255, 107, 157, 0.15) 0%, transparent 100%);
-            animation: drop-target 0.6s ease-in-out infinite alternate;
-        }
-
-        @keyframes drop-target {
-            from { border-top-width: 4px; }
-            to { border-top-width: 6px; }
-        }
-
-        /* ============================================
-           ANIMASI TOGGLE BUTTON
-           ============================================ */
-        .tree-toggle, .field-toggle {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: var(--md-sys-shape-corner-small);
-            color: var(--luka-pink);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 2;
-            background: linear-gradient(135deg, var(--md-sys-color-surface), var(--md-sys-color-surface-1));
-            border: 2px solid var(--luka-pink);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .tree-toggle:hover, .field-toggle:hover {
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
-            color: white;
-            transform: scale(1.15) rotate(90deg);
-            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4);
-        }
-
-        .tree-toggle.expanded, .field-toggle.expanded {
-            transform: rotate(90deg);
-            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
-            color: white;
-        }
-
-        .tree-toggle.expanded:hover, .field-toggle.expanded:hover {
-            transform: rotate(90deg) scale(1.15);
-        }
-
-        /* ============================================
-           ANIMASI ICON BUTTON
-           ============================================ */
-        .icon-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            background: transparent;
-            color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-small);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            font-variation-settings: 'FILL' 0, 'wght' 400;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .icon-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s, height 0.4s;
-        }
-
-        .icon-btn:hover::before {
-            width: 100%;
-            height: 100%;
-        }
-
-        .icon-btn:hover {
-            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
-            color: var(--md-sys-color-on-surface);
-            transform: translateY(-2px) scale(1.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .icon-btn.delete:hover {
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 107, 107, 0.1));
-            color: var(--md-sys-color-error);
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-        }
-
-        .icon-btn.add-child:hover {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(255, 107, 157, 0.1));
-            color: var(--luka-pink);
-            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
-        }
-
-        .icon-btn.copy:hover {
-            background: linear-gradient(135deg, rgba(255, 138, 101, 0.3), rgba(255, 138, 101, 0.1));
-            color: var(--luka-coral);
-            box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3);
-        }
-
-        /* ============================================
-           ANIMASI INPUT FOCUS
-           ============================================ */
-        .tree-key-input, .field-key-input {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .tree-key-input:focus, .field-key-input:focus {
-            border-color: var(--luka-pink);
-            box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.25), 0 4px 12px rgba(255, 107, 157, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .tree-value-input, .field-value-input {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .tree-value-input:focus, .field-value-input:focus {
-            border-color: var(--luka-coral);
-            box-shadow: 0 0 0 4px rgba(255, 138, 101, 0.25), 0 4px 12px rgba(255, 138, 101, 0.15);
-            transform: translateY(-1px);
-        }
-
-        /* ============================================
-           ANIMASI CHIP
-           ============================================ */
-        .chip {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chip::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .chip:hover::before {
-            left: 100%;
-        }
-
-        .chip:hover {
-            background: linear-gradient(135deg, var(--md-sys-color-secondary-container), rgba(255, 138, 101, 0.2));
-            color: var(--md-sys-color-on-secondary-container);
-            border-color: var(--luka-coral);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 138, 101, 0.2);
-        }
-
-        .chip.active {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(255, 138, 101, 0.3));
-            color: var(--md-sys-color-on-surface);
-            border-color: var(--luka-pink);
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
-            animation: chip-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes chip-glow {
-            from { box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3); }
-            to { box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5); }
-        }
-
-        /* ============================================
-           ANIMASI BUTTON
-           ============================================ */
-        .btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:active::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-filled:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 0 var(--luka-pink-dark), 0 12px 30px rgba(255, 107, 157, 0.5);
-        }
-
-        .btn-filled:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 0 var(--luka-pink-dark), 0 4px 15px rgba(255, 107, 157, 0.4);
-        }
-
-        /* ============================================
-           PERBAIKAN JSON PREVIEW
-           ============================================ */
-        .json-preview {
-            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-1) 100%);
-            border: 2px solid var(--md-sys-color-outline-variant);
-        }
-
-        .json-key {
-            color: #FF85B3;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 107, 157, 0.3);
-        }
-
-        .json-string {
-            color: #FFA88A;
-            font-weight: 500;
-        }
-
-        .json-number {
-            color: #B8A0FF;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(156, 107, 255, 0.3);
-        }
-
-        .json-boolean {
-            color: #6EE8E0;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
-        }
-
-        /* ============================================
-           ANIMASI CARD
-           ============================================ */
-        .card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(255, 107, 157, 0.2), 0 4px 0 var(--luka-pink);
-        }
-
-        /* ============================================
-           ANIMASI DRAG HANDLE
-           ============================================ */
-        .drag-handle, .field-drag-handle {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .drag-handle:hover, .field-drag-handle:hover {
-            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
-            color: var(--luka-pink);
-            transform: scale(1.2);
-            cursor: grab;
-        }
-
-        .drag-handle:active, .field-drag-handle:active {
-            cursor: grabbing;
-            transform: scale(0.95);
-        }
-
-        /* ============================================
-           ANIMASI SNACKBAR
-           ============================================ */
-        .snackbar {
-            animation: snackbar-enter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes snackbar-enter {
-            from {
-                transform: translateX(-50%) translateY(100px) scale(0.9);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(-50%) translateY(0) scale(1);
-                opacity: 1;
-            }
-        }
-
-        .snackbar.show {
-            animation: snackbar-pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes snackbar-pulse {
-            0%, 100% { box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4); }
-            50% { box-shadow: 0 12px 32px rgba(255, 107, 157, 0.6); }
-        }
-
-        /* ============================================
-           ANIMASI TREE LINES
-           ============================================ */
-        .tree-line::before, .field-line::before {
-            background: linear-gradient(180deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
-            opacity: 0.6;
-        }
-
-        .tree-line::after, .field-line::after {
-            background: linear-gradient(90deg, var(--luka-pink), transparent);
-            opacity: 0.6;
-        }
-
-        /* ============================================
-           PERBAIKAN UNTUK MOBILE
-           ============================================ */
-        @media (max-width: 768px) {
-            .move-buttons {
-                gap: 3px;
-            }
-
-            .move-btn {
-                width: 36px;
-                height: 32px;
-                font-size: 20px;
-            }
-
-            .move-btn .material-symbols-rounded {
-                font-size: 22px !important;
-            }
-
-            .tree-toggle, .field-toggle {
-                width: 32px;
-                height: 32px;
-            }
-
-            .icon-btn {
-                width: 44px;
-                height: 44px;
-            }
-        }
-
-        /* ============================================
-           ANIMASI APP BAR
-           ============================================ */
-        .app-bar {
-            animation: app-bar-glow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes app-bar-glow {
-            from { box-shadow: var(--luka-box-shadow); }
-            to { box-shadow: 0 4px 0 var(--luka-pink-dark), 0 12px 30px rgba(255, 107, 157, 0.5); }
-        }
-
-        /* ============================================
-           ANIMASI LOGO
-           ============================================ */
-        .logo {
-            animation: logo-pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes logo-pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(255, 107, 157, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6); }
-        }
-
-        /* ============================================
-           PERBAIKAN EMPTY STATE
-           ============================================ */
-        .empty-state {
-            animation: empty-state-fade 0.6s ease-out;
-        }
-
-        @keyframes empty-state-fade {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .empty-state-icon {
-            animation: empty-state-float 3s ease-in-out infinite;
-        }
-
-        @keyframes empty-state-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* ============================================
-           PERBAIKAN WARNA ARTICLE GENERATOR
-           ============================================ */
-
-        /* Warna berbeda untuk Article Generator vs JSON Builder */
-        #article-tool {
-            --article-primary: #00D9C0;
-            --article-primary-dark: #00B8A3;
-            --article-primary-light: #5FF5E3;
-            --article-secondary: #FF6B9D;
-            --article-tertiary: #B8A0FF;
-        }
-
-        /* Article Generator - Warna Teal/Cyan yang berbeda dari Pink */
-        #article-tool .card::before {
-            background: linear-gradient(90deg, var(--article-primary), var(--article-secondary), var(--article-tertiary));
-        }
-
-        #article-tool .tree-icon,
-        #article-tool .field-icon {
-            color: var(--article-primary);
-        }
-
-        #article-tool .tree-icon.object,
-        #article-tool .field-icon.object {
-            color: var(--article-secondary);
-        }
-
-        #article-tool .tree-icon.array,
-        #article-tool .field-icon.array {
-            color: var(--article-tertiary);
-        }
-
-        #article-tool .tree-toggle,
-        #article-tool .field-toggle {
-            color: var(--article-primary);
-            border-color: var(--article-primary);
-        }
-
-        #article-tool .tree-toggle:hover,
-        #article-tool .field-toggle:hover {
-            background: linear-gradient(135deg, var(--article-primary), var(--article-primary-dark));
-        }
-
-        #article-tool .move-btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, var(--article-primary), var(--article-primary-dark));
-            border-color: var(--article-primary);
-            box-shadow: 0 4px 8px rgba(0, 217, 192, 0.4);
-        }
-
-        #article-tool .tree-key-input:focus,
-        #article-tool .field-key-input:focus {
-            border-color: var(--article-primary);
-            box-shadow: 0 0 0 4px rgba(0, 217, 192, 0.25), 0 4px 12px rgba(0, 217, 192, 0.15);
-        }
-
-        #article-tool .icon-btn.add-child:hover {
-            background: linear-gradient(135deg, rgba(0, 217, 192, 0.3), rgba(0, 217, 192, 0.1));
-            color: var(--article-primary);
-            box-shadow: 0 4px 12px rgba(0, 217, 192, 0.3);
-        }
-
-        #article-tool .chip.active {
-            background: linear-gradient(135deg, rgba(0, 217, 192, 0.3), rgba(255, 107, 157, 0.3));
-            border-color: var(--article-primary);
-            box-shadow: 0 4px 12px rgba(0, 217, 192, 0.3);
-            animation: chip-glow-article 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes chip-glow-article {
-            from { box-shadow: 0 4px 12px rgba(0, 217, 192, 0.3); }
-            to { box-shadow: 0 6px 20px rgba(0, 217, 192, 0.5); }
-        }
-
-        #article-tool .card:hover {
-            box-shadow: 0 12px 40px rgba(0, 217, 192, 0.15), 0 4px 0 var(--article-primary);
-        }
-
-        #article-tool .json-key {
-            color: #5FF5E3;
-            text-shadow: 0 0 10px rgba(0, 217, 192, 0.3);
-        }
-
-        #article-tool .json-string {
-            color: #FFB8D0;
-        }
-
-        #article-tool .json-number {
-            color: #D4C4FF;
-            text-shadow: 0 0 10px rgba(184, 160, 255, 0.3);
-        }
-
-        #article-tool .json-boolean {
-            color: #6EE8E0;
-            text-shadow: 0 0 10px rgba(0, 217, 192, 0.3);
-        }
-
-        /* Preset chip dengan warna berbeda */
-        #article-tool .preset-chip {
-            background: linear-gradient(135deg, rgba(0, 217, 192, 0.2), rgba(184, 160, 255, 0.2));
-            color: #E0F7FA;
-        }
-
-        #article-tool .preset-chip:hover {
-            background: linear-gradient(135deg, var(--article-primary), var(--article-primary-dark));
-            border-color: var(--article-primary);
-        }
-
-        /* Tool nav active state berbeda */
-        #article-tool .tool-nav-btn.active {
-            color: var(--article-primary);
-            background: linear-gradient(135deg, rgba(0, 217, 192, 0.15), rgba(255, 107, 157, 0.15));
-        }
-
-        #article-tool .tool-nav-btn.active::after {
-            background: linear-gradient(90deg, var(--article-primary), var(--article-secondary));
-        }
-
-        /* Field editor tab berbeda */
-        #article-tool .field-editor-tab.active {
-            color: var(--article-primary);
-            background: linear-gradient(135deg, rgba(0, 217, 192, 0.15), rgba(255, 107, 157, 0.15));
-        }
-
-        #article-tool .field-editor-tab.active::after {
-            background: linear-gradient(90deg, var(--article-primary), var(--article-secondary));
-        }
-
-        /* ============================================
-           PERBAIKAN RESPONSIVITAS & USER FRIENDLY
-           ============================================ */
-
-        /* Touch target yang lebih besar untuk mobile */
-        @media (max-width: 768px) {
-            .tree-node-content, .article-field-content {
-                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-2);
-                gap: var(--md-sys-spacing-2);
-            }
-
-            .tree-inputs, .field-inputs {
-                flex-wrap: wrap;
-                gap: var(--md-sys-spacing-2);
-            }
-
-            .tree-key-input, .field-key-input {
-                min-width: 100%;
-                max-width: 100%;
-                font-size: 16px; /* Prevent zoom on iOS */
-            }
-
-            .tree-value-input, .field-value-input {
-                min-width: 100%;
-                font-size: 16px;
-            }
-
-            .tree-type-select, .field-type-select {
-                width: 100%;
-                font-size: 16px;
-            }
-
-            .move-buttons {
-                flex-direction: row;
-                gap: 4px;
-            }
-
-            .move-btn {
-                width: 40px;
-                height: 36px;
-            }
-
-            .icon-btn {
-                width: 44px;
-                height: 44px;
-            }
-
-            .tree-actions, .field-actions {
-                gap: 4px;
-            }
-
-            /* App bar lebih compact */
-            .app-bar {
-                padding: var(--md-sys-spacing-3);
-                gap: var(--md-sys-spacing-2);
-            }
-
-            .app-title {
-                font-size: 1rem;
-                max-width: 150px;
-            }
-
-            /* Card padding lebih kecil */
-            .card {
-                padding: var(--md-sys-spacing-4);
-            }
-
-            /* Action bar stack pada mobile */
-            .action-bar {
-                flex-direction: column;
-                gap: var(--md-sys-spacing-2);
-            }
-
-            .action-bar .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* Tool nav scroll horizontal */
-            .tool-nav {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-
-            .tool-nav::-webkit-scrollbar {
-                display: none;
-            }
-
-            .tool-nav-btn {
-                flex-shrink: 0;
-                white-space: nowrap;
-            }
-
-            /* Chip group scroll horizontal */
-            .chip-group {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                flex-wrap: nowrap;
-                padding-bottom: var(--md-sys-spacing-2);
-            }
-
-            .chip-group::-webkit-scrollbar {
-                display: none;
-            }
-
-            .chip {
-                flex-shrink: 0;
-            }
-
-            /* Preset fields scroll horizontal */
-            .preset-fields {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                flex-wrap: nowrap;
-                padding-bottom: var(--md-sys-spacing-2);
-            }
-
-            .preset-fields::-webkit-scrollbar {
-                display: none;
-            }
-
-            .preset-chip {
-                flex-shrink: 0;
-            }
-
-            /* JSON preview font lebih kecil */
-            .json-preview {
-                font-size: 0.75rem;
-                padding: var(--md-sys-spacing-3);
-            }
-
-            /* Dialog full screen pada mobile kecil */
-            @media (max-width: 480px) {
-                .dialog {
-                    margin: var(--md-sys-spacing-2);
-                    min-height: calc(100vh - 32px);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-
-                .dialog-actions {
-                    flex-direction: column-reverse;
-                    gap: var(--md-sys-spacing-2);
-                }
-
-                .dialog-actions .btn {
-                    width: 100%;
-                }
-            }
-        }
-
-        /* Tablet adjustments */
-        @media (min-width: 769px) and (max-width: 1200px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .output-section {
-                position: relative;
-                top: 0;
-            }
-        }
-
-        /* ============================================
-           USER FRIENDLY IMPROVEMENTS
-           ============================================ */
-
-        /* Focus visible yang jelas untuk accessibility */
-        *:focus-visible {
-            outline: 3px solid var(--luka-pink);
-            outline-offset: 2px;
-            border-radius: var(--md-sys-shape-corner-small);
-        }
-
-        #article-tool *:focus-visible {
-            outline-color: var(--article-primary);
-        }
-
-        /* Hover states yang lebih jelas */
-        .tree-node-content:hover .tree-key-input,
-        .article-field-content:hover .field-key-input {
-            border-color: var(--md-sys-color-outline);
-        }
-
-        .tree-node-content:hover .tree-value-input:not(:disabled),
-        .article-field-content:hover .field-value-input:not(:disabled) {
-            border-color: var(--md-sys-color-outline);
-        }
-
-        /* Loading state untuk buttons */
-        .btn.loading {
-            position: relative;
-            color: transparent;
-            pointer-events: none;
-        }
-
-        .btn.loading::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            margin-left: -10px;
-            margin-top: -10px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Tooltip sederhana dengan data attribute */
-        [data-tooltip] {
-            position: relative;
-        }
-
-        [data-tooltip]::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-8px);
-            padding: 6px 12px;
-            background: var(--md-sys-color-surface-2);
-            color: var(--md-sys-color-on-surface);
-            font-size: 0.75rem;
-            border-radius: var(--md-sys-shape-corner-small);
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.2s;
-            border: 1px solid var(--md-sys-color-outline-variant);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-
-        [data-tooltip]:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-4px);
-        }
-
-        /* Empty state yang lebih informatif */
-        .empty-state {
-            padding: var(--md-sys-spacing-8) var(--md-sys-spacing-4);
-        }
-
-        .empty-state p {
-            max-width: 400px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Better scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--md-sys-color-surface-variant);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--md-sys-color-outline);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--luka-pink);
-        }
-
-        #article-tool ::-webkit-scrollbar-thumb:hover {
-            background: var(--article-primary);
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Selection color */
-        ::selection {
-            background: rgba(255, 107, 157, 0.3);
-            color: var(--md-sys-color-on-surface);
-        }
-
-        #article-tool ::selection {
-            background: rgba(0, 217, 192, 0.3);
-        }
-
-        /* Disabled state yang lebih jelas */
-        button:disabled,
-        input:disabled,
-        select:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Active state untuk better feedback */
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .icon-btn:active {
-            transform: scale(0.9);
-        }
-
-        /* Transition untuk semua interactive elements */
-        button, input, select, textarea {
-            transition: all 0.2s ease;
-        }
-
-        /* Better form labels */
-        .form-label {
-            display: flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-2);
-        }
-
-        .form-label .material-symbols-rounded {
-            font-size: 18px;
-            color: var(--luka-pink);
-        }
-
-        #article-tool .form-label .material-symbols-rounded {
-            color: var(--article-primary);
-        }
-
-        /* Help text styling */
-        .hint-text {
-            display: flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-1);
-        }
-
-        .hint-text::before {
-            content: 'info';
-            font-family: 'Material Symbols Rounded';
-            font-size: 14px;
-            color: var(--md-sys-color-on-surface-variant);
-        }
-
-        /* Status indicator dengan icon */
-        .status-indicator::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: currentColor;
-            margin-right: var(--md-sys-spacing-2);
-        }
-
-        /* Better radio buttons */
-        .radio-label {
-            position: relative;
-            padding-left: 32px;
-        }
-
-        .radio-label::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-            border: 2px solid var(--md-sys-color-outline);
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
-
-        .radio-item input[type="radio"]:checked + .radio-label::before {
-            border-color: var(--luka-pink);
-            background: var(--luka-pink);
-            box-shadow: inset 0 0 0 3px var(--md-sys-color-surface);
-        }
-
-        #article-tool .radio-item input[type="radio"]:checked + .radio-label::before {
-            border-color: var(--article-primary);
-            background: var(--article-primary);
-        }
-
-        /* Better textarea */
-        .form-textarea {
-            line-height: 1.8;
-        }
-
-        /* Output area styling */
-        .output-area {
-            position: relative;
-        }
-
-        .output-area:focus-within {
-            border-color: var(--luka-pink);
-            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
-        }
-
-        #article-tool .output-area:focus-within {
-            border-color: var(--article-primary);
-            box-shadow: 0 0 0 3px rgba(0, 217, 192, 0.1);
-        }
-
-        /* Character counter styling */
-        .char-counter {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: var(--md-sys-spacing-1);
-        }
-
-        .char-counter::before {
-            content: 'text_fields';
-            font-family: 'Material Symbols Rounded';
-            font-size: 14px;
-        }
-
-        /* Example box improvements */
-        .example-box {
-            position: relative;
-            padding-left: var(--md-sys-spacing-5);
-        }
-
-        .example-box::before {
-            content: 'lightbulb';
-            font-family: 'Material Symbols Rounded';
-            position: absolute;
-            left: var(--md-sys-spacing-3);
-            top: var(--md-sys-spacing-3);
-            color: var(--luka-coral);
-            font-size: 20px;
-        }
-
-        /* Divider dengan gradient */
-        .divider {
-            position: relative;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--luka-pink) 20%, 
-                var(--luka-coral) 50%, 
-                var(--luka-purple) 80%, 
-                transparent 100%
-            );
-        }
-
-        #article-tool .divider {
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--article-primary) 20%, 
-                var(--article-secondary) 50%, 
-                var(--article-tertiary) 80%, 
-                transparent 100%
-            );
-        }
-
-        /* Live indicator improvements */
-        .live-indicator {
-            animation: live-pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes live-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Badge improvements */
-        .badge {
-            animation: badge-pop 0.3s ease-out;
-        }
-
-        @keyframes badge-pop {
-            0% { transform: scale(0); }
-            80% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        /* Card title dengan icon alignment */
-        .card-title {
-            gap: var(--md-sys-spacing-3);
-        }
-
-        .card-title .material-symbols-rounded {
-            font-size: 24px;
-        }
-
-        /* Import textarea improvements */
-        .import-textarea {
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-
-        /* Dialog improvements */
-        .dialog-title {
-            display: flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-3);
-        }
-
-        .dialog-title::before {
-            content: 'info';
-            font-family: 'Material Symbols Rounded';
-            font-size: 28px;
-            color: var(--luka-pink);
-        }
-
-        #article-tool .dialog-title::before {
-            color: var(--article-primary);
-        }
-
-        /* Snackbar improvements */
-        .snackbar {
-            display: flex;
-            align-items: center;
-            gap: var(--md-sys-spacing-3);
-        }
-
-        /* Tree container improvements */
-        .tree-container, .article-field-container {
-            border-radius: var(--md-sys-shape-corner-medium);
-            overflow: hidden;
-        }
-
-        /* Better focus untuk tree nodes */
-        .tree-node:focus-within > .tree-node-content,
-        .article-field-node:focus-within > .article-field-content {
-            background: linear-gradient(90deg, rgba(255, 107, 157, 0.1) 0%, transparent 100%);
-        }
-
-        #article-tool .tree-node:focus-within > .tree-node-content,
-        #article-tool .article-field-node:focus-within > .article-field-content {
-            background: linear-gradient(90deg, rgba(0, 217, 192, 0.1) 0%, transparent 100%);
-        }
-
-        /* Print styles */
-        @media print {
-            .app-bar, .action-bar, .tool-nav, .icon-btn, .move-buttons, .drag-handle {
-                display: none !important;
-            }
-
-            .card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ccc;
-            }
-
-            .json-preview {
-                max-height: none;
-                overflow: visible;
-                white-space: pre-wrap;
-                word-break: break-all;
-            }
-        }
-
-        /* ============================================
-           PERBAIKAN LIGHT MODE - KONTRAS LEBIH BAIK
-           ============================================ */
-
-        [data-theme="light"] {
-            /* Warna surface lebih terang dengan kontras baik */
-            --md-sys-color-surface: #FFFFFF;
-            --md-sys-color-surface-1: #F8F9FA;
-            --md-sys-color-surface-2: #F1F3F4;
-            --md-sys-color-surface-3: #E8EAED;
-            --md-sys-color-surface-4: #E0E2E5;
-            --md-sys-color-surface-5: #D8DADC;
-
-            /* Warna teks dengan kontras tinggi */
-            --md-sys-color-on-surface: #1A1A1A;
-            --md-sys-color-on-surface-variant: #444746;
-
-            /* Outline lebih terlihat */
-            --md-sys-color-outline: #5F6368;
-            --md-sys-color-outline-variant: #C4C7C5;
-
-            /* Warna primary lebih gelap untuk kontras */
-            --md-sys-color-primary: #C44569;
-            --md-sys-color-on-primary: #FFFFFF;
-            --md-sys-color-primary-container: #FFE4EC;
-            --md-sys-color-on-primary-container: #5A0030;
-
-            /* Warna secondary */
-            --md-sys-color-secondary: #E64A19;
-            --md-sys-color-on-secondary: #FFFFFF;
-            --md-sys-color-secondary-container: #FFF0E8;
-            --md-sys-color-on-secondary-container: #5A1A00;
-
-            /* Warna tertiary */
-            --md-sys-color-tertiary: #6B3FA0;
-            --md-sys-color-on-tertiary: #FFFFFF;
-            --md-sys-color-tertiary-container: #F0E8FF;
-            --md-sys-color-on-tertiary-container: #3D0066;
-
-            /* Tree colors */
-            --tree-line-color: #DADCE0;
-            --tree-hover: #F1F3F4;
-        }
-
-        /* Perbaikan khusus light mode untuk komponen */
-        [data-theme="light"] .tree-node-content,
-        [data-theme="light"] .article-field-content {
-            background-color: var(--md-sys-color-surface);
-            border-bottom-color: var(--md-sys-color-outline-variant);
-        }
-
-        [data-theme="light"] .tree-node-content:hover,
-        [data-theme="light"] .article-field-content:hover {
-            background: linear-gradient(90deg, #FFF5F7 0%, var(--md-sys-color-surface-1) 100%);
-        }
-
-        [data-theme="light"] .tree-key-input,
-        [data-theme="light"] .field-key-input,
-        [data-theme="light"] .tree-value-input,
-        [data-theme="light"] .field-value-input,
-        [data-theme="light"] .tree-type-select,
-        [data-theme="light"] .field-type-select {
-            background-color: #FFFFFF;
-            border-color: #DADCE0;
-            color: #1A1A1A;
-        }
-
-        [data-theme="light"] .tree-key-input:focus,
-        [data-theme="light"] .field-key-input:focus {
-            border-color: #C44569;
-            box-shadow: 0 0 0 4px rgba(196, 69, 105, 0.15);
-        }
-
-        [data-theme="light"] .tree-value-input:focus,
-        [data-theme="light"] .field-value-input:focus {
-            border-color: #E64A19;
-            box-shadow: 0 0 0 4px rgba(230, 74, 25, 0.15);
-        }
-
-        [data-theme="light"] .move-btn {
-            background: linear-gradient(135deg, #F1F3F4, #E8EAED);
-            border-color: #DADCE0;
-            color: #5F6368;
-        }
-
-        [data-theme="light"] .move-btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, #C44569, #A7385C);
-            border-color: #C44569;
-            color: white;
-        }
-
-        [data-theme="light"] .icon-btn {
-            color: #5F6368;
-        }
-
-        [data-theme="light"] .icon-btn:hover {
-            background: linear-gradient(135deg, #F1F3F4, #E8EAED);
-            color: #1A1A1A;
-        }
-
-        [data-theme="light"] .tree-toggle,
-        [data-theme="light"] .field-toggle {
-            background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
-            border-color: #C44569;
-            color: #C44569;
-        }
-
-        [data-theme="light"] .tree-toggle:hover,
-        [data-theme="light"] .field-toggle:hover {
-            background: linear-gradient(135deg, #C44569, #A7385C);
-            color: white;
-        }
-
-        [data-theme="light"] .json-preview {
-            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
-            border-color: #DADCE0;
-        }
-
-        [data-theme="light"] .json-key {
-            color: #C44569;
-            text-shadow: none;
-            font-weight: 700;
-        }
-
-        [data-theme="light"] .json-string {
-            color: #E64A19;
-        }
-
-        [data-theme="light"] .json-number {
-            color: #6B3FA0;
-            text-shadow: none;
-            font-weight: 700;
-        }
-
-        [data-theme="light"] .json-boolean {
-            color: #2A9D8F;
-            text-shadow: none;
-            font-weight: 700;
-        }
-
-        [data-theme="light"] .chip {
-            background-color: #F1F3F4;
-            color: #444746;
-            border-color: transparent;
-        }
-
-        [data-theme="light"] .chip:hover {
-            background: linear-gradient(135deg, #FFF0E8, rgba(255, 107, 157, 0.1));
-            border-color: #E64A19;
-            color: #1A1A1A;
-        }
-
-        [data-theme="light"] .chip.active {
-            background: linear-gradient(135deg, rgba(196, 69, 105, 0.15), rgba(230, 74, 25, 0.15));
-            color: #5A0030;
-            border-color: #C44569;
-        }
-
-        [data-theme="light"] .card {
-            background-color: #FFFFFF;
-            border-color: #DADCE0;
-        }
-
-        [data-theme="light"] .card:hover {
-            border-color: #C44569;
-            box-shadow: 0 12px 40px rgba(196, 69, 105, 0.15), 0 4px 0 #C44569;
-        }
-
-        [data-theme="light"] .app-bar {
-            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
-            border-color: #C44569;
-        }
-
-        [data-theme="light"] .tree-container,
-        [data-theme="light"] .article-field-container {
-            background-color: #FFFFFF;
-            border-color: #DADCE0;
-        }
-
-        [data-theme="light"] .tree-children,
-        [data-theme="light"] .field-children {
-            background-color: #F8F9FA;
-        }
-
-        [data-theme="light"] .output-area {
-            background-color: #FFFFFF;
-            border-color: #DADCE0;
-            color: #1A1A1A;
-        }
-
-        [data-theme="light"] .import-textarea {
-            background-color: #FFFFFF;
-            border-color: #DADCE0;
-            color: #1A1A1A;
-        }
-
-        [data-theme="light"] .form-input,
-        [data-theme="light"] .form-select,
-        [data-theme="light"] .form-textarea {
-            background-color: #FFFFFF;
-            border-color: #DADCE0;
-            color: #1A1A1A;
-        }
-
-        [data-theme="light"] .empty-state {
-            color: #5F6368;
-        }
-
-        [data-theme="light"] .preset-chip {
-            background: linear-gradient(135deg, rgba(107, 63, 160, 0.1), rgba(42, 157, 143, 0.1));
-            color: #3D0066;
-        }
-
-        [data-theme="light"] .preset-chip:hover {
-            background: linear-gradient(135deg, #6B3FA0, #5A3385);
-            color: white;
-        }
-
-        /* Article Generator light mode colors */
-        [data-theme="light"] #article-tool .tree-icon,
-        [data-theme="light"] #article-tool .field-icon {
-            color: #2A9D8F;
-        }
-
-        [data-theme="light"] #article-tool .tree-icon.object,
-        [data-theme="light"] #article-tool .field-icon.object {
-            color: #E64A19;
-        }
-
-        [data-theme="light"] #article-tool .tree-icon.array,
-        [data-theme="light"] #article-tool .field-icon.array {
-            color: #6B3FA0;
-        }
-
-        [data-theme="light"] #article-tool .tree-toggle,
-        [data-theme="light"] #article-tool .field-toggle {
-            border-color: #2A9D8F;
-            color: #2A9D8F;
-        }
-
-        [data-theme="light"] #article-tool .tree-toggle:hover,
-        [data-theme="light"] #article-tool .field-toggle:hover {
-            background: linear-gradient(135deg, #2A9D8F, #238B7E);
-            color: white;
-        }
-
-        [data-theme="light"] #article-tool .move-btn:hover:not(:disabled) {
-            background: linear-gradient(135deg, #2A9D8F, #238B7E);
-            border-color: #2A9D8F;
-        }
-
-        [data-theme="light"] #article-tool .json-key {
-            color: #2A9D8F;
-        }
-
-        [data-theme="light"] #article-tool .chip.active {
-            background: linear-gradient(135deg, rgba(42, 157, 143, 0.15), rgba(230, 74, 25, 0.15));
-            border-color: #2A9D8F;
-            color: #004D40;
-        }
-
-        /* ============================================
-           PERBAIKAN RESPONSIVITAS TOTAL
-           ============================================ */
-
-        /* Base responsive settings */
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 16px;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
-        /* Fluid typography */
-        body {
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        h1, .app-title {
-            font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
-        }
-
-        h2, .card-title {
-            font-size: clamp(1rem, 0.9rem + 0.5vw, 1.375rem);
-        }
-
-        /* Container fluid */
-        .app-container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: clamp(0.75rem, 2vw, 1.5rem);
-        }
-
-        /* Main layout dengan CSS Grid yang responsif */
-        .main-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 450px;
-            gap: clamp(1rem, 3vw, 1.5rem);
-            align-items: start;
-        }
-
-        @media (max-width: 1200px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .output-section {
-                position: relative;
-                top: 0;
-                order: -1;
-            }
-        }
-
-        /* App bar responsif */
-        .app-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .app-bar-left {
-            display: flex;
-            align-items: center;
-            gap: clamp(0.5rem, 2vw, 0.75rem);
-            flex: 1;
-            min-width: 0;
-        }
-
-        .app-title {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-width: 0;
-        }
-
-        .app-bar-actions {
-            display: flex;
-            gap: 0.5rem;
-            flex-shrink: 0;
-        }
-
-        /* Tool nav yang scrollable */
-        .tool-nav {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--md-sys-color-outline-variant);
-            padding-bottom: 1rem;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .tool-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tool-nav-btn {
-            flex-shrink: 0;
-            white-space: nowrap;
-            padding: 0.75rem 1.25rem;
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        /* Card yang responsif */
-        .card {
-            padding: clamp(1rem, 3vw, 1.5rem);
-            border-radius: clamp(8px, 2vw, 12px);
-        }
-
-        /* Tree container yang scrollable */
-        .tree-container, .article-field-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            max-width: 100%;
-        }
-
-        /* Tree node yang responsif */
-        .tree-node-content, .article-field-content {
-            display: flex;
-            align-items: center;
-            gap: clamp(0.25rem, 1vw, 0.5rem);
-            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.5rem, 2vw, 1rem);
-            min-width: fit-content;
-        }
-
-        .tree-inputs, .field-inputs {
-            display: flex;
-            gap: 0.5rem;
-            flex: 1;
-            min-width: 0;
-            flex-wrap: wrap;
-        }
-
-        @media (min-width: 769px) {
-            .tree-inputs, .field-inputs {
-                flex-wrap: nowrap;
-            }
-        }
-
-        .tree-key-input, .field-key-input {
-            flex: 1;
-            min-width: 80px;
-            max-width: none;
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        .tree-value-input, .field-value-input {
-            flex: 2;
-            min-width: 120px;
-            max-width: none;
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        .tree-type-select, .field-type-select {
-            min-width: 90px;
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        /* Action bar yang responsif */
-        .action-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .action-bar .btn {
-            flex: 1;
-            min-width: fit-content;
-            white-space: nowrap;
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
-        }
-
-        @media (max-width: 480px) {
-            .action-bar {
-                flex-direction: column;
-            }
-
-            .action-bar .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Chip group yang scrollable */
-        .chip-group {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .chip-group {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                padding-bottom: 0.5rem;
-            }
-
-            .chip-group::-webkit-scrollbar {
-                display: none;
-            }
-
-            .chip {
-                flex-shrink: 0;
-            }
-        }
-
-        .chip {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-            padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
-        }
-
-        /* Preset fields yang scrollable */
-        .preset-fields {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .preset-fields {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-                padding-bottom: 0.5rem;
-            }
-
-            .preset-fields::-webkit-scrollbar {
-                display: none;
-            }
-
-            .preset-chip {
-                flex-shrink: 0;
-            }
-        }
-
-        .preset-chip {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-            padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
-        }
-
-        /* JSON Preview yang responsif */
-        .json-preview {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-            padding: clamp(0.75rem, 2vw, 1rem);
-            max-height: clamp(300px, 50vh, 600px);
-            overflow-x: auto;
-            word-break: break-word;
-            white-space: pre-wrap;
-        }
-
-        /* Output area yang responsif */
-        .output-area {
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-            padding: clamp(0.75rem, 2vw, 1rem);
-            min-height: clamp(120px, 20vh, 200px);
-            max-height: clamp(250px, 40vh, 400px);
-        }
-
-        /* Form elements yang responsif */
-        .form-input, .form-select, .form-textarea {
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
-        }
-
-        .form-textarea {
-            min-height: clamp(80px, 15vh, 120px);
-        }
-
-        /* Dialog yang responsif */
-        .dialog-overlay {
-            padding: clamp(0.5rem, 2vw, 1rem);
-        }
-
-        .dialog {
-            min-width: auto;
-            width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            padding: clamp(1rem, 4vw, 1.5rem);
-            margin: auto;
-        }
-
-        @media (max-width: 480px) {
-            .dialog {
-                max-width: none;
-                min-height: auto;
-                margin: 0.5rem;
-            }
-
-            .dialog-actions {
-                flex-direction: column-reverse;
-            }
-
-            .dialog-actions .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        /* Snackbar yang responsif */
-        .snackbar {
-            max-width: 90vw;
-            width: auto;
-            padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        /* Two column layout yang responsif */
-        .two-column {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: clamp(0.75rem, 2vw, 1rem);
-        }
-
-        @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Article tools grid yang responsif */
-        .article-tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: clamp(1rem, 3vw, 1.5rem);
-        }
-
-        @media (max-width: 768px) {
-            .article-tools-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Field editor tabs yang scrollable */
-        .field-editor-tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--md-sys-color-outline-variant);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .field-editor-tabs::-webkit-scrollbar {
-            display: none;
-        }
-
-        .field-editor-tab {
-            flex-shrink: 0;
-            white-space: nowrap;
-            padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        /* Radio group yang responsif */
-        .radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        @media (max-width: 480px) {
-            .radio-group {
-                flex-direction: column;
-            }
-
-            .radio-label {
-                width: 100%;
-                justify-content: flex-start;
-            }
-        }
-
-        /* Example box yang responsif */
-        .example-box {
-            padding: clamp(0.75rem, 2vw, 1rem);
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        /* Import textarea yang responsif */
-        .import-textarea {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-            min-height: clamp(100px, 20vh, 150px);
-        }
-
-        /* Status indicator yang responsif */
-        .status-indicator {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-            padding: clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
-        }
-
-        /* Badge yang responsif */
-        .badge {
-            min-width: 20px;
-            height: 20px;
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-        }
-
-        /* Live indicator yang responsif */
-        .live-indicator {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-        }
-
-        @media (max-width: 480px) {
-            .live-indicator {
-                display: none;
-            }
-        }
-
-        /* Logo yang responsif */
-        .logo {
-            width: clamp(36px, 8vw, 48px);
-            height: clamp(36px, 8vw, 48px);
-        }
-
-        /* Icon btn yang responsif */
-        .icon-btn {
-            width: clamp(36px, 8vw, 40px);
-            height: clamp(36px, 8vw, 40px);
-        }
-
-        /* Move buttons yang responsif */
-        .move-buttons {
-            gap: clamp(2px, 0.5vw, 4px);
-        }
-
-        .move-btn {
-            width: clamp(28px, 6vw, 32px);
-            height: clamp(24px, 5vw, 28px);
-        }
-
-        .move-btn .material-symbols-rounded {
-            font-size: clamp(16px, 4vw, 20px) !important;
-        }
-
-        /* Tree toggle yang responsif */
-        .tree-toggle, .field-toggle {
-            width: clamp(24px, 5vw, 28px);
-            height: clamp(24px, 5vw, 28px);
-        }
-
-        /* Drag handle yang responsif */
-        .drag-handle, .field-drag-handle {
-            padding: clamp(0.25rem, 1vw, 0.5rem);
-        }
-
-        /* Tree line yang responsif */
-        .tree-line, .field-line {
-            width: clamp(12px, 3vw, 16px);
-        }
-
-        /* Tree indent yang responsif */
-        .tree-indent, .field-indent {
-            gap: clamp(0.125rem, 0.5vw, 0.25rem);
-        }
-
-        /* Hint text yang responsif */
-        .hint-text {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-        }
-
-        /* Char counter yang responsif */
-        .char-counter {
-            font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-        }
-
-        /* Divider yang responsif */
-        .divider {
-            margin: clamp(1rem, 4vw, 1.5rem) 0;
-        }
-
-        /* Empty state yang responsif */
-        .empty-state {
-            padding: clamp(2rem, 8vw, 3rem) clamp(1rem, 4vw, 1.5rem);
-        }
-
-        .empty-state-icon {
-            font-size: clamp(36px, 10vw, 56px);
-        }
-
-        .empty-state p {
-            font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-        }
-
-        /* App bar actions yang responsif */
-        @media (max-width: 360px) {
-            .app-bar-actions {
-                gap: 0.25rem;
-            }
-
-            .app-bar-actions .icon-btn {
-                width: 32px;
-                height: 32px;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .app-bar, .action-bar, .tool-nav, .icon-btn, .move-buttons, .drag-handle,
-            .tree-toggle, .field-toggle, .snackbar, .dialog-overlay {
-                display: none !important;
-            }
-
-            .card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ccc;
-                margin-bottom: 1rem;
-            }
-
-            .json-preview, .output-area {
-                max-height: none;
-                overflow: visible;
-                white-space: pre-wrap;
-                word-break: break-all;
-                border: 1px solid #ccc;
-            }
-
-            .tree-container, .article-field-container {
-                overflow: visible;
-            }
-
-            body {
-                background: white;
-                color: black;
-            }
-        }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* High contrast mode */
-        @media (prefers-contrast: high) {
-            .tree-node-content, .article-field-content {
-                border-bottom-width: 2px;
-            }
-
-            .btn, .icon-btn, .move-btn {
-                border-width: 2px;
-            }
-
-            input, select, textarea {
-                border-width: 2px;
-            }
-        }
-
-        /* Dark mode dengan warna yang lebih baik */
-        @media (prefers-color-scheme: dark) {
-            html:not([data-theme="light"]) {
-                /* Warna yang sudah didefinisikan di :root akan digunakan */
-            }
-        }
-</style>
-<base target="_blank">
+    </style>
 </head>
 <body>
-    <div class="luka-bg">
-        <div class="luka-petal petal-1"></div>
-        <div class="luka-petal petal-2"></div>
-        <div class="luka-petal petal-3"></div>
-        <div class="luka-petal petal-4"></div>
-        <div class="luka-note note-1">♪</div>
-        <div class="luka-note note-2">♫</div>
+    <div class="nature-bg">
+        <div class="leaf-ornament leaf-1"></div>
+        <div class="leaf-ornament leaf-2"></div>
+        <div class="leaf-ornament leaf-3"></div>
+        <div class="circle-ornament circle-1"></div>
+        <div class="circle-ornament circle-2"></div>
     </div>
+    <div class="texture-overlay"></div>
 
     <div class="app-container">
         <header class="app-bar">
@@ -4185,11 +1942,11 @@
                 <div class="logo">
                     <span class="material-symbols-rounded">account_tree</span>
                 </div>
-                <h1 class="app-title">Megurine Luka JSON Builder</h1>
+                <h1 class="app-title">Nature JSON Builder</h1>
             </div>
             <div class="app-bar-actions">
                 <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
-                    <span class="material-symbols-rounded">light_mode</span>
+                    <span class="material-symbols-rounded">dark_mode</span>
                 </button>
                 <button class="icon-btn" onclick="showHelp()" title="Help" aria-label="Show help">
                     <span class="material-symbols-rounded">help</span>
@@ -4217,7 +1974,7 @@
                             <span class="material-symbols-rounded">tune</span>
                             Tree Structure Editor
                         </div>
-                        <div class="card-subtitle">Edit struktur JSON hierarkis - Live Preview otomatis dengan tema Megurine Luka!</div>
+                        <div class="card-subtitle">Edit struktur JSON hierarkis - Live Preview otomatis</div>
                         
                         <div class="chip-group">
                             <span class="chip active" onclick="loadTemplate('empty')">Empty</span>
@@ -4248,31 +2005,23 @@
                         </div>
                     </div>
 
-                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
+                    <div class="card">
                         <div class="card-title">
-                            <span class="material-symbols-rounded">content_paste</span>
-                            Import JSON dari Clipboard
+                            <span class="material-symbols-rounded">tips_and_updates</span>
+                            Perbedaan Template
                         </div>
-                        <div class="card-subtitle">Paste JSON dari clipboard atau ketik manual untuk di-edit dalam editor</div>
-                        
-                        <textarea class="import-textarea" id="importJsonTextarea" placeholder="Paste JSON di sini..."></textarea>
-                        
-                        <div class="action-bar" style="margin-top: var(--md-sys-spacing-3);">
-                            <button class="btn btn-rainbow" onclick="importFromClipboard()">
-                                <span class="material-symbols-rounded">content_paste_go</span>
-                                <span>Paste dari Clipboard</span>
-                            </button>
-                            <button class="btn btn-purple" onclick="importFromTextarea()">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                                <span>Import JSON</span>
-                            </button>
-                            <button class="btn btn-coral" onclick="clearImportTextarea()">
-                                <span class="material-symbols-rounded">clear</span>
-                                <span>Clear</span>
-                            </button>
-                        </div>
-                        
-                        <div id="importStatus" style="margin-top: var(--md-sys-spacing-3);"></div>
+                        <ul style="color: var(--md-sys-color-on-surface-variant); padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Image to Text (Lite):</strong> Struktur sederhana dengan override dan output basic</li>
+                            <li><strong>Image Prompt (Pro):</strong> Struktur lengkap 8 kategori untuk AI image generation</li>
+                            <li><strong>Main Subject:</strong> Deskripsi karakter (Gender, Age, Ethnicity, Body Type, Skin Color)</li>
+                            <li><strong>Facial Features:</strong> Detail wajah dan rambut</li>
+                            <li><strong>Clothing:</strong> Pakaian lengkap dengan aksesoris</li>
+                            <li><strong>Pose:</strong> Gaya pose dan arah pandangan</li>
+                            <li><strong>Environment:</strong> Setting dan background</li>
+                            <li><strong>Visual Technique:</strong> Gaya seni dan pencahayaan</li>
+                            <li><strong>Quality:</strong> Resolusi dan parameter teknis</li>
+                            <li><strong>Negative Prompt:</strong> Elemen yang dihindari</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -4300,13 +2049,9 @@
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin JSON
                             </button>
-                            <button class="btn btn-coral" onclick="downloadJSON()">
+                            <button class="btn btn-tonal" onclick="downloadJSON()">
                                 <span class="material-symbols-rounded">download</span>
                                 Unduh
-                            </button>
-                            <button class="btn btn-purple" onclick="copyToClipboardForImport()">
-                                <span class="material-symbols-rounded">sync</span>
-                                Copy untuk Edit
                             </button>
                         </div>
                     </div>
@@ -4317,7 +2062,7 @@
                             Status
                         </div>
                         <div id="validationStatus" style="color: var(--md-sys-color-on-surface-variant); font: var(--md-sys-typescale-body-medium);">
-                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--luka-pink);">check_circle</span>
+                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
                             Struktur valid
                         </div>
                     </div>
@@ -4336,6 +2081,7 @@
                         </div>
                         <div class="card-subtitle">Buat struktur field dinamis untuk konfigurasi artikel</div>
                         
+                        <!-- Field Editor Tabs -->
                         <div class="field-editor-tabs">
                             <button class="field-editor-tab active" onclick="switchFieldTab('fields')">
                                 <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 6px; font-size: 18px;">account_tree</span>
@@ -4347,6 +2093,7 @@
                             </button>
                         </div>
 
+                        <!-- Fields Tab -->
                         <div id="fields-tab" class="field-editor-content active">
                             <div class="preset-fields">
                                 <span class="preset-chip" onclick="addPresetField('topic')">
@@ -4384,6 +2131,7 @@
                             </div>
 
                             <div class="article-field-container" id="articleFieldContainer">
+                                <!-- Fields will be rendered here -->
                             </div>
 
                             <div class="action-bar">
@@ -4406,6 +2154,7 @@
                             </div>
                         </div>
 
+                        <!-- Presets Tab -->
                         <div id="presets-tab" class="field-editor-content">
                             <div class="chip-group">
                                 <span class="chip active" onclick="loadArticlePreset('empty')">Empty</span>
@@ -4415,7 +2164,37 @@
                                 <span class="chip" onclick="loadArticlePreset('storytelling')">Storytelling</span>
                                 <span class="chip" onclick="loadArticlePreset('email')">Email Marketing</span>
                             </div>
+
+                            <div class="example-box" style="margin-top: var(--md-sys-spacing-4);">
+                                <div class="example-box-title">
+                                    <span class="material-symbols-rounded">info</span>
+                                    Tentang Preset
+                                </div>
+                                <p style="margin-bottom: var(--md-sys-spacing-2);">Preset akan mengisi field editor dengan struktur yang sudah dioptimalkan untuk setiap jenis konten.</p>
+                                <ul style="padding-left: 20px; line-height: 1.8;">
+                                    <li><strong>Umum:</strong> Struktur dasar untuk artikel berita umum</li>
+                                    <li><strong>Blog Post:</strong> Optimasi untuk konten blog dengan SEO</li>
+                                    <li><strong>Coding:</strong> Struktur untuk tutorial teknis</li>
+                                    <li><strong>Storytelling:</strong> Setup untuk cerita fiksi</li>
+                                    <li><strong>Email Marketing:</strong> Konfigurasi untuk email konversi</li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="material-symbols-rounded">tips_and_updates</span>
+                            Panduan Field Editor
+                        </div>
+                        <ul style="color: var(--md-sys-color-on-surface-variant); padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Tambah Field:</strong> Gunakan tombol preset cepat atau "Tambah Field"</li>
+                            <li><strong>Drag & Drop:</strong> Seret handle (garis-garis) untuk mengurutkan ulang field</li>
+                            <li><strong>Tipe Data:</strong> Pilih String, Number, Boolean, Object, atau Array</li>
+                            <li><strong>Object/Array:</strong> Field bertipe Object/Array bisa memiliki child fields</li>
+                            <li><strong>Custom Field:</strong> Buat field dengan nama dan struktur bebas</li>
+                            <li><strong>Live Preview:</strong> JSON di panel kanan update otomatis</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -4443,11 +2222,11 @@
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin JSON
                             </button>
-                            <button class="btn btn-coral" onclick="downloadArticleJSON()">
+                            <button class="btn btn-tonal" onclick="downloadArticleJSON()">
                                 <span class="material-symbols-rounded">download</span>
                                 Unduh JSON
                             </button>
-                            <button class="btn btn-purple" onclick="generateFromFields()">
+                            <button class="btn btn-outlined" onclick="generateFromFields()">
                                 <span class="material-symbols-rounded">auto_fix_high</span>
                                 Generate
                             </button>
@@ -4467,6 +2246,17 @@
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin Prompt
                             </button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
+                        <div class="card-title">
+                            <span class="material-symbols-rounded">fact_check</span>
+                            Status
+                        </div>
+                        <div id="article-validation-status" style="color: var(--md-sys-color-on-surface-variant); font: var(--md-sys-typescale-body-medium);">
+                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
+                            Struktur valid - Siap generate prompt
                         </div>
                     </div>
                 </div>
@@ -4504,6 +2294,7 @@
         // Article Presets
         const articlePresets = {
             empty: [],
+            
             general: [
                 { id: 'af_1', key: 'topic', value: 'general', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Jurnalis senior dengan pengalaman 10 tahun', type: 'string', expanded: true, children: [] },
@@ -4513,6 +2304,7 @@
                 { id: 'af_6', key: 'main_task', value: 'Tulis artikel berita tentang peluncuran teknologi renewable energy terbaru di Indonesia', type: 'string', expanded: true, children: [] },
                 { id: 'af_7', key: 'technical_specs', value: 'Gunakan fakta terkini, sertakan data statistik, hindari opini pribadi', type: 'string', expanded: true, children: [] }
             ],
+            
             blog: [
                 { id: 'af_1', key: 'topic', value: 'blog', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Content writer profesional spesialis lifestyle', type: 'string', expanded: true, children: [] },
@@ -4523,6 +2315,7 @@
                 { id: 'af_7', key: 'seo_keywords', value: 'morning routine, produktivitas, habits', type: 'string', expanded: true, children: [] },
                 { id: 'af_8', key: 'technical_specs', value: 'Gunakan tone friendly, tambahkan emoji strategis, sertakan CTA di akhir', type: 'string', expanded: true, children: [] }
             ],
+            
             coding: [
                 { id: 'af_1', key: 'topic', value: 'coding', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Senior Software Engineer dan technical writer', type: 'string', expanded: true, children: [] },
@@ -4533,6 +2326,7 @@
                 { id: 'af_7', key: 'code_requirements', value: 'Sertakan code snippet, penjelasan step-by-step, best practices', type: 'string', expanded: true, children: [] },
                 { id: 'af_8', key: 'technical_specs', value: 'Gunakan bahasa Indonesia dengan terminologi teknis dalam bahasa Inggris', type: 'string', expanded: true, children: [] }
             ],
+            
             storytelling: [
                 { id: 'af_1', key: 'topic', value: 'storytelling', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Penulis fiksi kreatif yang telah menerbitkan 3 novel thriller', type: 'string', expanded: true, children: [] },
@@ -4544,6 +2338,7 @@
                 { id: 'af_8', key: 'plot_twist', value: 'Ending dengan twist yang tak terduga', type: 'string', expanded: true, children: [] },
                 { id: 'af_9', key: 'technical_specs', value: 'Gunakan teknik show dont tell, deskripsikan setting dengan detail sensorial', type: 'string', expanded: true, children: [] }
             ],
+            
             email: [
                 { id: 'af_1', key: 'topic', value: 'email', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Email marketing specialist dengan conversion rate tinggi', type: 'string', expanded: true, children: [] },
@@ -4557,6 +2352,7 @@
             ]
         };
 
+        // Preset field definitions
         const presetFieldDefinitions = {
             topic: { key: 'topic', value: 'general', type: 'string' },
             role: { key: 'ai_role', value: '', type: 'string' },
@@ -4568,8 +2364,10 @@
             custom: { key: 'custom_field', value: '', type: 'string' }
         };
 
+        // TEMPLATE definitions
         const templates = {
             empty: [],
+            
             image_to_text: [
                 {
                     id: 'root_1',
@@ -4621,6 +2419,7 @@
                     ]
                 }
             ],
+
             image_prompt: [
                 {
                     id: 'root_1',
@@ -4766,245 +2565,7 @@
             return 'af_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
 
-        async function importFromClipboard() {
-            try {
-                const text = await navigator.clipboard.readText();
-                document.getElementById('importJsonTextarea').value = text;
-                processImportJSON(text);
-            } catch (err) {
-                showImportStatus('Tidak dapat mengakses clipboard. Silakan paste manual.', 'error');
-                showSnackbar('Clipboard access denied');
-            }
-        }
-
-        function importFromTextarea() {
-            const text = document.getElementById('importJsonTextarea').value.trim();
-            if (!text) {
-                showImportStatus('Textarea kosong! Silakan paste JSON terlebih dahulu.', 'error');
-                return;
-            }
-            processImportJSON(text);
-        }
-
-        function clearImportTextarea() {
-            document.getElementById('importJsonTextarea').value = '';
-            document.getElementById('importStatus').innerHTML = '';
-            showSnackbar('Textarea dibersihkan');
-        }
-
-        function showImportStatus(message, type) {
-            const statusDiv = document.getElementById('importStatus');
-            const icon = type === 'success' ? 'check_circle' : 'error';
-            const statusClass = type === 'success' ? 'status-success' : 'status-error';
-            
-            statusDiv.innerHTML = `
-                <span class="status-indicator ${statusClass}">
-                    <span class="material-symbols-rounded" style="font-size: 18px;">${icon}</span>
-                    ${message}
-                </span>
-            `;
-            
-            setTimeout(() => {
-                statusDiv.innerHTML = '';
-            }, 5000);
-        }
-
-        function processImportJSON(jsonString) {
-            try {
-                const parsed = JSON.parse(jsonString);
-                treeData = convertObjectToTree(parsed);
-                renderTree();
-                updateOutput();
-                showImportStatus(`Berhasil import ${countAllNodes(treeData)} node!`, 'success');
-                showSnackbar('JSON berhasil diimport!');
-            } catch (e) {
-                showImportStatus('Error: ' + e.message, 'error');
-                showSnackbar('JSON tidak valid!');
-            }
-        }
-
-        function convertObjectToTree(obj, key = '') {
-            const nodes = [];
-            
-            if (Array.isArray(obj)) {
-                obj.forEach((item, index) => {
-                    const node = createNodeFromValue(item, String(index));
-                    nodes.push(node);
-                });
-            } else if (obj !== null && typeof obj === 'object') {
-                Object.keys(obj).forEach(k => {
-                    const node = createNodeFromValue(obj[k], k);
-                    nodes.push(node);
-                });
-            } else {
-                nodes.push({
-                    id: generateId(),
-                    key: key || 'value',
-                    value: String(obj),
-                    type: getValueType(obj),
-                    expanded: true,
-                    children: []
-                });
-            }
-            
-            return nodes;
-        }
-
-        function createNodeFromValue(value, key) {
-            const type = getValueType(value);
-            const node = {
-                id: generateId(),
-                key: key,
-                value: '',
-                type: type,
-                expanded: true,
-                children: []
-            };
-            
-            if (type === 'object' && value !== null) {
-                Object.keys(value).forEach(k => {
-                    node.children.push(createNodeFromValue(value[k], k));
-                });
-            } else if (type === 'array') {
-                value.forEach((item, index) => {
-                    node.children.push(createNodeFromValue(item, String(index)));
-                });
-            } else {
-                node.value = value === null ? 'null' : String(value);
-            }
-            
-            return node;
-        }
-
-        function getValueType(value) {
-            if (value === null) return 'null';
-            if (Array.isArray(value)) return 'array';
-            if (typeof value === 'object') return 'object';
-            if (typeof value === 'number') return 'number';
-            if (typeof value === 'boolean') return 'boolean';
-            return 'string';
-        }
-
-        function copyToClipboardForImport() {
-            const json = JSON.stringify(generateJSON(), null, 2);
-            navigator.clipboard.writeText(json).then(() => {
-                showSnackbar('JSON disalin! Paste di textarea import untuk edit');
-            }).catch(() => {
-                const textarea = document.createElement('textarea');
-                textarea.value = json;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showSnackbar('JSON disalin! Paste di textarea import untuk edit');
-            });
-        }
-
-        // Move Node Functions (Arrow Buttons)
-        function moveNodeUp(pathString) {
-            const path = pathString.split('-').map(Number);
-            const result = getNodeByPath(path);
-            
-            if (!result || !result.node) return;
-            
-            const index = path[path.length - 1];
-            
-            if (result.isRoot) {
-                if (index > 0) {
-                    [treeData[index], treeData[index - 1]] = [treeData[index - 1], treeData[index]];
-                }
-            } else {
-                const parentPath = path.slice(0, -1);
-                const parentResult = getNodeByPath(parentPath);
-                if (parentResult && parentResult.node.children && index > 0) {
-                    const siblings = parentResult.node.children;
-                    [siblings[index], siblings[index - 1]] = [siblings[index - 1], siblings[index]];
-                }
-            }
-            
-            renderTree();
-            updateOutput();
-            showSnackbar('Node dipindahkan ke atas');
-        }
-
-        function moveNodeDown(pathString) {
-            const path = pathString.split('-').map(Number);
-            const result = getNodeByPath(path);
-            
-            if (!result || !result.node) return;
-            
-            const index = path[path.length - 1];
-            
-            if (result.isRoot) {
-                if (index < treeData.length - 1) {
-                    [treeData[index], treeData[index + 1]] = [treeData[index + 1], treeData[index]];
-                }
-            } else {
-                const parentPath = path.slice(0, -1);
-                const parentResult = getNodeByPath(parentPath);
-                if (parentResult && parentResult.node.children && index < parentResult.node.children.length - 1) {
-                    const siblings = parentResult.node.children;
-                    [siblings[index], siblings[index + 1]] = [siblings[index + 1], siblings[index]];
-                }
-            }
-            
-            renderTree();
-            updateOutput();
-            showSnackbar('Node dipindahkan ke bawah');
-        }
-
-        function moveArticleFieldUp(pathString) {
-            const path = pathString.split('-').map(Number);
-            const result = getArticleFieldByPath(path);
-            
-            if (!result || !result.node) return;
-            
-            const index = path[path.length - 1];
-            
-            if (result.isRoot) {
-                if (index > 0) {
-                    [articleFields[index], articleFields[index - 1]] = [articleFields[index - 1], articleFields[index]];
-                }
-            } else {
-                const parentPath = path.slice(0, -1);
-                const parentResult = getArticleFieldByPath(parentPath);
-                if (parentResult && parentResult.node.children && index > 0) {
-                    const siblings = parentResult.node.children;
-                    [siblings[index], siblings[index - 1]] = [siblings[index - 1], siblings[index]];
-                }
-            }
-            
-            renderArticleFields();
-            updateArticleOutput();
-            showSnackbar('Field dipindahkan ke atas');
-        }
-
-        function moveArticleFieldDown(pathString) {
-            const path = pathString.split('-').map(Number);
-            const result = getArticleFieldByPath(path);
-            
-            if (!result || !result.node) return;
-            
-            const index = path[path.length - 1];
-            
-            if (result.isRoot) {
-                if (index < articleFields.length - 1) {
-                    [articleFields[index], articleFields[index + 1]] = [articleFields[index + 1], articleFields[index]];
-                }
-            } else {
-                const parentPath = path.slice(0, -1);
-                const parentResult = getArticleFieldByPath(parentPath);
-                if (parentResult && parentResult.node.children && index < parentResult.node.children.length - 1) {
-                    const siblings = parentResult.node.children;
-                    [siblings[index], siblings[index + 1]] = [siblings[index + 1], siblings[index]];
-                }
-            }
-            
-            renderArticleFields();
-            updateArticleOutput();
-            showSnackbar('Field dipindahkan ke bawah');
-        }
-
+        // JSON Builder Functions
         function getNodeByPath(pathArray) {
             let current = treeData;
             let parent = null;
@@ -5028,7 +2589,7 @@
                 container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon material-symbols-rounded">account_tree</div>
-                        <p>Belum ada data. Klik "Tambah Root" untuk memulai<br>atau Import JSON dari clipboard!</p>
+                        <p>Belum ada data. Klik "Tambah Root" untuk memulai.</p>
                     </div>
                 `;
                 updateNodeCount();
@@ -5049,13 +2610,10 @@
                 const currentPath = [...parentPath, index];
                 const pathString = currentPath.join('-');
                 
-                const isFirst = index === 0;
-                const isLast = index === nodes.length - 1;
-                
                 let indentHtml = '';
                 for (let i = 0; i < depth; i++) {
-                    const isLastLine = i === depth - 1;
-                    indentHtml += `<div class="tree-line ${isLastLine ? 'last' : ''}"></div>`;
+                    const isLast = i === depth - 1;
+                    indentHtml += `<div class="tree-line ${isLast ? 'last' : ''}"></div>`;
                 }
 
                 const icon = node.type === 'object' ? 'data_object' : 
@@ -5080,15 +2638,6 @@
                                 ` : '<div class="tree-toggle leaf"></div>'}
                             </div>
                             
-                            <div class="move-buttons">
-                                <button class="move-btn" onclick="moveNodeUp('${pathString}')" ${isFirst ? 'disabled' : ''} title="Pindah ke atas">
-                                    <span class="material-symbols-rounded">keyboard_arrow_up</span>
-                                </button>
-                                <button class="move-btn" onclick="moveNodeDown('${pathString}')" ${isLast ? 'disabled' : ''} title="Pindah ke bawah">
-                                    <span class="material-symbols-rounded">keyboard_arrow_down</span>
-                                </button>
-                            </div>
-
                             <div class="drag-handle" title="Drag untuk mengurutkan">
                                 <span class="material-symbols-rounded" style="font-size: 18px;">drag_indicator</span>
                             </div>
@@ -5554,7 +3103,7 @@
                 const json = generateJSON();
                 JSON.stringify(json);
                 document.getElementById('validationStatus').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--luka-pink);">check_circle</span>
+                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
                     Struktur valid
                 `;
                 return true;
@@ -5588,7 +3137,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'luka-config.json';
+            a.download = 'config.json';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -5600,8 +3149,7 @@
             document.getElementById('nodeCount').textContent = countAllNodes(treeData);
         }
 
-        // ==================== ARTICLE GENERATOR FUNCTIONS ====================
-        
+        // Article Generator Field Editor Functions
         function getArticleFieldByPath(pathArray) {
             let current = articleFields;
             let parent = null;
@@ -5646,13 +3194,10 @@
                 const currentPath = [...parentPath, index];
                 const pathString = currentPath.join('-');
                 
-                const isFirst = index === 0;
-                const isLast = index === nodes.length - 1;
-                
                 let indentHtml = '';
                 for (let i = 0; i < depth; i++) {
-                    const isLastLine = i === depth - 1;
-                    indentHtml += `<div class="field-line ${isLastLine ? 'last' : ''}"></div>`;
+                    const isLast = i === depth - 1;
+                    indentHtml += `<div class="field-line ${isLast ? 'last' : ''}"></div>`;
                 }
 
                 const icon = node.type === 'object' ? 'data_object' : 
@@ -5677,15 +3222,6 @@
                                 ` : '<div class="field-toggle leaf"></div>'}
                             </div>
                             
-                            <div class="move-buttons">
-                                <button class="move-btn" onclick="moveArticleFieldUp('${pathString}')" ${isFirst ? 'disabled' : ''} title="Pindah ke atas">
-                                    <span class="material-symbols-rounded">keyboard_arrow_up</span>
-                                </button>
-                                <button class="move-btn" onclick="moveArticleFieldDown('${pathString}')" ${isLast ? 'disabled' : ''} title="Pindah ke bawah">
-                                    <span class="material-symbols-rounded">keyboard_arrow_down</span>
-                                </button>
-                            </div>
-
                             <div class="field-drag-handle" title="Drag untuk mengurutkan">
                                 <span class="material-symbols-rounded" style="font-size: 18px;">drag_indicator</span>
                             </div>
@@ -6098,6 +3634,7 @@
             };
             showSnackbar(`Preset "${presetNames[presetName]}" dimuat`);
             
+            // Switch back to fields tab
             document.querySelectorAll('.field-editor-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.field-editor-content').forEach(c => c.classList.remove('active'));
             document.querySelector('.field-editor-tab:first-child').classList.add('active');
@@ -6178,7 +3715,7 @@
                 const json = generateArticleJSON();
                 JSON.stringify(json);
                 document.getElementById('article-validation-status').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--luka-pink);">check_circle</span>
+                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
                     Struktur valid - Siap generate prompt
                 `;
                 return true;
@@ -6241,6 +3778,7 @@
                 prompt += `FORMAT OUTPUT: ${json.output_format}.\n\n`;
             }
 
+            // Add any additional fields
             const skipFields = ['topic', 'ai_role', 'language_style', 'target_audience', 'main_task', 'word_limit', 'output_format'];
             const extraFields = Object.keys(json).filter(key => !skipFields.includes(key));
             
@@ -6297,7 +3835,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'luka-article-config.json';
+            a.download = 'article-config.json';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -6327,8 +3865,7 @@
             });
         }
 
-        // ==================== COMMON FUNCTIONS ====================
-        
+        // Common Functions
         function showSnackbar(message) {
             const snackbar = document.getElementById('snackbar');
             document.getElementById('snackbarText').textContent = message;
@@ -6381,19 +3918,21 @@
 
         function showHelp() {
             showDialog(
-                'Bantuan - Megurine Luka JSON Builder',
+                'Bantuan',
                 `
-                <div style="line-height: 1.9;">
-                    <p><strong style="color: var(--luka-pink);">Dua Tools Tersedia:</strong></p>
-                    <p><strong>1. JSON Builder:</strong> Buat dan edit struktur JSON hierarkis dengan drag-drop dan tombol panah.</p>
+                <div style="line-height: 1.8;">
+                    <p><strong>Dua Tools Tersedia:</strong></p>
+                    <p><strong>1. JSON Builder:</strong> Buat dan edit struktur JSON hierarkis dengan drag-drop.</p>
                     <p><strong>2. Article Generator:</strong> Buat konfigurasi artikel dengan field editor yang fleksibel.</p>
                     <br>
-                    <p><strong style="color: var(--luka-coral);">Fitur Baru:</strong></p>
+                    <p><strong>Fitur Article Generator:</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>Tombol panah naik/turun untuk mengurutkan field</li>
-                        <li>Drag & Drop untuk memindahkan node</li>
-                        <li>Dark mode default dengan tema Megurine Luka</li>
-                        <li>Tombol kotak (square) bukan bulat</li>
+                        <li>Edit Fields: Tambah, hapus, edit field dengan tipe data beragam</li>
+                        <li>Preset Templates: Pilih dari 5 template siap pakai</li>
+                        <li>Drag & Drop: Urutkan ulang field sesuai kebutuhan</li>
+                        <li>Nested Structure: Buat Object/Array dengan child fields</li>
+                        <li>Live Preview: JSON update otomatis saat field berubah</li>
+                        <li>Generate Prompt: Konversi field menjadi teks prompt</li>
                     </ul>
                 </div>
                 `,
@@ -6429,14 +3968,30 @@
                     } else {
                         downloadArticleJSON();
                     }
-                } else if (e.key === 'v') {
-                    e.preventDefault();
-                    if (document.getElementById('json-tool').classList.contains('active')) {
-                        importFromClipboard();
-                    }
                 }
             }
         });
+
+        // Touch event improvements for mobile drag and drop
+        let touchStartY = 0;
+        let touchStartX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!draggedNode && !draggedArticleField) return;
+            
+            const touchY = e.touches[0].clientY;
+            const touchX = e.touches[0].clientX;
+            
+            // Prevent scrolling while dragging
+            if (Math.abs(touchY - touchStartY) > 10 || Math.abs(touchX - touchStartX) > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
