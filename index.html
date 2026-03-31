@@ -1,49 +1,69 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nature JSON Tree Builder - Material Design 3</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Megurine Luka JSON Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <style>
         :root {
-            --md-sys-color-primary: #386a20;
-            --md-sys-color-on-primary: #ffffff;
-            --md-sys-color-primary-container: #b7f397;
-            --md-sys-color-on-primary-container: #042100;
+            /* Megurine Luka Theme Colors - Harmonious Pink/Coral/Dark */
+            --luka-pink: #E8A4C8;
+            --luka-pink-light: #F5D5E8;
+            --luka-pink-dark: #C47BA3;
+            --luka-pink-container: #F8E8F2;
             
-            --md-sys-color-secondary: #55624c;
-            --md-sys-color-on-secondary: #ffffff;
-            --md-sys-color-secondary-container: #d9e7cb;
-            --md-sys-color-on-secondary-container: #131f0d;
+            --luka-coral: #E8B4A4;
+            --luka-coral-light: #F5D5C8;
+            --luka-coral-dark: #C48F7B;
             
-            --md-sys-color-tertiary: #19686d;
-            --md-sys-color-on-tertiary: #ffffff;
-            --md-sys-color-tertiary-container: #a4eff4;
-            --md-sys-color-on-tertiary-container: #002022;
+            --luka-purple: #C4A4E8;
+            --luka-purple-light: #E0D5F5;
+            --luka-purple-dark: #9F7BC4;
             
-            --md-sys-color-surface: #fdfdf6;
-            --md-sys-color-on-surface: #1a1c18;
-            --md-sys-color-surface-variant: #dfe4d6;
-            --md-sys-color-on-surface-variant: #43483e;
+            --luka-teal: #A4D4C8;
+            --luka-teal-light: #D5F0E8;
+            --luka-teal-dark: #7BB8A8;
             
-            --md-sys-color-outline: #73796e;
-            --md-sys-color-outline-variant: #c3c8bb;
+            /* Material Design System Colors - Harmonious Luka Theme */
+            --md-sys-color-primary: var(--luka-pink);
+            --md-sys-color-on-primary: #2D1B25;
+            --md-sys-color-primary-container: var(--luka-pink-container);
+            --md-sys-color-on-primary-container: #5A0030;
             
-            --md-sys-color-error: #ba1a1a;
-            --md-sys-color-error-container: #ffdad6;
+            --md-sys-color-secondary: var(--luka-coral);
+            --md-sys-color-on-secondary: #2D1B18;
+            --md-sys-color-secondary-container: #F8F0E8;
+            --md-sys-color-on-secondary-container: #5A1A00;
             
-            --md-sys-color-surface-tint: #386a20;
-            --md-sys-color-surface-1: #f4f9eb;
-            --md-sys-color-surface-2: #eef6e4;
-            --md-sys-color-surface-3: #e9f2dd;
-            --md-sys-color-surface-4: #e6f0d9;
-            --md-sys-color-surface-5: #e2eed3;
+            --md-sys-color-tertiary: var(--luka-purple);
+            --md-sys-color-on-tertiary: #2D1B3D;
+            --md-sys-color-tertiary-container: #F5F0F8;
+            --md-sys-color-on-tertiary-container: #3D0066;
+            
+            --md-sys-color-surface: #252530;
+            --md-sys-color-on-surface: #E8E8F0;
+            --md-sys-color-surface-variant: #2E2E3C;
+            --md-sys-color-on-surface-variant: #B8B8C8;
+            
+            --md-sys-color-outline: #6B6B80;
+            --md-sys-color-outline-variant: #4A4A5C;
+            
+            --md-sys-color-error: #E8A4A4;
+            --md-sys-color-error-container: #F8E8E8;
+            
+            --md-sys-color-surface-tint: var(--luka-pink);
+            --md-sys-color-surface-1: #2A2A38;
+            --md-sys-color-surface-2: #2F2F40;
+            --md-sys-color-surface-3: #343448;
+            --md-sys-color-surface-4: #3A3A50;
+            --md-sys-color-surface-5: #404058;
             
             --tree-line-color: var(--md-sys-color-outline-variant);
             --tree-hover: var(--md-sys-color-surface-2);
             
+            /* Spacing */
             --md-sys-spacing-1: 4px;
             --md-sys-spacing-2: 8px;
             --md-sys-spacing-3: 12px;
@@ -53,66 +73,79 @@
             --md-sys-spacing-8: 32px;
             --md-sys-spacing-12: 48px;
             
+            /* Shapes - Rounded corners for modern feel */
             --md-sys-shape-corner-none: 0px;
-            --md-sys-shape-corner-extra-small: 4px;
+            --md-sys-shape-corner-extra-small: 6px;
             --md-sys-shape-corner-small: 8px;
             --md-sys-shape-corner-medium: 12px;
             --md-sys-shape-corner-large: 16px;
-            --md-sys-shape-corner-extra-large: 28px;
+            --md-sys-shape-corner-extra-large: 20px;
             --md-sys-shape-corner-full: 50%;
             
-            --md-sys-typescale-display-large: 400 3.5rem/4rem 'Roboto Flex';
-            --md-sys-typescale-display-medium: 400 2.8rem/3.2rem 'Roboto Flex';
-            --md-sys-typescale-headline-large: 400 2rem/2.5rem 'Roboto Flex';
-            --md-sys-typescale-headline-medium: 400 1.75rem/2.25rem 'Roboto Flex';
-            --md-sys-typescale-title-large: 400 1.375rem/1.75rem 'Roboto Flex';
-            --md-sys-typescale-title-medium: 500 1rem/1.5rem 'Roboto Flex';
-            --md-sys-typescale-body-large: 400 1rem/1.5rem 'Roboto Flex';
-            --md-sys-typescale-body-medium: 400 0.875rem/1.25rem 'Roboto Flex';
-            --md-sys-typescale-label-large: 500 0.875rem/1.25rem 'Roboto Flex';
-            --md-sys-typescale-label-medium: 500 0.75rem/1rem 'Roboto Flex';
+            /* Typography */
+            --md-sys-typescale-display-large: 600 2.5rem/3rem 'Poppins';
+            --md-sys-typescale-display-medium: 600 2rem/2.5rem 'Poppins';
+            --md-sys-typescale-headline-large: 600 1.75rem/2.25rem 'Poppins';
+            --md-sys-typescale-headline-medium: 600 1.5rem/2rem 'Poppins';
+            --md-sys-typescale-title-large: 600 1.25rem/1.75rem 'Poppins';
+            --md-sys-typescale-title-medium: 500 1rem/1.5rem 'Inter';
+            --md-sys-typescale-body-large: 400 1rem/1.75rem 'Inter';
+            --md-sys-typescale-body-medium: 400 0.9375rem/1.6rem 'Inter';
+            --md-sys-typescale-label-large: 600 0.875rem/1.25rem 'Inter';
+            --md-sys-typescale-label-medium: 500 0.8125rem/1rem 'Inter';
             
+            /* Motion */
             --md-sys-motion-duration-short: 150ms;
             --md-sys-motion-duration-medium: 300ms;
             --md-sys-motion-duration-long: 500ms;
             --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
             --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+            
+            /* Luka Box Border Style */
+            --luka-border: 2px solid var(--luka-pink);
+            --luka-border-coral: 2px solid var(--luka-coral);
+            --luka-box-shadow: 0 4px 0 var(--luka-pink-dark), 0 8px 20px rgba(232, 164, 200, 0.2);
+            --luka-box-shadow-coral: 0 4px 0 var(--luka-coral-dark), 0 8px 20px rgba(232, 180, 164, 0.2);
         }
 
-        [data-theme="dark"] {
-            --md-sys-color-primary: #9cd67d;
-            --md-sys-color-on-primary: #0f3900;
-            --md-sys-color-primary-container: #205107;
-            --md-sys-color-on-primary-container: #b7f397;
+        [data-theme="light"] {
+            --md-sys-color-primary: var(--luka-pink-dark);
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-primary-container: var(--luka-pink-container);
+            --md-sys-color-on-primary-container: #5A0030;
             
-            --md-sys-color-secondary: #bdcbaf;
-            --md-sys-color-on-secondary: #283420;
-            --md-sys-color-secondary-container: #3e4a35;
-            --md-sys-color-on-secondary-container: #d9e7cb;
+            --md-sys-color-secondary: var(--luka-coral-dark);
+            --md-sys-color-on-secondary: #ffffff;
+            --md-sys-color-secondary-container: #F8F0E8;
+            --md-sys-color-on-secondary-container: #5A1A00;
             
-            --md-sys-color-tertiary: #88d1d7;
-            --md-sys-color-on-tertiary: #00363a;
-            --md-sys-color-tertiary-container: #004f55;
-            --md-sys-color-on-tertiary-container: #a4eff4;
+            --md-sys-color-tertiary: var(--luka-purple-dark);
+            --md-sys-color-on-tertiary: #ffffff;
+            --md-sys-color-tertiary-container: #F5F0F8;
+            --md-sys-color-on-tertiary-container: #3D0066;
             
-            --md-sys-color-surface: #1a1c18;
-            --md-sys-color-on-surface: #e2e3dc;
-            --md-sys-color-surface-variant: #43483e;
-            --md-sys-color-on-surface-variant: #c3c8bb;
+            --md-sys-color-surface: #FAF8FA;
+            --md-sys-color-on-surface: #2D1B25;
+            --md-sys-color-surface-variant: #F2EFF1;
+            --md-sys-color-on-surface-variant: #5A4A52;
             
-            --md-sys-color-outline: #8d9287;
-            --md-sys-color-outline-variant: #43483e;
+            --md-sys-color-outline: #9B8B93;
+            --md-sys-color-outline-variant: #E8E0E4;
             
-            --md-sys-color-surface-tint: #9cd67d;
-            --md-sys-color-surface-1: #1f241b;
-            --md-sys-color-surface-2: #232920;
-            --md-sys-color-surface-3: #282e25;
-            --md-sys-color-surface-4: #293026;
-            --md-sys-color-surface-5: #2c3328;
+            --md-sys-color-surface-tint: var(--luka-pink);
+            --md-sys-color-surface-1: #F8F4F6;
+            --md-sys-color-surface-2: #F0EAED;
+            --md-sys-color-surface-3: #E8E0E4;
+            --md-sys-color-surface-4: #E0D6DB;
+            --md-sys-color-surface-5: #D8CCD2;
             
-            --tree-line-color: #43483e;
-            --tree-hover: #2d322b;
+            --tree-line-color: #E8E0E4;
+            --tree-hover: #F2EFF1;
+            
+            --luka-box-shadow: 0 4px 0 var(--luka-pink), 0 8px 20px rgba(232, 164, 200, 0.15);
+            --luka-box-shadow-coral: 0 4px 0 var(--luka-coral), 0 8px 20px rgba(232, 180, 164, 0.15);
         }
+
         * {
             margin: 0;
             padding: 0;
@@ -122,26 +155,47 @@
 
         html {
             font-size: 16px;
+            scroll-behavior: smooth;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
+            html {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 992px) {
             html {
                 font-size: 14px;
             }
         }
 
+        @media (max-width: 768px) {
+            html {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 12px;
+            }
+        }
+
         body {
-            font-family: 'Roboto Flex', sans-serif;
-            background-color: var(--md-sys-color-surface);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-2) 50%, var(--md-sys-color-surface-3) 100%);
+            background-attachment: fixed;
             color: var(--md-sys-color-on-surface);
             min-height: 100vh;
             overflow-x: hidden;
             transition: background-color var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
         }
 
-        .nature-bg {
+        .luka-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -152,70 +206,84 @@
             overflow: hidden;
         }
 
-        .leaf-ornament {
+        .luka-petal {
             position: absolute;
-            opacity: 0.08;
-            animation: float 20s ease-in-out infinite;
+            opacity: 0.06;
+            animation: float-petal 15s ease-in-out infinite;
         }
 
-        .leaf-1 {
-            top: 10%;
-            left: 5%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle at 30% 30%, var(--md-sys-color-primary), transparent 70%);
-            border-radius: 0 70% 0 70%;
-            transform: rotate(-45deg);
+        .petal-1 {
+            top: 5%;
+            left: 8%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, var(--luka-pink), transparent 70%);
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(-30deg);
             animation-delay: 0s;
         }
 
-        .leaf-2 {
-            top: 60%;
-            right: 10%;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle at 30% 30%, var(--md-sys-color-tertiary), transparent 70%);
-            border-radius: 0 60% 0 60%;
-            transform: rotate(15deg);
-            animation-delay: -5s;
+        .petal-2 {
+            top: 40%;
+            right: 12%;
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle at 30% 30%, var(--luka-coral), transparent 70%);
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(45deg);
+            animation-delay: -4s;
         }
 
-        .leaf-3 {
-            bottom: 20%;
+        .petal-3 {
+            bottom: 25%;
+            left: 5%;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 40% 40%, var(--luka-purple), transparent 70%);
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(60deg);
+            animation-delay: -8s;
+        }
+
+        .petal-4 {
+            top: 70%;
+            right: 20%;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle at 30% 30%, var(--luka-teal), transparent 70%);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            animation-delay: -12s;
+        }
+
+        .luka-note {
+            position: absolute;
+            font-size: 48px;
+            opacity: 0.04;
+            color: var(--luka-pink);
+            animation: float-note 20s ease-in-out infinite;
+        }
+
+        .note-1 {
+            top: 15%;
+            right: 8%;
+            animation-delay: -2s;
+        }
+
+        .note-2 {
+            bottom: 15%;
             left: 15%;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 40% 40%, var(--md-sys-color-secondary), transparent 70%);
-            border-radius: 0 80% 0 50%;
-            transform: rotate(45deg);
             animation-delay: -10s;
         }
 
-        .circle-ornament {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.05;
-            background: var(--md-sys-color-primary);
+        @keyframes float-petal {
+            0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
+            50% { transform: translateY(-25px) rotate(calc(var(--rot, 0deg) + 15deg)) scale(1.1); }
         }
 
-        .circle-1 {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            right: -100px;
-        }
-
-        .circle-2 {
-            width: 200px;
-            height: 200px;
-            bottom: -50px;
-            left: -50px;
-            background: var(--md-sys-color-tertiary);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
-            50% { transform: translateY(-20px) rotate(calc(var(--rot, 0deg) + 5deg)); }
+        @keyframes float-note {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
         }
 
         .app-container {
@@ -226,9 +294,27 @@
             padding: var(--md-sys-spacing-6);
         }
 
+        @media (max-width: 1200px) {
+            .app-container {
+                padding: var(--md-sys-spacing-5);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .app-container {
+                padding: var(--md-sys-spacing-4);
+            }
+        }
+
         @media (max-width: 768px) {
             .app-container {
                 padding: var(--md-sys-spacing-3);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-container {
+                padding: var(--md-sys-spacing-2);
             }
         }
 
@@ -237,22 +323,40 @@
             align-items: center;
             justify-content: space-between;
             padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
-            background-color: var(--md-sys-color-surface);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            margin: calc(-1 * var(--md-sys-spacing-6));
+            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-1) 100%);
+            border: var(--luka-border);
+            border-radius: var(--md-sys-shape-corner-large);
             margin-bottom: var(--md-sys-spacing-6);
             position: sticky;
-            top: 0;
+            top: var(--md-sys-spacing-4);
             z-index: 100;
-            backdrop-filter: blur(10px);
-            background-color: rgba(var(--md-sys-color-surface), 0.8);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--luka-box-shadow);
+            flex-wrap: wrap;
+            gap: var(--md-sys-spacing-3);
+        }
+
+        @media (max-width: 992px) {
+            .app-bar {
+                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+                margin-bottom: var(--md-sys-spacing-4);
+            }
         }
 
         @media (max-width: 768px) {
             .app-bar {
-                margin: calc(-1 * var(--md-sys-spacing-3));
-                margin-bottom: var(--md-sys-spacing-3);
                 padding: var(--md-sys-spacing-3);
+                margin-bottom: var(--md-sys-spacing-3);
+                top: var(--md-sys-spacing-2);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-bar {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: var(--md-sys-spacing-2);
             }
         }
 
@@ -264,37 +368,58 @@
 
         @media (max-width: 480px) {
             .app-bar-left {
+                justify-content: center;
                 gap: var(--md-sys-spacing-2);
             }
         }
 
         .logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-tertiary-container));
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
             border-radius: var(--md-sys-shape-corner-medium);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--md-sys-color-on-primary-container);
+            color: var(--md-sys-color-on-primary);
             font-variation-settings: 'FILL' 1, 'wght' 600;
             flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(232, 164, 200, 0.3);
+            border: 3px solid var(--md-sys-color-surface);
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         @media (max-width: 480px) {
             .logo {
-                width: 32px;
-                height: 32px;
+                width: 36px;
+                height: 36px;
             }
         }
 
         .app-title {
             font: var(--md-sys-typescale-title-large);
             color: var(--md-sys-color-on-surface);
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 992px) {
+            .app-title {
+                font: var(--md-sys-typescale-title-medium);
+                max-width: 300px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -306,9 +431,8 @@
 
         @media (max-width: 480px) {
             .app-title {
-                font: var(--md-sys-typescale-body-large);
-                font-weight: 600;
-                max-width: 150px;
+                font-size: 1.1rem;
+                max-width: 100%;
             }
         }
 
@@ -317,49 +441,82 @@
             gap: var(--md-sys-spacing-2);
         }
 
+        @media (max-width: 480px) {
+            .app-bar-actions {
+                justify-content: center;
+            }
+        }
+
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 500px;
+            grid-template-columns: 1fr 450px;
             gap: var(--md-sys-spacing-6);
             align-items: start;
         }
 
         @media (max-width: 1200px) {
             .main-layout {
+                grid-template-columns: 1fr 380px;
+                gap: var(--md-sys-spacing-4);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-layout {
                 grid-template-columns: 1fr;
+                gap: var(--md-sys-spacing-4);
             }
         }
 
         @media (max-width: 768px) {
             .main-layout {
-                gap: var(--md-sys-spacing-4);
+                gap: var(--md-sys-spacing-3);
             }
         }
 
         .card {
-            background-color: var(--md-sys-color-surface-1);
+            background-color: var(--md-sys-color-surface);
             border-radius: var(--md-sys-shape-corner-large);
             padding: var(--md-sys-spacing-6);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 2px solid var(--md-sys-color-outline-variant);
             transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
+        }
+
+        .card:hover {
+            border-color: var(--luka-pink);
+            box-shadow: var(--luka-box-shadow);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 992px) {
+            .card {
+                padding: var(--md-sys-spacing-4);
+            }
         }
 
         @media (max-width: 768px) {
             .card {
-                padding: var(--md-sys-spacing-4);
+                padding: var(--md-sys-spacing-3);
                 border-radius: var(--md-sys-shape-corner-medium);
             }
         }
 
         @media (max-width: 480px) {
             .card {
-                padding: var(--md-sys-spacing-3);
+                padding: var(--md-sys-spacing-2);
             }
-        }
-
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .card-title {
@@ -370,9 +527,10 @@
             align-items: center;
             gap: var(--md-sys-spacing-2);
             flex-wrap: wrap;
+            font-weight: 600;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .card-title {
                 font: var(--md-sys-typescale-body-large);
                 font-weight: 600;
@@ -380,23 +538,37 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .card-title {
+                font-size: 0.95rem;
+                margin-bottom: var(--md-sys-spacing-2);
+            }
+        }
+
         .card-subtitle {
             font: var(--md-sys-typescale-body-medium);
             color: var(--md-sys-color-on-surface-variant);
             margin-bottom: var(--md-sys-spacing-4);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .card-subtitle {
+                margin-bottom: var(--md-sys-spacing-3);
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 480px) {
             .card-subtitle {
-                font: var(--md-sys-typescale-body-medium);
-                margin-bottom: var(--md-sys-spacing-3);
+                margin-bottom: var(--md-sys-spacing-2);
             }
         }
 
         .tree-container, .article-field-container {
             background-color: var(--md-sys-color-surface);
             border-radius: var(--md-sys-shape-corner-medium);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            border: 2px solid var(--md-sys-color-outline-variant);
             overflow: hidden;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -413,15 +585,24 @@
             gap: var(--md-sys-spacing-2);
             padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
             border-bottom: 1px solid var(--md-sys-color-outline-variant);
-            transition: background-color var(--md-sys-motion-duration-short);
+            transition: all var(--md-sys-motion-duration-short);
             position: relative;
             min-width: fit-content;
+            background-color: var(--md-sys-color-surface);
+        }
+
+        @media (max-width: 992px) {
+            .tree-node-content, .article-field-content {
+                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+                gap: var(--md-sys-spacing-1);
+            }
         }
 
         @media (max-width: 768px) {
             .tree-node-content, .article-field-content {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                gap: var(--md-sys-spacing-1);
+                padding: var(--md-sys-spacing-2);
+                gap: 4px;
+                flex-wrap: wrap;
             }
         }
 
@@ -430,12 +611,14 @@
         }
 
         .tree-node-content.dragging, .article-field-content.dragging {
-            opacity: 0.5;
+            opacity: 0.7;
             background-color: var(--md-sys-color-primary-container);
+            border: 2px dashed var(--luka-pink);
         }
 
         .tree-node-content.drag-over, .article-field-content.drag-over {
-            border-top: 3px solid var(--md-sys-color-primary);
+            border-top: 3px solid var(--luka-pink);
+            background-color: rgba(232, 164, 200, 0.1);
         }
 
         .tree-indent, .field-indent {
@@ -452,9 +635,15 @@
             flex-shrink: 0;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .tree-line, .field-line {
                 width: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tree-line, .field-line {
+                width: 8px;
             }
         }
 
@@ -464,8 +653,9 @@
             left: 50%;
             top: 0;
             bottom: 0;
-            width: 1px;
-            background-color: var(--tree-line-color);
+            width: 2px;
+            background: linear-gradient(180deg, var(--luka-pink), var(--luka-coral));
+            border-radius: 1px;
         }
 
         .tree-line::after, .field-line::after {
@@ -474,8 +664,9 @@
             left: 50%;
             top: 50%;
             right: 0;
-            height: 1px;
-            background-color: var(--tree-line-color);
+            height: 2px;
+            background: linear-gradient(90deg, var(--luka-pink), transparent);
+            border-radius: 1px;
         }
 
         .tree-line.last::before, .field-line.last::before {
@@ -483,33 +674,87 @@
         }
 
         .tree-toggle, .field-toggle {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             border-radius: var(--md-sys-shape-corner-small);
-            color: var(--md-sys-color-on-surface-variant);
+            color: var(--luka-pink);
             transition: all var(--md-sys-motion-duration-short);
             z-index: 2;
             background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            border: 2px solid var(--luka-pink);
             flex-shrink: 0;
         }
 
         .tree-toggle:hover, .field-toggle:hover {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-primary);
+            background-color: var(--luka-pink);
+            color: var(--md-sys-color-on-primary);
+            transform: scale(1.1);
         }
 
         .tree-toggle.expanded, .field-toggle.expanded {
             transform: rotate(90deg);
+            background-color: var(--luka-pink);
+            color: var(--md-sys-color-on-primary);
         }
 
         .tree-toggle.leaf, .field-toggle.leaf {
             visibility: hidden;
             pointer-events: none;
+        }
+
+        /* Move Buttons - Arrow Up/Down */
+        .move-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-shrink: 0;
+            padding: 2px;
+        }
+
+        .move-btn {
+            width: 32px;
+            height: 28px;
+            border: 2px solid var(--md-sys-color-outline);
+            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
+            color: var(--md-sys-color-on-surface);
+            border-radius: var(--md-sys-shape-corner-small);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 18px;
+            padding: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .move-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
+            color: var(--md-sys-color-on-primary);
+            border-color: var(--luka-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(232, 164, 200, 0.3);
+        }
+
+        .move-btn:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 1px 2px rgba(232, 164, 200, 0.2);
+        }
+
+        .move-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: var(--md-sys-color-surface-variant);
+            border-color: var(--md-sys-color-outline-variant);
+        }
+
+        .move-btn .material-symbols-rounded {
+            font-size: 20px !important;
+            font-weight: 700;
         }
 
         .drag-handle, .field-drag-handle {
@@ -530,13 +775,13 @@
             
             .drag-handle .material-symbols-rounded,
             .field-drag-handle .material-symbols-rounded {
-                font-size: 16px !important;
+                font-size: 18px !important;
             }
         }
 
         .drag-handle:hover, .field-drag-handle:hover {
             background-color: var(--md-sys-color-surface-variant);
-            color: var(--md-sys-color-on-surface);
+            color: var(--luka-pink);
         }
 
         .drag-handle:active, .field-drag-handle:active {
@@ -544,23 +789,23 @@
         }
 
         .tree-icon, .field-icon {
-            color: var(--md-sys-color-primary);
+            color: var(--luka-pink);
             font-variation-settings: 'FILL' 1;
             flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
             .tree-icon, .field-icon {
-                font-size: 18px !important;
+                font-size: 20px !important;
             }
         }
 
         .tree-icon.object, .field-icon.object {
-            color: var(--md-sys-color-tertiary);
+            color: var(--luka-coral);
         }
 
         .tree-icon.array, .field-icon.array {
-            color: var(--md-sys-color-secondary);
+            color: var(--luka-purple);
         }
 
         .tree-inputs, .field-inputs {
@@ -571,10 +816,18 @@
             min-width: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tree-inputs, .field-inputs {
                 flex-wrap: wrap;
                 gap: var(--md-sys-spacing-1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tree-inputs, .field-inputs {
+                width: 100%;
+                order: 3;
+                margin-top: var(--md-sys-spacing-1);
             }
         }
 
@@ -583,25 +836,24 @@
             min-width: 100px;
             max-width: 200px;
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 1px solid var(--md-sys-color-outline);
+            border: 2px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
             font: var(--md-sys-typescale-body-medium);
+            font-weight: 500;
             outline: none;
             transition: all var(--md-sys-motion-duration-short);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tree-key-input, .field-key-input {
                 min-width: 80px;
                 max-width: 150px;
-                font: var(--md-sys-typescale-body-medium);
-                padding: var(--md-sys-spacing-2);
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .tree-key-input, .field-key-input {
                 min-width: 60px;
                 max-width: 120px;
@@ -609,16 +861,24 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .tree-key-input, .field-key-input {
+                min-width: 50px;
+                max-width: 100px;
+                font-size: 0.8rem;
+            }
+        }
+
         .tree-key-input:focus, .field-key-input:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--luka-pink);
+            box-shadow: 0 0 0 3px rgba(232, 164, 200, 0.2);
         }
 
         .tree-value-input, .field-value-input {
             flex: 2;
             min-width: 150px;
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 1px solid var(--md-sys-color-outline);
+            border: 2px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
@@ -627,67 +887,80 @@
             transition: all var(--md-sys-motion-duration-short);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tree-value-input, .field-value-input {
                 min-width: 100px;
-                font: var(--md-sys-typescale-body-medium);
-                padding: var(--md-sys-spacing-2);
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .tree-value-input, .field-value-input {
                 min-width: 80px;
                 font-size: 0.875rem;
             }
         }
 
+        @media (max-width: 480px) {
+            .tree-value-input, .field-value-input {
+                min-width: 60px;
+                font-size: 0.8rem;
+            }
+        }
+
         .tree-value-input:focus, .field-value-input:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--luka-coral);
+            box-shadow: 0 0 0 3px rgba(232, 180, 164, 0.2);
         }
 
         .tree-value-input:disabled,
         .tree-value-input.object-mode,
         .field-value-input:disabled,
         .field-value-input.object-mode {
-            background-color: var(--md-sys-color-surface-variant);
+            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
             color: var(--md-sys-color-on-surface-variant);
             font-style: italic;
             cursor: not-allowed;
+            border-color: var(--md-sys-color-outline-variant);
+            opacity: 0.7;
         }
 
         .tree-type-select, .field-type-select {
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            border: 1px solid var(--md-sys-color-outline);
+            border: 2px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
             font: var(--md-sys-typescale-body-medium);
+            font-weight: 500;
             cursor: pointer;
             outline: none;
             min-width: 90px;
             flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tree-type-select, .field-type-select {
                 min-width: 80px;
-                font: var(--md-sys-typescale-body-medium);
-                padding: var(--md-sys-spacing-2);
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .tree-type-select, .field-type-select {
                 min-width: 70px;
                 font-size: 0.875rem;
             }
         }
 
+        @media (max-width: 480px) {
+            .tree-type-select, .field-type-select {
+                min-width: 60px;
+                font-size: 0.8rem;
+            }
+        }
+
         .tree-type-select:focus, .field-type-select:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--luka-purple);
+            box-shadow: 0 0 0 3px rgba(196, 164, 232, 0.2);
         }
 
         .tree-actions, .field-actions {
@@ -702,13 +975,19 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .tree-actions, .field-actions {
+                order: 2;
+            }
+        }
+
         .icon-btn {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border: none;
             background: transparent;
             color: var(--md-sys-color-on-surface-variant);
-            border-radius: var(--md-sys-shape-corner-full);
+            border-radius: var(--md-sys-shape-corner-small);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -718,10 +997,17 @@
             flex-shrink: 0;
         }
 
+        @media (max-width: 992px) {
+            .icon-btn {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
         @media (max-width: 768px) {
             .icon-btn {
-                width: 28px;
-                height: 28px;
+                width: 32px;
+                height: 32px;
             }
             
             .icon-btn .material-symbols-rounded {
@@ -729,24 +1015,32 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .icon-btn {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
         .icon-btn:hover {
             background-color: var(--md-sys-color-surface-variant);
             color: var(--md-sys-color-on-surface);
+            transform: scale(1.05);
         }
 
         .icon-btn.delete:hover {
-            background-color: var(--md-sys-color-error-container);
+            background-color: rgba(232, 164, 164, 0.2);
             color: var(--md-sys-color-error);
         }
 
         .icon-btn.add-child:hover {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-primary);
+            background-color: rgba(232, 164, 200, 0.2);
+            color: var(--luka-pink);
         }
 
         .icon-btn.copy:hover {
-            background-color: var(--md-sys-color-secondary-container);
-            color: var(--md-sys-color-on-secondary-container);
+            background-color: rgba(232, 180, 164, 0.2);
+            color: var(--luka-coral);
         }
 
         .tree-children, .field-children {
@@ -758,6 +1052,7 @@
             display: none;
         }
 
+        /* Rounded Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -765,8 +1060,9 @@
             gap: var(--md-sys-spacing-2);
             padding: var(--md-sys-spacing-3) var(--md-sys-spacing-5);
             border: none;
-            border-radius: var(--md-sys-shape-corner-full);
+            border-radius: var(--md-sys-shape-corner-medium);
             font: var(--md-sys-typescale-label-large);
+            font-weight: 600;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
             text-transform: none;
@@ -776,22 +1072,28 @@
             white-space: nowrap;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .btn {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
-                font: var(--md-sys-typescale-label-medium);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+                gap: var(--md-sys-spacing-1);
             }
         }
 
         @media (max-width: 480px) {
             .btn {
-                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-label-medium);
-                gap: var(--md-sys-spacing-1);
+                padding: var(--md-sys-spacing-2);
+                font-size: 0.8rem;
+                gap: 4px;
             }
             
             .btn .material-symbols-rounded {
-                font-size: 18px !important;
+                font-size: 16px !important;
             }
         }
 
@@ -814,53 +1116,157 @@
         }
 
         .btn-filled {
-            background-color: var(--md-sys-color-primary);
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
             color: var(--md-sys-color-on-primary);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 0 var(--luka-pink-dark), 0 8px 20px rgba(232, 164, 200, 0.3);
+            border: 2px solid var(--luka-pink);
         }
 
         .btn-filled:hover {
-            background-color: color-mix(in srgb, var(--md-sys-color-primary) 90%, black);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, var(--luka-pink-light), var(--luka-pink));
+            box-shadow: 0 6px 0 var(--luka-pink-dark), 0 12px 25px rgba(232, 164, 200, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-filled:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--luka-pink-dark), 0 4px 10px rgba(232, 164, 200, 0.3);
+        }
+
+        .btn-coral {
+            background: linear-gradient(135deg, var(--luka-coral), var(--luka-coral-dark));
+            color: var(--md-sys-color-on-secondary);
+            box-shadow: 0 4px 0 var(--luka-coral-dark), 0 8px 20px rgba(232, 180, 164, 0.3);
+            border: 2px solid var(--luka-coral);
+        }
+
+        .btn-coral:hover {
+            background: linear-gradient(135deg, var(--luka-coral-light), var(--luka-coral));
+            box-shadow: 0 6px 0 var(--luka-coral-dark), 0 12px 25px rgba(232, 180, 164, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-coral:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--luka-coral-dark), 0 4px 10px rgba(232, 180, 164, 0.3);
+        }
+
+        .btn-purple {
+            background: linear-gradient(135deg, var(--luka-purple), var(--luka-purple-dark));
+            color: var(--md-sys-color-on-tertiary);
+            box-shadow: 0 4px 0 var(--luka-purple-dark), 0 8px 20px rgba(196, 164, 232, 0.3);
+            border: 2px solid var(--luka-purple);
+        }
+
+        .btn-purple:hover {
+            background: linear-gradient(135deg, var(--luka-purple-light), var(--luka-purple));
+            box-shadow: 0 6px 0 var(--luka-purple-dark), 0 12px 25px rgba(196, 164, 232, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-purple:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--luka-purple-dark), 0 4px 10px rgba(196, 164, 232, 0.3);
         }
 
         .btn-tonal {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
+            box-shadow: 0 3px 0 var(--luka-coral-dark);
+            border: 2px solid var(--luka-coral);
         }
 
         .btn-tonal:hover {
             background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 90%, black);
+            box-shadow: 0 5px 0 var(--luka-coral-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-tonal:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 var(--luka-coral-dark);
         }
 
         .btn-outlined {
             background-color: transparent;
-            color: var(--md-sys-color-primary);
-            border: 1px solid var(--md-sys-color-outline);
+            color: var(--luka-pink);
+            border: 2px solid var(--luka-pink);
+            box-shadow: 0 3px 0 var(--luka-pink);
         }
 
         .btn-outlined:hover {
-            background-color: var(--md-sys-color-primary-container);
-            border-color: var(--md-sys-color-primary);
+            background-color: rgba(232, 164, 200, 0.1);
+            border-color: var(--luka-pink);
+            box-shadow: 0 5px 0 var(--luka-pink);
+            transform: translateY(-2px);
+        }
+
+        .btn-outlined:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 var(--luka-pink);
         }
 
         .btn-text {
             background-color: transparent;
-            color: var(--md-sys-color-primary);
+            color: var(--luka-coral);
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+            font-weight: 600;
         }
 
         .btn-text:hover {
-            background-color: var(--md-sys-color-primary-container);
+            background-color: var(--md-sys-color-secondary-container);
+            border-radius: var(--md-sys-shape-corner-small);
+        }
+
+        .btn-teal {
+            background: linear-gradient(135deg, var(--luka-teal), var(--luka-teal-dark));
+            color: var(--md-sys-color-surface);
+            box-shadow: 0 4px 0 var(--luka-teal-dark), 0 8px 20px rgba(164, 212, 200, 0.3);
+            border: 2px solid var(--luka-teal);
+        }
+
+        .btn-teal:hover {
+            background: linear-gradient(135deg, var(--luka-teal-light), var(--luka-teal));
+            box-shadow: 0 6px 0 var(--luka-teal-dark), 0 12px 25px rgba(164, 212, 200, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-teal:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--luka-teal-dark), 0 4px 10px rgba(164, 212, 200, 0.3);
+        }
+
+        .btn-rainbow {
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
+            background-size: 200% 200%;
+            color: var(--md-sys-color-on-primary);
+            box-shadow: 0 4px 0 var(--luka-pink-dark), 0 8px 20px rgba(232, 164, 200, 0.3);
+            border: 2px solid var(--md-sys-color-surface);
+            animation: rainbow-shift 3s ease infinite;
+        }
+
+        @keyframes rainbow-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-rainbow:hover {
+            box-shadow: 0 6px 0 var(--luka-pink-dark), 0 12px 25px rgba(232, 164, 200, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-rainbow:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--luka-pink-dark), 0 4px 10px rgba(232, 164, 200, 0.3);
         }
 
         .output-section {
             position: sticky;
-            top: 100px;
+            top: 120px;
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             .output-section {
                 position: relative;
                 top: 0;
@@ -872,13 +1278,13 @@
         }
 
         .json-preview {
-            background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-1) 100%);
+            border: 2px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
             padding: var(--md-sys-spacing-4);
-            font-family: 'Roboto Mono', monospace;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             font-size: 0.875rem;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--md-sys-color-on-surface);
             overflow-x: auto;
             white-space: pre-wrap;
@@ -889,11 +1295,19 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .json-preview {
                 padding: var(--md-sys-spacing-3);
-                font-size: 0.75rem;
+                font-size: 0.8rem;
                 max-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .json-preview {
+                padding: var(--md-sys-spacing-2);
+                font-size: 0.75rem;
+                max-height: 300px;
             }
         }
 
@@ -905,19 +1319,23 @@
         }
 
         .json-key {
-            color: var(--md-sys-color-primary);
+            color: #D4A4C8;
+            font-weight: 600;
         }
 
         .json-string {
-            color: var(--md-sys-color-tertiary);
+            color: #E8C4B4;
+            font-weight: 500;
         }
 
         .json-number {
-            color: var(--md-sys-color-secondary);
+            color: #C4B4E8;
+            font-weight: 600;
         }
 
         .json-boolean {
-            color: var(--md-sys-color-error);
+            color: #A4D4C8;
+            font-weight: 600;
         }
 
         .copy-btn {
@@ -925,7 +1343,7 @@
             top: var(--md-sys-spacing-3);
             right: var(--md-sys-spacing-3);
             background-color: var(--md-sys-color-surface-1);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            border: 2px solid var(--md-sys-color-outline-variant);
             z-index: 10;
         }
 
@@ -933,8 +1351,8 @@
             .copy-btn {
                 top: var(--md-sys-spacing-2);
                 right: var(--md-sys-spacing-2);
-                width: 28px;
-                height: 28px;
+                width: 32px;
+                height: 32px;
             }
         }
 
@@ -945,10 +1363,17 @@
             flex-wrap: wrap;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .action-bar {
                 gap: var(--md-sys-spacing-2);
                 margin-top: var(--md-sys-spacing-3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .action-bar {
+                gap: var(--md-sys-spacing-1);
+                margin-top: var(--md-sys-spacing-2);
             }
         }
 
@@ -970,10 +1395,16 @@
             margin-bottom: var(--md-sys-spacing-4);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .chip-group {
                 margin-bottom: var(--md-sys-spacing-3);
                 gap: var(--md-sys-spacing-1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chip-group {
+                margin-bottom: var(--md-sys-spacing-2);
             }
         }
 
@@ -986,28 +1417,39 @@
             color: var(--md-sys-color-on-surface-variant);
             border-radius: var(--md-sys-shape-corner-small);
             font: var(--md-sys-typescale-label-medium);
+            font-weight: 500;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
-            border: 1px solid transparent;
+            border: 2px solid transparent;
             white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .chip {
+                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+                font-size: 0.8rem;
+            }
         }
 
         @media (max-width: 480px) {
             .chip {
-                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-label-small);
+                padding: var(--md-sys-spacing-1);
+                font-size: 0.75rem;
+                gap: 4px;
             }
         }
 
         .chip:hover {
             background-color: var(--md-sys-color-secondary-container);
             color: var(--md-sys-color-on-secondary-container);
+            border-color: var(--luka-coral);
         }
 
         .chip.active {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-            border-color: var(--md-sys-color-primary);
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.2), rgba(232, 180, 164, 0.2));
+            color: var(--md-sys-color-on-surface);
+            border-color: var(--luka-pink);
+            font-weight: 600;
         }
 
         .snackbar {
@@ -1015,11 +1457,11 @@
             bottom: var(--md-sys-spacing-6);
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background-color: var(--md-sys-color-inverse-surface, #2d322b);
-            color: var(--md-sys-color-inverse-on-surface, #f0f2eb);
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
+            color: var(--md-sys-color-on-primary);
             padding: var(--md-sys-spacing-4) var(--md-sys-spacing-6);
-            border-radius: var(--md-sys-shape-corner-small);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border-radius: var(--md-sys-shape-corner-medium);
+            box-shadow: 0 8px 24px rgba(232, 164, 200, 0.3);
             display: flex;
             align-items: center;
             gap: var(--md-sys-spacing-4);
@@ -1028,13 +1470,22 @@
             transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
             max-width: 90vw;
             width: auto;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .snackbar {
+                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+                font-size: 0.875rem;
+                gap: var(--md-sys-spacing-2);
+            }
         }
 
         @media (max-width: 480px) {
             .snackbar {
-                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-                font: var(--md-sys-typescale-body-medium);
-                gap: var(--md-sys-spacing-2);
+                padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+                font-size: 0.8rem;
+                width: 95vw;
             }
         }
 
@@ -1049,7 +1500,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.7);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1057,7 +1508,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all var(--md-sys-motion-duration-medium);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(8px);
             padding: var(--md-sys-spacing-4);
         }
 
@@ -1076,21 +1527,30 @@
             overflow-y: auto;
             transform: scale(0.9);
             transition: transform var(--md-sys-motion-duration-medium);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: var(--luka-box-shadow);
+            border: 3px solid var(--luka-pink);
             width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .dialog {
+                padding: var(--md-sys-spacing-4);
+                min-width: 280px;
+            }
         }
 
         @media (max-width: 768px) {
             .dialog {
-                padding: var(--md-sys-spacing-4);
+                padding: var(--md-sys-spacing-3);
                 min-width: unset;
             }
         }
 
         @media (max-width: 480px) {
             .dialog {
-                padding: var(--md-sys-spacing-3);
+                padding: var(--md-sys-spacing-2);
                 border-radius: var(--md-sys-shape-corner-large);
+                border-width: 2px;
             }
         }
 
@@ -1099,15 +1559,27 @@
         }
 
         .dialog-title {
-            font: var(--md-sys-typescale-headline-small, 400 1.5rem/2rem 'Roboto Flex');
+            font: var(--md-sys-typescale-headline-medium);
+            font-weight: 700;
             color: var(--md-sys-color-on-surface);
             margin-bottom: var(--md-sys-spacing-4);
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .dialog-title {
                 font: var(--md-sys-typescale-title-large);
                 margin-bottom: var(--md-sys-spacing-3);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dialog-title {
+                font-size: 1.1rem;
+                margin-bottom: var(--md-sys-spacing-2);
             }
         }
 
@@ -1115,12 +1587,19 @@
             font: var(--md-sys-typescale-body-medium);
             color: var(--md-sys-color-on-surface-variant);
             margin-bottom: var(--md-sys-spacing-6);
+            line-height: 1.7;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .dialog-content {
-                font: var(--md-sys-typescale-body-medium);
                 margin-bottom: var(--md-sys-spacing-4);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dialog-content {
+                margin-bottom: var(--md-sys-spacing-3);
+                font-size: 0.85rem;
             }
         }
 
@@ -1147,116 +1626,70 @@
             color: var(--md-sys-color-on-surface-variant);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .empty-state {
                 padding: var(--md-sys-spacing-8) var(--md-sys-spacing-4);
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .empty-state {
                 padding: var(--md-sys-spacing-6) var(--md-sys-spacing-3);
             }
         }
 
-        .empty-state-icon {
-            font-size: 48px;
-            margin-bottom: var(--md-sys-spacing-4);
-            opacity: 0.5;
+        @media (max-width: 480px) {
+            .empty-state {
+                padding: var(--md-sys-spacing-4) var(--md-sys-spacing-2);
+            }
         }
 
-        @media (max-width: 768px) {
+        .empty-state-icon {
+            font-size: 56px;
+            margin-bottom: var(--md-sys-spacing-4);
+            opacity: 0.5;
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 992px) {
             .empty-state-icon {
-                font-size: 36px;
+                font-size: 48px;
                 margin-bottom: var(--md-sys-spacing-3);
             }
         }
 
         @media (max-width: 768px) {
-            .tree-inputs, .field-inputs {
-                flex-direction: column;
-                align-items: stretch;
-                width: 100%;
+            .empty-state-icon {
+                font-size: 42px;
+                margin-bottom: var(--md-sys-spacing-2);
             }
-
-            .tree-key-input, .field-key-input,
-            .tree-value-input, .field-value-input,
-            .tree-type-select, .field-type-select {
-                width: 100%;
-                max-width: none;
-                min-width: unset;
-            }
-
-            .tree-key-input, .field-key-input {
-                order: 1;
-            }
-
-            .tree-type-select, .field-type-select {
-                order: 2;
-                width: auto;
-                align-self: flex-start;
-            }
-
-            .tree-value-input, .field-value-input {
-                order: 3;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tree-actions, .field-actions {
-                position: absolute;
-                top: var(--md-sys-spacing-2);
-                right: var(--md-sys-spacing-2);
-                background: rgba(var(--md-sys-color-surface), 0.9);
-                border-radius: var(--md-sys-shape-corner-small);
-                padding: 2px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                opacity: 0;
-                transition: opacity 0.2s;
-            }
-
-            .tree-node-content:active .tree-actions,
-            .tree-node-content:hover .tree-actions,
-            .article-field-content:active .field-actions,
-            .article-field-content:hover .field-actions {
-                opacity: 1;
-            }
-        }
-
-        .json-preview {
-            font-size: 0.75rem;
-        }
-
-        @media (max-width: 480px) {
-            .json-preview {
-                font-size: 0.7rem;
-            }
-        }
-
-        .texture-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.02;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 20px;
-            height: 20px;
-            padding: 0 6px;
-            background-color: var(--md-sys-color-error);
-            color: var(--md-sys-color-on-primary);
-            border-radius: var(--md-sys-shape-corner-full);
-            font: var(--md-sys-typescale-label-small, 500 0.7rem/1 'Roboto Flex');
+            min-width: 24px;
+            height: 24px;
+            padding: 0 8px;
+            background: linear-gradient(135deg, var(--luka-coral), var(--luka-coral-dark));
+            color: var(--md-sys-color-on-secondary);
+            border-radius: var(--md-sys-shape-corner-small);
+            font: var(--md-sys-typescale-label-medium);
+            font-weight: 700;
             margin-left: var(--md-sys-spacing-2);
+        }
+
+        @media (max-width: 480px) {
+            .badge {
+                min-width: 20px;
+                height: 20px;
+                padding: 0 6px;
+                font-size: 0.75rem;
+            }
         }
 
         .live-indicator {
@@ -1264,35 +1697,36 @@
             align-items: center;
             gap: var(--md-sys-spacing-2);
             font: var(--md-sys-typescale-label-medium);
-            color: var(--md-sys-color-primary);
+            font-weight: 600;
+            color: var(--luka-pink);
             margin-left: auto;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .live-indicator {
                 display: none;
             }
         }
 
         .live-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--md-sys-color-primary);
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
             border-radius: 50%;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 10px var(--luka-pink);
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
 
-        /* Article Generator Styles */
         .article-generator {
             margin-top: var(--md-sys-spacing-6);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .article-generator {
                 margin-top: var(--md-sys-spacing-4);
             }
@@ -1302,7 +1736,7 @@
             margin-bottom: var(--md-sys-spacing-6);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .article-section {
                 margin-bottom: var(--md-sys-spacing-4);
             }
@@ -1315,9 +1749,10 @@
             display: flex;
             align-items: center;
             gap: var(--md-sys-spacing-2);
+            font-weight: 600;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .article-section-title {
                 font: var(--md-sys-typescale-body-large);
                 font-weight: 600;
@@ -1328,7 +1763,7 @@
             margin-bottom: var(--md-sys-spacing-4);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .form-group {
                 margin-bottom: var(--md-sys-spacing-3);
             }
@@ -1339,6 +1774,7 @@
             font: var(--md-sys-typescale-label-large);
             color: var(--md-sys-color-on-surface);
             margin-bottom: var(--md-sys-spacing-2);
+            font-weight: 600;
         }
 
         @media (max-width: 480px) {
@@ -1352,7 +1788,7 @@
         .form-textarea {
             width: 100%;
             padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
-            border: 1px solid var(--md-sys-color-outline);
+            border: 2px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-small);
             background-color: var(--md-sys-color-surface);
             color: var(--md-sys-color-on-surface);
@@ -1361,39 +1797,53 @@
             transition: all var(--md-sys-motion-duration-short);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .form-input,
             .form-select,
             .form-textarea {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-body-medium);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: var(--md-sys-spacing-2);
+                font-size: 0.875rem;
             }
         }
 
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
+            border-color: var(--luka-pink);
+            box-shadow: 0 0 0 3px rgba(232, 164, 200, 0.2);
         }
 
         .form-textarea {
             min-height: 120px;
             resize: vertical;
-            font-family: 'Roboto Flex', sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .form-textarea {
                 min-height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-textarea {
+                min-height: 80px;
             }
         }
 
         .form-select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23E8A4C8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 12px center;
             background-size: 16px;
@@ -1431,13 +1881,14 @@
             color: var(--md-sys-color-on-surface-variant);
             border-radius: var(--md-sys-shape-corner-small);
             font: var(--md-sys-typescale-label-large);
+            font-weight: 500;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
             border: 2px solid transparent;
             white-space: nowrap;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .radio-label {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
                 font: var(--md-sys-typescale-label-medium);
@@ -1447,7 +1898,7 @@
         @media (max-width: 480px) {
             .radio-label {
                 padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-label-small);
+                font-size: 0.75rem;
                 gap: var(--md-sys-spacing-1);
             }
             
@@ -1457,9 +1908,10 @@
         }
 
         .radio-item input[type="radio"]:checked + .radio-label {
-            background-color: var(--md-sys-color-primary-container);
-            color: var(--md-sys-color-on-primary-container);
-            border-color: var(--md-sys-color-primary);
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.2), rgba(232, 180, 164, 0.2));
+            color: var(--md-sys-color-on-surface);
+            border-color: var(--luka-pink);
+            font-weight: 600;
         }
 
         .radio-label:hover {
@@ -1468,7 +1920,7 @@
 
         .output-area {
             background-color: var(--md-sys-color-surface);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            border: 2px solid var(--md-sys-color-outline-variant);
             border-radius: var(--md-sys-shape-corner-medium);
             padding: var(--md-sys-spacing-4);
             min-height: 200px;
@@ -1482,12 +1934,20 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .output-area {
                 padding: var(--md-sys-spacing-3);
                 min-height: 150px;
                 max-height: 300px;
-                font: var(--md-sys-typescale-body-medium);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .output-area {
+                padding: var(--md-sys-spacing-2);
+                min-height: 120px;
+                max-height: 250px;
+                font-size: 0.875rem;
             }
         }
 
@@ -1498,17 +1958,25 @@
         }
 
         .btn-generate {
-            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-coral));
             color: var(--md-sys-color-on-primary);
             font-size: 1rem;
             padding: var(--md-sys-spacing-4) var(--md-sys-spacing-8);
-            box-shadow: 0 4px 12px rgba(56, 106, 32, 0.3);
+            box-shadow: 0 4px 0 var(--luka-coral-dark), 0 8px 20px rgba(232, 164, 200, 0.3);
+            border: 2px solid var(--md-sys-color-surface);
+        }
+
+        @media (max-width: 992px) {
+            .btn-generate {
+                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-6);
+                font-size: 0.9375rem;
+            }
         }
 
         @media (max-width: 768px) {
             .btn-generate {
-                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-6);
-                font-size: 0.9375rem;
+                padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+                font-size: 0.875rem;
             }
         }
 
@@ -1521,11 +1989,12 @@
 
         .btn-generate:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 106, 32, 0.4);
+            box-shadow: 0 6px 0 var(--luka-coral-dark), 0 12px 25px rgba(232, 164, 200, 0.4);
         }
 
         .btn-generate:active {
-            transform: translateY(0);
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--luka-coral-dark), 0 4px 10px rgba(232, 164, 200, 0.3);
         }
 
         .btn-copy {
@@ -1533,7 +2002,7 @@
             top: var(--md-sys-spacing-3);
             right: var(--md-sys-spacing-3);
             background-color: var(--md-sys-color-surface-1);
-            border: 1px solid var(--md-sys-color-outline-variant);
+            border: 2px solid var(--md-sys-color-outline-variant);
         }
 
         .two-column {
@@ -1542,7 +2011,7 @@
             gap: var(--md-sys-spacing-4);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .two-column {
                 grid-template-columns: 1fr;
                 gap: var(--md-sys-spacing-3);
@@ -1557,17 +2026,18 @@
 
         @media (max-width: 480px) {
             .hint-text {
-                font: var(--md-sys-typescale-label-small);
+                font-size: 0.75rem;
             }
         }
 
         .divider {
-            height: 1px;
-            background-color: var(--md-sys-color-outline-variant);
+            height: 2px;
+            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
             margin: var(--md-sys-spacing-6) 0;
+            border-radius: 1px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .divider {
                 margin: var(--md-sys-spacing-4) 0;
             }
@@ -1579,7 +2049,7 @@
             gap: var(--md-sys-spacing-6);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .article-tools-grid {
                 grid-template-columns: 1fr;
                 gap: var(--md-sys-spacing-4);
@@ -1590,13 +2060,13 @@
             display: flex;
             gap: var(--md-sys-spacing-2);
             margin-bottom: var(--md-sys-spacing-4);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            border-bottom: 2px solid var(--md-sys-color-outline-variant);
             padding-bottom: var(--md-sys-spacing-4);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tool-nav {
                 margin-bottom: var(--md-sys-spacing-3);
                 padding-bottom: var(--md-sys-spacing-3);
@@ -1610,6 +2080,7 @@
             border: none;
             color: var(--md-sys-color-on-surface-variant);
             font: var(--md-sys-typescale-label-large);
+            font-weight: 600;
             cursor: pointer;
             border-radius: var(--md-sys-shape-corner-small);
             transition: all var(--md-sys-motion-duration-short);
@@ -1618,7 +2089,7 @@
             flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tool-nav-btn {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-4);
                 font: var(--md-sys-typescale-label-medium);
@@ -1628,7 +2099,7 @@
         @media (max-width: 480px) {
             .tool-nav-btn {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-label-medium);
+                font-size: 0.875rem;
             }
             
             .tool-nav-btn .material-symbols-rounded {
@@ -1643,24 +2114,24 @@
         }
 
         .tool-nav-btn.active {
-            color: var(--md-sys-color-primary);
-            background-color: var(--md-sys-color-primary-container);
+            color: var(--luka-pink);
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.15), rgba(232, 180, 164, 0.15));
         }
 
         .tool-nav-btn.active::after {
             content: '';
             position: absolute;
-            bottom: -17px;
+            bottom: -18px;
             left: 0;
             right: 0;
             height: 3px;
-            background-color: var(--md-sys-color-primary);
-            border-radius: 3px 3px 0 0;
+            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral));
+            border-radius: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .tool-nav-btn.active::after {
-                bottom: -13px;
+                bottom: -14px;
             }
         }
 
@@ -1687,46 +2158,47 @@
 
         @media (max-width: 480px) {
             .char-counter {
-                font: var(--md-sys-typescale-label-small);
+                font-size: 0.75rem;
             }
         }
 
         .char-counter.warning {
             color: var(--md-sys-color-error);
+            font-weight: 600;
         }
 
-        /* Example Box Styles */
         .example-box {
-            background-color: var(--md-sys-color-secondary-container);
-            border-left: 4px solid var(--md-sys-color-secondary);
+            background: linear-gradient(135deg, rgba(232, 180, 164, 0.15), rgba(232, 164, 200, 0.15));
+            border-left: 4px solid var(--luka-coral);
             padding: var(--md-sys-spacing-4);
             margin-top: var(--md-sys-spacing-3);
             border-radius: 0 var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0;
             font: var(--md-sys-typescale-body-medium);
             color: var(--md-sys-color-on-secondary-container);
+            line-height: 1.7;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .example-box {
                 padding: var(--md-sys-spacing-3);
-                font: var(--md-sys-typescale-body-medium);
             }
         }
 
         @media (max-width: 480px) {
             .example-box {
                 padding: var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-body-small);
+                font-size: 0.875rem;
             }
         }
 
         .example-box-title {
             font: var(--md-sys-typescale-label-large);
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: var(--md-sys-spacing-2);
             display: flex;
             align-items: center;
             gap: var(--md-sys-spacing-2);
+            color: var(--luka-coral);
         }
 
         @media (max-width: 480px) {
@@ -1753,8 +2225,8 @@
         }
 
         .example-label {
-            font-weight: 600;
-            color: var(--md-sys-color-secondary);
+            font-weight: 700;
+            color: var(--luka-coral);
         }
 
         .load-example-btn {
@@ -1770,17 +2242,16 @@
             }
         }
 
-        /* Field Editor Tabs */
         .field-editor-tabs {
             display: flex;
             gap: var(--md-sys-spacing-2);
             margin-bottom: var(--md-sys-spacing-4);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            border-bottom: 2px solid var(--md-sys-color-outline-variant);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .field-editor-tabs {
                 margin-bottom: var(--md-sys-spacing-3);
                 gap: var(--md-sys-spacing-1);
@@ -1793,6 +2264,7 @@
             border: none;
             color: var(--md-sys-color-on-surface-variant);
             font: var(--md-sys-typescale-label-large);
+            font-weight: 600;
             cursor: pointer;
             border-radius: var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0 0;
             transition: all var(--md-sys-motion-duration-short);
@@ -1801,7 +2273,7 @@
             flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .field-editor-tab {
                 padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
                 font: var(--md-sys-typescale-label-medium);
@@ -1814,18 +2286,18 @@
         }
 
         .field-editor-tab.active {
-            color: var(--md-sys-color-primary);
-            background-color: var(--md-sys-color-primary-container);
+            color: var(--luka-pink);
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.15), rgba(232, 180, 164, 0.15));
         }
 
         .field-editor-tab.active::after {
             content: '';
             position: absolute;
-            bottom: -1px;
+            bottom: -2px;
             left: 0;
             right: 0;
-            height: 2px;
-            background-color: var(--md-sys-color-primary);
+            height: 3px;
+            background: linear-gradient(90deg, var(--luka-pink), var(--luka-coral));
         }
 
         .field-editor-content {
@@ -1843,7 +2315,7 @@
             margin-bottom: var(--md-sys-spacing-4);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .preset-fields {
                 gap: var(--md-sys-spacing-1);
                 margin-bottom: var(--md-sys-spacing-3);
@@ -1855,20 +2327,28 @@
             align-items: center;
             gap: var(--md-sys-spacing-1);
             padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
-            background-color: var(--md-sys-color-tertiary-container);
+            background: linear-gradient(135deg, rgba(196, 164, 232, 0.2), rgba(164, 212, 200, 0.2));
             color: var(--md-sys-color-on-tertiary-container);
             border-radius: var(--md-sys-shape-corner-small);
             font: var(--md-sys-typescale-label-medium);
+            font-weight: 600;
             cursor: pointer;
             transition: all var(--md-sys-motion-duration-short);
-            border: 1px solid transparent;
+            border: 2px solid transparent;
             white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .preset-chip {
+                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
+                font-size: 0.8rem;
+            }
         }
 
         @media (max-width: 480px) {
             .preset-chip {
-                padding: var(--md-sys-spacing-1) var(--md-sys-spacing-2);
-                font: var(--md-sys-typescale-label-small);
+                padding: var(--md-sys-spacing-1);
+                font-size: 0.75rem;
             }
             
             .preset-chip .material-symbols-rounded {
@@ -1877,11 +2357,12 @@
         }
 
         .preset-chip:hover {
-            background-color: var(--md-sys-color-tertiary);
+            background: linear-gradient(135deg, var(--luka-purple), var(--luka-purple-dark));
             color: var(--md-sys-color-on-tertiary);
+            border-color: var(--luka-purple);
+            transform: translateY(-2px);
         }
 
-        /* Touch-friendly improvements */
         @media (hover: none) and (pointer: coarse) {
             .drag-handle, .field-drag-handle {
                 opacity: 1;
@@ -1889,34 +2370,26 @@
             }
             
             .icon-btn {
-                width: 36px;
-                height: 36px;
+                width: 44px;
+                height: 44px;
             }
             
             .tree-toggle, .field-toggle {
-                width: 24px;
-                height: 24px;
+                width: 32px;
+                height: 32px;
             }
         }
 
-        /* Prevent text selection during drag */
         .dragging, .dragging * {
             user-select: none !important;
             -webkit-user-select: none !important;
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Focus visible for accessibility */
         *:focus-visible {
-            outline: 2px solid var(--md-sys-color-primary);
+            outline: 3px solid var(--luka-pink);
             outline-offset: 2px;
         }
 
-        /* Reduce motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -1924,17 +2397,503 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        .import-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: var(--md-sys-spacing-3);
+            border: 2px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--md-sys-shape-corner-medium);
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            resize: vertical;
+            outline: none;
+            transition: all var(--md-sys-motion-duration-short);
+        }
+
+        @media (max-width: 992px) {
+            .import-textarea {
+                min-height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .import-textarea {
+                min-height: 100px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .import-textarea:focus {
+            border-color: var(--luka-pink);
+            box-shadow: 0 0 0 3px rgba(232, 164, 200, 0.2);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--md-sys-spacing-2);
+            padding: var(--md-sys-spacing-2) var(--md-sys-spacing-3);
+            border-radius: var(--md-sys-shape-corner-small);
+            font: var(--md-sys-typescale-label-medium);
+            font-weight: 600;
+        }
+
+        .status-success {
+            background-color: rgba(164, 212, 200, 0.2);
+            color: var(--luka-teal);
+        }
+
+        .status-error {
+            background-color: rgba(232, 164, 164, 0.2);
+            color: var(--md-sys-color-error);
+        }
+    
+        /* ============================================
+           PERBAIKAN DARK MODE - WARNA LEBIH TERANG
+           ============================================ */
+        [data-theme="dark"] {
+            --md-sys-color-on-surface: #F0F0F5 !important;
+            --md-sys-color-on-surface-variant: #C8C8D8 !important;
+            --md-sys-color-outline: #8B8BA0 !important;
+            --md-sys-color-outline-variant: #4A4A6A !important;
+        }
+
+        /* ============================================
+           ANIMASI UNTUK TREE NODE
+           ============================================ */
+        .tree-node-content, .article-field-content {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tree-node-content:hover, .article-field-content:hover {
+            background: linear-gradient(90deg, var(--tree-hover) 0%, var(--md-sys-color-surface-1) 100%);
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           ANIMASI DRAG
+           ============================================ */
+        .tree-node-content.dragging, .article-field-content.dragging {
+            opacity: 0.9;
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.2), rgba(232, 180, 164, 0.2));
+            border: 2px dashed var(--luka-pink);
+            box-shadow: 0 8px 24px rgba(232, 164, 200, 0.2);
+            transform: scale(1.02) rotate(1deg);
+            animation: drag-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes drag-pulse {
+            0%, 100% { box-shadow: 0 8px 24px rgba(232, 164, 200, 0.2); }
+            50% { box-shadow: 0 12px 32px rgba(232, 164, 200, 0.3); }
+        }
+
+        .tree-node-content.drag-over, .article-field-content.drag-over {
+            border-top: 4px solid var(--luka-pink);
+            background: linear-gradient(180deg, rgba(232, 164, 200, 0.15) 0%, transparent 100%);
+            animation: drop-target 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes drop-target {
+            from { border-top-width: 4px; }
+            to { border-top-width: 6px; }
+        }
+
+        /* ============================================
+           ANIMASI TOGGLE BUTTON
+           ============================================ */
+        .tree-toggle, .field-toggle {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: var(--md-sys-shape-corner-small);
+            color: var(--luka-pink);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+            background: linear-gradient(135deg, var(--md-sys-color-surface), var(--md-sys-color-surface-1));
+            border: 2px solid var(--luka-pink);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tree-toggle:hover, .field-toggle:hover {
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
+            color: var(--md-sys-color-on-primary);
+            transform: scale(1.15) rotate(90deg);
+            box-shadow: 0 4px 12px rgba(232, 164, 200, 0.3);
+        }
+
+        .tree-toggle.expanded, .field-toggle.expanded {
+            transform: rotate(90deg);
+            background: linear-gradient(135deg, var(--luka-pink), var(--luka-pink-dark));
+            color: var(--md-sys-color-on-primary);
+        }
+
+        .tree-toggle.expanded:hover, .field-toggle.expanded:hover {
+            transform: rotate(90deg) scale(1.15);
+        }
+
+        /* ============================================
+           ANIMASI ICON BUTTON
+           ============================================ */
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            color: var(--md-sys-color-on-surface-variant);
+            border-radius: var(--md-sys-shape-corner-small);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-variation-settings: 'FILL' 0, 'wght' 400;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s, height 0.4s;
+        }
+
+        .icon-btn:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon-btn:hover {
+            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
+            color: var(--md-sys-color-on-surface);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .icon-btn.delete:hover {
+            background: linear-gradient(135deg, rgba(232, 164, 164, 0.3), rgba(232, 164, 164, 0.1));
+            color: var(--md-sys-color-error);
+            box-shadow: 0 4px 12px rgba(232, 164, 164, 0.2);
+        }
+
+        .icon-btn.add-child:hover {
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.3), rgba(232, 164, 200, 0.1));
+            color: var(--luka-pink);
+            box-shadow: 0 4px 12px rgba(232, 164, 200, 0.2);
+        }
+
+        .icon-btn.copy:hover {
+            background: linear-gradient(135deg, rgba(232, 180, 164, 0.3), rgba(232, 180, 164, 0.1));
+            color: var(--luka-coral);
+            box-shadow: 0 4px 12px rgba(232, 180, 164, 0.2);
+        }
+
+        /* ============================================
+           ANIMASI INPUT FOCUS
+           ============================================ */
+        .tree-key-input, .field-key-input {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tree-key-input:focus, .field-key-input:focus {
+            border-color: var(--luka-pink);
+            box-shadow: 0 0 0 4px rgba(232, 164, 200, 0.2), 0 4px 12px rgba(232, 164, 200, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .tree-value-input, .field-value-input {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tree-value-input:focus, .field-value-input:focus {
+            border-color: var(--luka-coral);
+            box-shadow: 0 0 0 4px rgba(232, 180, 164, 0.2), 0 4px 12px rgba(232, 180, 164, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* ============================================
+           ANIMASI CHIP
+           ============================================ */
+        .chip {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .chip:hover::before {
+            left: 100%;
+        }
+
+        .chip:hover {
+            background: linear-gradient(135deg, var(--md-sys-color-secondary-container), rgba(232, 180, 164, 0.2));
+            color: var(--md-sys-color-on-secondary-container);
+            border-color: var(--luka-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 180, 164, 0.15);
+        }
+
+        .chip.active {
+            background: linear-gradient(135deg, rgba(232, 164, 200, 0.3), rgba(232, 180, 164, 0.3));
+            color: var(--md-sys-color-on-surface);
+            border-color: var(--luka-pink);
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(232, 164, 200, 0.2);
+            animation: chip-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes chip-glow {
+            from { box-shadow: 0 4px 12px rgba(232, 164, 200, 0.2); }
+            to { box-shadow: 0 6px 20px rgba(232, 164, 200, 0.3); }
+        }
+
+        /* ============================================
+           ANIMASI BUTTON
+           ============================================ */
+        .btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-filled:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 var(--luka-pink-dark), 0 12px 30px rgba(232, 164, 200, 0.4);
+        }
+
+        .btn-filled:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 var(--luka-pink-dark), 0 4px 15px rgba(232, 164, 200, 0.3);
+        }
+
+        /* ============================================
+           PERBAIKAN JSON PREVIEW
+           ============================================ */
+        .json-preview {
+            background: linear-gradient(135deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-surface-1) 100%);
+            border: 2px solid var(--md-sys-color-outline-variant);
+        }
+
+        .json-key {
+            color: #E8C4D8;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(232, 164, 200, 0.2);
+        }
+
+        .json-string {
+            color: #E8D4C8;
+            font-weight: 500;
+        }
+
+        .json-number {
+            color: #D8C4E8;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(196, 164, 232, 0.2);
+        }
+
+        .json-boolean {
+            color: #C4E8D8;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(164, 212, 200, 0.2);
+        }
+
+        /* ============================================
+           ANIMASI CARD
+           ============================================ */
+        .card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(232, 164, 200, 0.15), 0 4px 0 var(--luka-pink);
+        }
+
+        /* ============================================
+           ANIMASI DRAG HANDLE
+           ============================================ */
+        .drag-handle, .field-drag-handle {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .drag-handle:hover, .field-drag-handle:hover {
+            background: linear-gradient(135deg, var(--md-sys-color-surface-variant), var(--md-sys-color-surface-2));
+            color: var(--luka-pink);
+            transform: scale(1.2);
+            cursor: grab;
+        }
+
+        .drag-handle:active, .field-drag-handle:active {
+            cursor: grabbing;
+            transform: scale(0.95);
+        }
+
+        /* ============================================
+           ANIMASI SNACKBAR
+           ============================================ */
+        .snackbar {
+            animation: snackbar-enter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes snackbar-enter {
+            from {
+                transform: translateX(-50%) translateY(100px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .snackbar.show {
+            animation: snackbar-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes snackbar-pulse {
+            0%, 100% { box-shadow: 0 8px 24px rgba(232, 164, 200, 0.3); }
+            50% { box-shadow: 0 12px 32px rgba(232, 164, 200, 0.4); }
+        }
+
+        /* ============================================
+           ANIMASI TREE LINES
+           ============================================ */
+        .tree-line::before, .field-line::before {
+            background: linear-gradient(180deg, var(--luka-pink), var(--luka-coral), var(--luka-purple));
+            opacity: 0.6;
+        }
+
+        .tree-line::after, .field-line::after {
+            background: linear-gradient(90deg, var(--luka-pink), transparent);
+            opacity: 0.6;
+        }
+
+        /* ============================================
+           PERBAIKAN UNTUK MOBILE
+           ============================================ */
+        @media (max-width: 768px) {
+            .move-buttons {
+                gap: 3px;
+            }
+
+            .move-btn {
+                width: 36px;
+                height: 32px;
+                font-size: 20px;
+            }
+
+            .move-btn .material-symbols-rounded {
+                font-size: 22px !important;
+            }
+
+            .tree-toggle, .field-toggle {
+                width: 32px;
+                height: 32px;
+            }
+
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        /* ============================================
+           ANIMASI APP BAR
+           ============================================ */
+        .app-bar {
+            animation: app-bar-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes app-bar-glow {
+            from { box-shadow: var(--luka-box-shadow); }
+            to { box-shadow: 0 4px 0 var(--luka-pink-dark), 0 12px 30px rgba(232, 164, 200, 0.4); }
+        }
+
+        /* ============================================
+           ANIMASI LOGO
+           ============================================ */
+        .logo {
+            animation: logo-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logo-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(232, 164, 200, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(232, 164, 200, 0.4); }
+        }
+
+        /* ============================================
+           PERBAIKAN EMPTY STATE
+           ============================================ */
+        .empty-state {
+            animation: empty-state-fade 0.6s ease-out;
+        }
+
+        @keyframes empty-state-fade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .empty-state-icon {
+            animation: empty-state-float 3s ease-in-out infinite;
+        }
+
+        @keyframes empty-state-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
+    <base target="_blank">
 </head>
 <body>
-    <div class="nature-bg">
-        <div class="leaf-ornament leaf-1"></div>
-        <div class="leaf-ornament leaf-2"></div>
-        <div class="leaf-ornament leaf-3"></div>
-        <div class="circle-ornament circle-1"></div>
-        <div class="circle-ornament circle-2"></div>
+    <div class="luka-bg">
+        <div class="luka-petal petal-1"></div>
+        <div class="luka-petal petal-2"></div>
+        <div class="luka-petal petal-3"></div>
+        <div class="luka-petal petal-4"></div>
+        <div class="luka-note note-1">♪</div>
+        <div class="luka-note note-2">♫</div>
     </div>
-    <div class="texture-overlay"></div>
 
     <div class="app-container">
         <header class="app-bar">
@@ -1942,11 +2901,11 @@
                 <div class="logo">
                     <span class="material-symbols-rounded">account_tree</span>
                 </div>
-                <h1 class="app-title">Nature JSON Builder</h1>
+                <h1 class="app-title">Megurine Luka JSON Builder</h1>
             </div>
             <div class="app-bar-actions">
                 <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
-                    <span class="material-symbols-rounded">dark_mode</span>
+                    <span class="material-symbols-rounded">light_mode</span>
                 </button>
                 <button class="icon-btn" onclick="showHelp()" title="Help" aria-label="Show help">
                     <span class="material-symbols-rounded">help</span>
@@ -1974,7 +2933,7 @@
                             <span class="material-symbols-rounded">tune</span>
                             Tree Structure Editor
                         </div>
-                        <div class="card-subtitle">Edit struktur JSON hierarkis - Live Preview otomatis</div>
+                        <div class="card-subtitle">Edit struktur JSON hierarkis - Live Preview otomatis dengan tema Megurine Luka!</div>
                         
                         <div class="chip-group">
                             <span class="chip active" onclick="loadTemplate('empty')">Empty</span>
@@ -2005,23 +2964,31 @@
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
                         <div class="card-title">
-                            <span class="material-symbols-rounded">tips_and_updates</span>
-                            Perbedaan Template
+                            <span class="material-symbols-rounded">content_paste</span>
+                            Import JSON dari Clipboard
                         </div>
-                        <ul style="color: var(--md-sys-color-on-surface-variant); padding-left: 20px; line-height: 1.8;">
-                            <li><strong>Image to Text (Lite):</strong> Struktur sederhana dengan override dan output basic</li>
-                            <li><strong>Image Prompt (Pro):</strong> Struktur lengkap 8 kategori untuk AI image generation</li>
-                            <li><strong>Main Subject:</strong> Deskripsi karakter (Gender, Age, Ethnicity, Body Type, Skin Color)</li>
-                            <li><strong>Facial Features:</strong> Detail wajah dan rambut</li>
-                            <li><strong>Clothing:</strong> Pakaian lengkap dengan aksesoris</li>
-                            <li><strong>Pose:</strong> Gaya pose dan arah pandangan</li>
-                            <li><strong>Environment:</strong> Setting dan background</li>
-                            <li><strong>Visual Technique:</strong> Gaya seni dan pencahayaan</li>
-                            <li><strong>Quality:</strong> Resolusi dan parameter teknis</li>
-                            <li><strong>Negative Prompt:</strong> Elemen yang dihindari</li>
-                        </ul>
+                        <div class="card-subtitle">Paste JSON dari clipboard atau ketik manual untuk di-edit dalam editor</div>
+                        
+                        <textarea class="import-textarea" id="importJsonTextarea" placeholder="Paste JSON di sini..."></textarea>
+                        
+                        <div class="action-bar" style="margin-top: var(--md-sys-spacing-3);">
+                            <button class="btn btn-rainbow" onclick="importFromClipboard()">
+                                <span class="material-symbols-rounded">content_paste_go</span>
+                                <span>Paste dari Clipboard</span>
+                            </button>
+                            <button class="btn btn-purple" onclick="importFromTextarea()">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                                <span>Import JSON</span>
+                            </button>
+                            <button class="btn btn-coral" onclick="clearImportTextarea()">
+                                <span class="material-symbols-rounded">clear</span>
+                                <span>Clear</span>
+                            </button>
+                        </div>
+                        
+                        <div id="importStatus" style="margin-top: var(--md-sys-spacing-3);"></div>
                     </div>
                 </div>
 
@@ -2049,9 +3016,13 @@
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin JSON
                             </button>
-                            <button class="btn btn-tonal" onclick="downloadJSON()">
+                            <button class="btn btn-coral" onclick="downloadJSON()">
                                 <span class="material-symbols-rounded">download</span>
                                 Unduh
+                            </button>
+                            <button class="btn btn-purple" onclick="copyToClipboardForImport()">
+                                <span class="material-symbols-rounded">sync</span>
+                                Copy untuk Edit
                             </button>
                         </div>
                     </div>
@@ -2062,7 +3033,7 @@
                             Status
                         </div>
                         <div id="validationStatus" style="color: var(--md-sys-color-on-surface-variant); font: var(--md-sys-typescale-body-medium);">
-                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
+                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--luka-pink);">check_circle</span>
                             Struktur valid
                         </div>
                     </div>
@@ -2081,7 +3052,6 @@
                         </div>
                         <div class="card-subtitle">Buat struktur field dinamis untuk konfigurasi artikel</div>
                         
-                        <!-- Field Editor Tabs -->
                         <div class="field-editor-tabs">
                             <button class="field-editor-tab active" onclick="switchFieldTab('fields')">
                                 <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 6px; font-size: 18px;">account_tree</span>
@@ -2093,7 +3063,6 @@
                             </button>
                         </div>
 
-                        <!-- Fields Tab -->
                         <div id="fields-tab" class="field-editor-content active">
                             <div class="preset-fields">
                                 <span class="preset-chip" onclick="addPresetField('topic')">
@@ -2131,7 +3100,6 @@
                             </div>
 
                             <div class="article-field-container" id="articleFieldContainer">
-                                <!-- Fields will be rendered here -->
                             </div>
 
                             <div class="action-bar">
@@ -2154,7 +3122,6 @@
                             </div>
                         </div>
 
-                        <!-- Presets Tab -->
                         <div id="presets-tab" class="field-editor-content">
                             <div class="chip-group">
                                 <span class="chip active" onclick="loadArticlePreset('empty')">Empty</span>
@@ -2164,37 +3131,7 @@
                                 <span class="chip" onclick="loadArticlePreset('storytelling')">Storytelling</span>
                                 <span class="chip" onclick="loadArticlePreset('email')">Email Marketing</span>
                             </div>
-
-                            <div class="example-box" style="margin-top: var(--md-sys-spacing-4);">
-                                <div class="example-box-title">
-                                    <span class="material-symbols-rounded">info</span>
-                                    Tentang Preset
-                                </div>
-                                <p style="margin-bottom: var(--md-sys-spacing-2);">Preset akan mengisi field editor dengan struktur yang sudah dioptimalkan untuk setiap jenis konten.</p>
-                                <ul style="padding-left: 20px; line-height: 1.8;">
-                                    <li><strong>Umum:</strong> Struktur dasar untuk artikel berita umum</li>
-                                    <li><strong>Blog Post:</strong> Optimasi untuk konten blog dengan SEO</li>
-                                    <li><strong>Coding:</strong> Struktur untuk tutorial teknis</li>
-                                    <li><strong>Storytelling:</strong> Setup untuk cerita fiksi</li>
-                                    <li><strong>Email Marketing:</strong> Konfigurasi untuk email konversi</li>
-                                </ul>
-                            </div>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-title">
-                            <span class="material-symbols-rounded">tips_and_updates</span>
-                            Panduan Field Editor
-                        </div>
-                        <ul style="color: var(--md-sys-color-on-surface-variant); padding-left: 20px; line-height: 1.8;">
-                            <li><strong>Tambah Field:</strong> Gunakan tombol preset cepat atau "Tambah Field"</li>
-                            <li><strong>Drag & Drop:</strong> Seret handle (garis-garis) untuk mengurutkan ulang field</li>
-                            <li><strong>Tipe Data:</strong> Pilih String, Number, Boolean, Object, atau Array</li>
-                            <li><strong>Object/Array:</strong> Field bertipe Object/Array bisa memiliki child fields</li>
-                            <li><strong>Custom Field:</strong> Buat field dengan nama dan struktur bebas</li>
-                            <li><strong>Live Preview:</strong> JSON di panel kanan update otomatis</li>
-                        </ul>
                     </div>
                 </div>
 
@@ -2222,11 +3159,11 @@
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin JSON
                             </button>
-                            <button class="btn btn-tonal" onclick="downloadArticleJSON()">
+                            <button class="btn btn-coral" onclick="downloadArticleJSON()">
                                 <span class="material-symbols-rounded">download</span>
                                 Unduh JSON
                             </button>
-                            <button class="btn btn-outlined" onclick="generateFromFields()">
+                            <button class="btn btn-purple" onclick="generateFromFields()">
                                 <span class="material-symbols-rounded">auto_fix_high</span>
                                 Generate
                             </button>
@@ -2246,17 +3183,6 @@
                                 <span class="material-symbols-rounded">content_copy</span>
                                 Salin Prompt
                             </button>
-                        </div>
-                    </div>
-
-                    <div class="card" style="margin-top: var(--md-sys-spacing-4);">
-                        <div class="card-title">
-                            <span class="material-symbols-rounded">fact_check</span>
-                            Status
-                        </div>
-                        <div id="article-validation-status" style="color: var(--md-sys-color-on-surface-variant); font: var(--md-sys-typescale-body-medium);">
-                            <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
-                            Struktur valid - Siap generate prompt
                         </div>
                     </div>
                 </div>
@@ -2294,7 +3220,6 @@
         // Article Presets
         const articlePresets = {
             empty: [],
-            
             general: [
                 { id: 'af_1', key: 'topic', value: 'general', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Jurnalis senior dengan pengalaman 10 tahun', type: 'string', expanded: true, children: [] },
@@ -2304,7 +3229,6 @@
                 { id: 'af_6', key: 'main_task', value: 'Tulis artikel berita tentang peluncuran teknologi renewable energy terbaru di Indonesia', type: 'string', expanded: true, children: [] },
                 { id: 'af_7', key: 'technical_specs', value: 'Gunakan fakta terkini, sertakan data statistik, hindari opini pribadi', type: 'string', expanded: true, children: [] }
             ],
-            
             blog: [
                 { id: 'af_1', key: 'topic', value: 'blog', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Content writer profesional spesialis lifestyle', type: 'string', expanded: true, children: [] },
@@ -2315,7 +3239,6 @@
                 { id: 'af_7', key: 'seo_keywords', value: 'morning routine, produktivitas, habits', type: 'string', expanded: true, children: [] },
                 { id: 'af_8', key: 'technical_specs', value: 'Gunakan tone friendly, tambahkan emoji strategis, sertakan CTA di akhir', type: 'string', expanded: true, children: [] }
             ],
-            
             coding: [
                 { id: 'af_1', key: 'topic', value: 'coding', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Senior Software Engineer dan technical writer', type: 'string', expanded: true, children: [] },
@@ -2326,7 +3249,6 @@
                 { id: 'af_7', key: 'code_requirements', value: 'Sertakan code snippet, penjelasan step-by-step, best practices', type: 'string', expanded: true, children: [] },
                 { id: 'af_8', key: 'technical_specs', value: 'Gunakan bahasa Indonesia dengan terminologi teknis dalam bahasa Inggris', type: 'string', expanded: true, children: [] }
             ],
-            
             storytelling: [
                 { id: 'af_1', key: 'topic', value: 'storytelling', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Penulis fiksi kreatif yang telah menerbitkan 3 novel thriller', type: 'string', expanded: true, children: [] },
@@ -2338,7 +3260,6 @@
                 { id: 'af_8', key: 'plot_twist', value: 'Ending dengan twist yang tak terduga', type: 'string', expanded: true, children: [] },
                 { id: 'af_9', key: 'technical_specs', value: 'Gunakan teknik show dont tell, deskripsikan setting dengan detail sensorial', type: 'string', expanded: true, children: [] }
             ],
-            
             email: [
                 { id: 'af_1', key: 'topic', value: 'email', type: 'string', expanded: true, children: [] },
                 { id: 'af_2', key: 'ai_role', value: 'Email marketing specialist dengan conversion rate tinggi', type: 'string', expanded: true, children: [] },
@@ -2352,7 +3273,6 @@
             ]
         };
 
-        // Preset field definitions
         const presetFieldDefinitions = {
             topic: { key: 'topic', value: 'general', type: 'string' },
             role: { key: 'ai_role', value: '', type: 'string' },
@@ -2364,10 +3284,8 @@
             custom: { key: 'custom_field', value: '', type: 'string' }
         };
 
-        // TEMPLATE definitions
         const templates = {
             empty: [],
-            
             image_to_text: [
                 {
                     id: 'root_1',
@@ -2419,7 +3337,6 @@
                     ]
                 }
             ],
-
             image_prompt: [
                 {
                     id: 'root_1',
@@ -2565,7 +3482,245 @@
             return 'af_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
 
-        // JSON Builder Functions
+        async function importFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('importJsonTextarea').value = text;
+                processImportJSON(text);
+            } catch (err) {
+                showImportStatus('Tidak dapat mengakses clipboard. Silakan paste manual.', 'error');
+                showSnackbar('Clipboard access denied');
+            }
+        }
+
+        function importFromTextarea() {
+            const text = document.getElementById('importJsonTextarea').value.trim();
+            if (!text) {
+                showImportStatus('Textarea kosong! Silakan paste JSON terlebih dahulu.', 'error');
+                return;
+            }
+            processImportJSON(text);
+        }
+
+        function clearImportTextarea() {
+            document.getElementById('importJsonTextarea').value = '';
+            document.getElementById('importStatus').innerHTML = '';
+            showSnackbar('Textarea dibersihkan');
+        }
+
+        function showImportStatus(message, type) {
+            const statusDiv = document.getElementById('importStatus');
+            const icon = type === 'success' ? 'check_circle' : 'error';
+            const statusClass = type === 'success' ? 'status-success' : 'status-error';
+            
+            statusDiv.innerHTML = `
+                <span class="status-indicator ${statusClass}">
+                    <span class="material-symbols-rounded" style="font-size: 18px;">${icon}</span>
+                    ${message}
+                </span>
+            `;
+            
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        function processImportJSON(jsonString) {
+            try {
+                const parsed = JSON.parse(jsonString);
+                treeData = convertObjectToTree(parsed);
+                renderTree();
+                updateOutput();
+                showImportStatus(`Berhasil import ${countAllNodes(treeData)} node!`, 'success');
+                showSnackbar('JSON berhasil diimport!');
+            } catch (e) {
+                showImportStatus('Error: ' + e.message, 'error');
+                showSnackbar('JSON tidak valid!');
+            }
+        }
+
+        function convertObjectToTree(obj, key = '') {
+            const nodes = [];
+            
+            if (Array.isArray(obj)) {
+                obj.forEach((item, index) => {
+                    const node = createNodeFromValue(item, String(index));
+                    nodes.push(node);
+                });
+            } else if (obj !== null && typeof obj === 'object') {
+                Object.keys(obj).forEach(k => {
+                    const node = createNodeFromValue(obj[k], k);
+                    nodes.push(node);
+                });
+            } else {
+                nodes.push({
+                    id: generateId(),
+                    key: key || 'value',
+                    value: String(obj),
+                    type: getValueType(obj),
+                    expanded: true,
+                    children: []
+                });
+            }
+            
+            return nodes;
+        }
+
+        function createNodeFromValue(value, key) {
+            const type = getValueType(value);
+            const node = {
+                id: generateId(),
+                key: key,
+                value: '',
+                type: type,
+                expanded: true,
+                children: []
+            };
+            
+            if (type === 'object' && value !== null) {
+                Object.keys(value).forEach(k => {
+                    node.children.push(createNodeFromValue(value[k], k));
+                });
+            } else if (type === 'array') {
+                value.forEach((item, index) => {
+                    node.children.push(createNodeFromValue(item, String(index)));
+                });
+            } else {
+                node.value = value === null ? 'null' : String(value);
+            }
+            
+            return node;
+        }
+
+        function getValueType(value) {
+            if (value === null) return 'null';
+            if (Array.isArray(value)) return 'array';
+            if (typeof value === 'object') return 'object';
+            if (typeof value === 'number') return 'number';
+            if (typeof value === 'boolean') return 'boolean';
+            return 'string';
+        }
+
+        function copyToClipboardForImport() {
+            const json = JSON.stringify(generateJSON(), null, 2);
+            navigator.clipboard.writeText(json).then(() => {
+                showSnackbar('JSON disalin! Paste di textarea import untuk edit');
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = json;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showSnackbar('JSON disalin! Paste di textarea import untuk edit');
+            });
+        }
+
+        // Move Node Functions (Arrow Buttons)
+        function moveNodeUp(pathString) {
+            const path = pathString.split('-').map(Number);
+            const result = getNodeByPath(path);
+            
+            if (!result || !result.node) return;
+            
+            const index = path[path.length - 1];
+            
+            if (result.isRoot) {
+                if (index > 0) {
+                    [treeData[index], treeData[index - 1]] = [treeData[index - 1], treeData[index]];
+                }
+            } else {
+                const parentPath = path.slice(0, -1);
+                const parentResult = getNodeByPath(parentPath);
+                if (parentResult && parentResult.node.children && index > 0) {
+                    const siblings = parentResult.node.children;
+                    [siblings[index], siblings[index - 1]] = [siblings[index - 1], siblings[index]];
+                }
+            }
+            
+            renderTree();
+            updateOutput();
+            showSnackbar('Node dipindahkan ke atas');
+        }
+
+        function moveNodeDown(pathString) {
+            const path = pathString.split('-').map(Number);
+            const result = getNodeByPath(path);
+            
+            if (!result || !result.node) return;
+            
+            const index = path[path.length - 1];
+            
+            if (result.isRoot) {
+                if (index < treeData.length - 1) {
+                    [treeData[index], treeData[index + 1]] = [treeData[index + 1], treeData[index]];
+                }
+            } else {
+                const parentPath = path.slice(0, -1);
+                const parentResult = getNodeByPath(parentPath);
+                if (parentResult && parentResult.node.children && index < parentResult.node.children.length - 1) {
+                    const siblings = parentResult.node.children;
+                    [siblings[index], siblings[index + 1]] = [siblings[index + 1], siblings[index]];
+                }
+            }
+            
+            renderTree();
+            updateOutput();
+            showSnackbar('Node dipindahkan ke bawah');
+        }
+
+        function moveArticleFieldUp(pathString) {
+            const path = pathString.split('-').map(Number);
+            const result = getArticleFieldByPath(path);
+            
+            if (!result || !result.node) return;
+            
+            const index = path[path.length - 1];
+            
+            if (result.isRoot) {
+                if (index > 0) {
+                    [articleFields[index], articleFields[index - 1]] = [articleFields[index - 1], articleFields[index]];
+                }
+            } else {
+                const parentPath = path.slice(0, -1);
+                const parentResult = getArticleFieldByPath(parentPath);
+                if (parentResult && parentResult.node.children && index > 0) {
+                    const siblings = parentResult.node.children;
+                    [siblings[index], siblings[index - 1]] = [siblings[index - 1], siblings[index]];
+                }
+            }
+            
+            renderArticleFields();
+            updateArticleOutput();
+            showSnackbar('Field dipindahkan ke atas');
+        }
+
+        function moveArticleFieldDown(pathString) {
+            const path = pathString.split('-').map(Number);
+            const result = getArticleFieldByPath(path);
+            
+            if (!result || !result.node) return;
+            
+            const index = path[path.length - 1];
+            
+            if (result.isRoot) {
+                if (index < articleFields.length - 1) {
+                    [articleFields[index], articleFields[index + 1]] = [articleFields[index + 1], articleFields[index]];
+                }
+            } else {
+                const parentPath = path.slice(0, -1);
+                const parentResult = getArticleFieldByPath(parentPath);
+                if (parentResult && parentResult.node.children && index < parentResult.node.children.length - 1) {
+                    const siblings = parentResult.node.children;
+                    [siblings[index], siblings[index + 1]] = [siblings[index + 1], siblings[index]];
+                }
+            }
+            
+            renderArticleFields();
+            updateArticleOutput();
+            showSnackbar('Field dipindahkan ke bawah');
+        }
+
         function getNodeByPath(pathArray) {
             let current = treeData;
             let parent = null;
@@ -2589,7 +3744,7 @@
                 container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon material-symbols-rounded">account_tree</div>
-                        <p>Belum ada data. Klik "Tambah Root" untuk memulai.</p>
+                        <p>Belum ada data. Klik "Tambah Root" untuk memulai<br>atau Import JSON dari clipboard!</p>
                     </div>
                 `;
                 updateNodeCount();
@@ -2610,10 +3765,13 @@
                 const currentPath = [...parentPath, index];
                 const pathString = currentPath.join('-');
                 
+                const isFirst = index === 0;
+                const isLast = index === nodes.length - 1;
+                
                 let indentHtml = '';
                 for (let i = 0; i < depth; i++) {
-                    const isLast = i === depth - 1;
-                    indentHtml += `<div class="tree-line ${isLast ? 'last' : ''}"></div>`;
+                    const isLastLine = i === depth - 1;
+                    indentHtml += `<div class="tree-line ${isLastLine ? 'last' : ''}"></div>`;
                 }
 
                 const icon = node.type === 'object' ? 'data_object' : 
@@ -2638,6 +3796,15 @@
                                 ` : '<div class="tree-toggle leaf"></div>'}
                             </div>
                             
+                            <div class="move-buttons">
+                                <button class="move-btn" onclick="moveNodeUp('${pathString}')" ${isFirst ? 'disabled' : ''} title="Pindah ke atas">
+                                    <span class="material-symbols-rounded">keyboard_arrow_up</span>
+                                </button>
+                                <button class="move-btn" onclick="moveNodeDown('${pathString}')" ${isLast ? 'disabled' : ''} title="Pindah ke bawah">
+                                    <span class="material-symbols-rounded">keyboard_arrow_down</span>
+                                </button>
+                            </div>
+
                             <div class="drag-handle" title="Drag untuk mengurutkan">
                                 <span class="material-symbols-rounded" style="font-size: 18px;">drag_indicator</span>
                             </div>
@@ -3103,7 +4270,7 @@
                 const json = generateJSON();
                 JSON.stringify(json);
                 document.getElementById('validationStatus').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
+                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--luka-pink);">check_circle</span>
                     Struktur valid
                 `;
                 return true;
@@ -3137,7 +4304,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'config.json';
+            a.download = 'luka-config.json';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -3149,7 +4316,8 @@
             document.getElementById('nodeCount').textContent = countAllNodes(treeData);
         }
 
-        // Article Generator Field Editor Functions
+        // ==================== ARTICLE GENERATOR FUNCTIONS ====================
+        
         function getArticleFieldByPath(pathArray) {
             let current = articleFields;
             let parent = null;
@@ -3194,10 +4362,13 @@
                 const currentPath = [...parentPath, index];
                 const pathString = currentPath.join('-');
                 
+                const isFirst = index === 0;
+                const isLast = index === nodes.length - 1;
+                
                 let indentHtml = '';
                 for (let i = 0; i < depth; i++) {
-                    const isLast = i === depth - 1;
-                    indentHtml += `<div class="field-line ${isLast ? 'last' : ''}"></div>`;
+                    const isLastLine = i === depth - 1;
+                    indentHtml += `<div class="field-line ${isLastLine ? 'last' : ''}"></div>`;
                 }
 
                 const icon = node.type === 'object' ? 'data_object' : 
@@ -3222,6 +4393,15 @@
                                 ` : '<div class="field-toggle leaf"></div>'}
                             </div>
                             
+                            <div class="move-buttons">
+                                <button class="move-btn" onclick="moveArticleFieldUp('${pathString}')" ${isFirst ? 'disabled' : ''} title="Pindah ke atas">
+                                    <span class="material-symbols-rounded">keyboard_arrow_up</span>
+                                </button>
+                                <button class="move-btn" onclick="moveArticleFieldDown('${pathString}')" ${isLast ? 'disabled' : ''} title="Pindah ke bawah">
+                                    <span class="material-symbols-rounded">keyboard_arrow_down</span>
+                                </button>
+                            </div>
+
                             <div class="field-drag-handle" title="Drag untuk mengurutkan">
                                 <span class="material-symbols-rounded" style="font-size: 18px;">drag_indicator</span>
                             </div>
@@ -3634,7 +4814,6 @@
             };
             showSnackbar(`Preset "${presetNames[presetName]}" dimuat`);
             
-            // Switch back to fields tab
             document.querySelectorAll('.field-editor-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.field-editor-content').forEach(c => c.classList.remove('active'));
             document.querySelector('.field-editor-tab:first-child').classList.add('active');
@@ -3715,7 +4894,7 @@
                 const json = generateArticleJSON();
                 JSON.stringify(json);
                 document.getElementById('article-validation-status').innerHTML = `
-                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--md-sys-color-primary);">check_circle</span>
+                    <span class="material-symbols-rounded" style="vertical-align: middle; margin-right: 8px; color: var(--luka-pink);">check_circle</span>
                     Struktur valid - Siap generate prompt
                 `;
                 return true;
@@ -3778,7 +4957,6 @@
                 prompt += `FORMAT OUTPUT: ${json.output_format}.\n\n`;
             }
 
-            // Add any additional fields
             const skipFields = ['topic', 'ai_role', 'language_style', 'target_audience', 'main_task', 'word_limit', 'output_format'];
             const extraFields = Object.keys(json).filter(key => !skipFields.includes(key));
             
@@ -3835,7 +5013,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'article-config.json';
+            a.download = 'luka-article-config.json';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -3865,7 +5043,8 @@
             });
         }
 
-        // Common Functions
+        // ==================== COMMON FUNCTIONS ====================
+        
         function showSnackbar(message) {
             const snackbar = document.getElementById('snackbar');
             document.getElementById('snackbarText').textContent = message;
@@ -3918,21 +5097,20 @@
 
         function showHelp() {
             showDialog(
-                'Bantuan',
+                'Bantuan - Megurine Luka JSON Builder',
                 `
-                <div style="line-height: 1.8;">
-                    <p><strong>Dua Tools Tersedia:</strong></p>
-                    <p><strong>1. JSON Builder:</strong> Buat dan edit struktur JSON hierarkis dengan drag-drop.</p>
+                <div style="line-height: 1.9;">
+                    <p><strong style="color: var(--luka-pink);">Dua Tools Tersedia:</strong></p>
+                    <p><strong>1. JSON Builder:</strong> Buat dan edit struktur JSON hierarkis dengan drag-drop dan tombol panah.</p>
                     <p><strong>2. Article Generator:</strong> Buat konfigurasi artikel dengan field editor yang fleksibel.</p>
                     <br>
-                    <p><strong>Fitur Article Generator:</strong></p>
+                    <p><strong style="color: var(--luka-coral);">Fitur Utama:</strong></p>
                     <ul style="margin-left: 20px;">
-                        <li>Edit Fields: Tambah, hapus, edit field dengan tipe data beragam</li>
-                        <li>Preset Templates: Pilih dari 5 template siap pakai</li>
-                        <li>Drag & Drop: Urutkan ulang field sesuai kebutuhan</li>
-                        <li>Nested Structure: Buat Object/Array dengan child fields</li>
-                        <li>Live Preview: JSON update otomatis saat field berubah</li>
-                        <li>Generate Prompt: Konversi field menjadi teks prompt</li>
+                        <li>Tombol panah naik/turun untuk mengurutkan field</li>
+                        <li>Drag & Drop untuk memindahkan node</li>
+                        <li>Dark mode default dengan tema Megurine Luka yang harmonis</li>
+                        <li>Tombol dengan sudut rounded yang modern</li>
+                        <li>Responsif di semua ukuran layar</li>
                     </ul>
                 </div>
                 `,
@@ -3968,30 +5146,14 @@
                     } else {
                         downloadArticleJSON();
                     }
+                } else if (e.key === 'v') {
+                    e.preventDefault();
+                    if (document.getElementById('json-tool').classList.contains('active')) {
+                        importFromClipboard();
+                    }
                 }
             }
         });
-
-        // Touch event improvements for mobile drag and drop
-        let touchStartY = 0;
-        let touchStartX = 0;
-
-        document.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-            touchStartX = e.touches[0].clientX;
-        }, { passive: true });
-
-        document.addEventListener('touchmove', (e) => {
-            if (!draggedNode && !draggedArticleField) return;
-            
-            const touchY = e.touches[0].clientY;
-            const touchX = e.touches[0].clientX;
-            
-            // Prevent scrolling while dragging
-            if (Math.abs(touchY - touchStartY) > 10 || Math.abs(touchX - touchStartX) > 10) {
-                e.preventDefault();
-            }
-        }, { passive: false });
     </script>
 </body>
 </html>
