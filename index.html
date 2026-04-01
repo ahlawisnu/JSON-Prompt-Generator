@@ -2121,40 +2121,6 @@
             .field-value-input-wrapper { min-width: 60px; }
         }
     </style>
-    <style>
-      /* Fix kritis untuk flex shrinking */
-.tree-node-content, .article-field-content {
-    min-width: 0; /* Memungkinkan shrinking */
-}
-
-.tree-inputs, .field-inputs {
-    min-width: 0; /* Memungkinkan shrinking */
-    overflow: hidden;
-}
-
-/* Container scroll */
-.tree-container, .article-field-container {
-    overflow-x: auto;
-    max-width: 100%;
-}
-
-/* Node minimum width */
-.tree-node, .article-field-node {
-    min-width: 600px; /* Sebelum scroll muncul */
-}
-
-/* Mobile: wrap dengan urutan yang benar */
-@media (max-width: 768px) {
-    .tree-node-content, .article-field-content {
-        flex-wrap: wrap;
-    }
-    .tree-inputs, .field-inputs {
-        order: 3; /* Pindah ke bawah */
-        width: 100%;
-    }
-}
-
-    </style>
     <base target="_blank">
 <base target="_blank">
 </head>
