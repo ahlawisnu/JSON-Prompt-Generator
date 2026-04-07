@@ -2151,6 +2151,111 @@
             .field-value-input-wrapper { min-width: 50px; }
         }
     </style>
+    <style>
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e94560, #0f3460, #e94560);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #eaeaea;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 50px;
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .footer-link:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .footer-link svg {
+            width: 20px;
+            height: 20px;
+            fill: #e94560;
+        }
+
+        .copyright {
+            color: #a0a0a0;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .copyright .brand {
+            color: #e94560;
+            font-weight: 600;
+        }
+
+        /* Animated particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(233, 69, 96, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
     <base target="_blank">
 <base target="_blank">
 </head>
@@ -4640,5 +4745,33 @@
             return isKey ? label : label + '.value';
         }
     </script>
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+        </div>
+        
+        <div class="footer-content">
+            <a href="https://linktr.ee/ahladigital" target="_blank" class="footer-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.523 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-15v4H8v2h3v4h2v-4h3v-2h-3V7h-2z"/>
+                </svg>
+                Linktree - Ahladigital
+            </a>
+            
+            <p class="copyright">
+                ©️ <span class="brand">AWVR VERSE</span> | All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
